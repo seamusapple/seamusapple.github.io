@@ -361,14 +361,12 @@
 
       
         
-          
-          前言Swift 使用 ARC(Automatic Reference Counting) 这一机制来跟踪和管理程序的内存使用状况。通常情况我们并不需要去考虑内存的管理，ARC 机制会一直起作用，确保类的实例不再被使用时，可以自动释放其所占的内存。
-
-ARC 只会对引用类型起作用，结构体(Struct)和枚举类型(enum)是值类型，不是引用类型，也不是通过引用的方式存储和传递。
-
-然而在少数情况下，ARC 需要我们提供更多的代码之间的信息来更好的管理内存，这篇文章则主要关注这些少数情况。
-ARC
-          ...
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>Swift</code> 使用 <code>ARC(Automatic Reference Counting)</code> 这一机制来跟踪和管理程序的内存使用状况。通常情况我们并不需要去考虑内存的管理，<code>ARC</code> 机制会一直起作用，确保类的实例不再被使用时，可以自动释放其所占的内存。</p>
+<blockquote>
+<p><code>ARC</code> 只会对引用类型起作用，结构体(Struct)和枚举类型(enum)是值类型，不是引用类型，也不是通过引用的方式存储和传递。</p>
+</blockquote>
+<p>然而在少数情况下，<code>ARC</code> 需要我们提供更多的代码之间的信息来更好的管理内存，这篇文章则主要关注这些少数情况。</p>
+<h2 id="ARC-的工作机制"><a href="#ARC-的工作机制" class="headerlink" title="ARC 的工作机制"></a>ARC 的工作机制</h2><p>当我们每次创建一个类的新的实例的时候，ARC 会分配一大块内存用来储存实例的信息。内存中会包含实例的类型信息，以及这个实例所有相关属性的值。此外，当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。这确保了不再被使用的实例，不会一直占用内存空间。</p>
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/01/04/2017/ARC-in-Swift/#more" rel="contents">
