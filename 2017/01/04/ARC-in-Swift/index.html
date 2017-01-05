@@ -7,11 +7,6 @@
 
 <html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
-  <script type="text/javascript">
-      var host = "seamusapple.github.io";
-      if ((host == window.location.host) && (window.location.protocol != "https:"))
-          window.location.protocol = "https";
-  </script>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -73,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="编程,iOS,Swift," />
+  <meta name="keywords" content="编程,iOS,Swift,ARC," />
 
 
 
@@ -98,7 +93,7 @@ ARC 只会对引用类型起作用，结构体(Struct)和枚举类型(enum)是�
 然而在少数情况下">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS中的内存管理(ARC)-Swift">
-<meta property="og:url" content="http://yoursite.com/2017/01/04/2017/ARC-in-Swift/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/01/04/ARC-in-Swift/index.html">
 <meta property="og:site_name" content="Ramsey's Blog">
 <meta property="og:description" content="前言Swift 使用 ARC(Automatic Reference Counting) 这一机制来跟踪和管理程序的内存使用状况。通常情况我们并不需要去考虑内存的管理，ARC 机制会一直起作用，确保类的实例不再被使用时，可以自动释放其所占的内存。
 
@@ -116,7 +111,7 @@ ARC 只会对引用类型起作用，结构体(Struct)和枚举类型(enum)是�
 <meta property="og:image" content="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Art/closureReferenceCycle01_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Art/closureReferenceCycle02_2x.png">
 <meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/05/Table.png">
-<meta property="og:updated_time" content="2017-01-05T01:17:39.000Z">
+<meta property="og:updated_time" content="2017-01-05T06:04:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS中的内存管理(ARC)-Swift">
 <meta name="twitter:description" content="前言Swift 使用 ARC(Automatic Reference Counting) 这一机制来跟踪和管理程序的内存使用状况。通常情况我们并不需要去考虑内存的管理，ARC 机制会一直起作用，确保类的实例不再被使用时，可以自动释放其所占的内存。
@@ -152,7 +147,7 @@ ARC 只会对引用类型起作用，结构体(Struct)和枚举类型(enum)是�
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/04/2017/ARC-in-Swift/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/04/ARC-in-Swift/"/>
 
 
 
@@ -291,7 +286,7 @@ ARC 只会对引用类型起作用，结构体(Struct)和枚举类型(enum)是�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/04/2017/ARC-in-Swift/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/04/ARC-in-Swift/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Ramsey">
@@ -393,8 +388,8 @@ ARC 只会对引用类型起作用，结构体(Struct)和枚举类型(enum)是�
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/01/04/2017/ARC-in-Swift/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/04/2017/ARC-in-Swift/" itemprop="commentCount"></span>
+                <a href="/2017/01/04/ARC-in-Swift/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/01/04/ARC-in-Swift/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -404,7 +399,7 @@ ARC 只会对引用类型起作用，结构体(Struct)和枚举类型(enum)是�
 
           
           
-             <span id="/2017/01/04/2017/ARC-in-Swift/" class="leancloud_visitors" data-flag-title="iOS中的内存管理(ARC)-Swift">
+             <span id="/2017/01/04/ARC-in-Swift/" class="leancloud_visitors" data-flag-title="iOS中的内存管理(ARC)-Swift">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -634,9 +629,27 @@ ARC 只会对引用类型起作用，结构体(Struct)和枚举类型(enum)是�
           
             <a href="/tags/Swift/" rel="tag"># Swift</a>
           
+            <a href="/tags/ARC/" rel="tag"># ARC</a>
+          
         </div>
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/05/iOS中的Runtime-Swift/" rel="prev" title="iOS中的Runtime-Swift">
+                iOS中的Runtime-Swift <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -716,7 +729,7 @@ ARC 只会对引用类型起作用，结构体(Struct)和枚举类型(enum)是�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -734,7 +747,7 @@ ARC 只会对引用类型起作用，结构体(Struct)和枚举类型(enum)是�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -947,7 +960,7 @@ ARC 只会对引用类型起作用，结构体(Struct)和枚举类型(enum)是�
 
     <script type="text/javascript">
       var disqus_shortname = 'seamusapple';
-      var disqus_identifier = '2017/01/04/2017/ARC-in-Swift/';
+      var disqus_identifier = '2017/01/04/ARC-in-Swift/';
 
       var disqus_title = "iOS中的内存管理(ARC)-Swift";
 

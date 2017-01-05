@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-05T01:17:39.000Z</updated>
+  <updated>2017-01-05T06:03:34.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>iOS中的Runtime-Swift</title>
+    <link href="http://yoursite.com/2017/01/05/iOS%E4%B8%AD%E7%9A%84Runtime-Swift/"/>
+    <id>http://yoursite.com/2017/01/05/iOS中的Runtime-Swift/</id>
+    <published>2017-01-05T06:01:26.000Z</published>
+    <updated>2017-01-05T06:03:34.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="编程" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="iOS" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/iOS/"/>
+    
+      <category term="Swift" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B/iOS/Swift/"/>
+    
+    
+      <category term="编程" scheme="http://yoursite.com/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+      <category term="Swift" scheme="http://yoursite.com/tags/Swift/"/>
+    
+      <category term="Runtime" scheme="http://yoursite.com/tags/Runtime/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS中的内存管理(ARC)-Swift</title>
-    <link href="http://yoursite.com/2017/01/04/2017/ARC-in-Swift/"/>
-    <id>http://yoursite.com/2017/01/04/2017/ARC-in-Swift/</id>
+    <link href="http://yoursite.com/2017/01/04/ARC-in-Swift/"/>
+    <id>http://yoursite.com/2017/01/04/ARC-in-Swift/</id>
     <published>2017-01-04T02:24:42.000Z</published>
-    <updated>2017-01-05T01:17:39.000Z</updated>
+    <updated>2017-01-05T06:04:30.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><code>Swift</code> 使用 <code>ARC(Automatic Reference Counting)</code> 这一机制来跟踪和管理程序的内存使用状况。通常情况我们并不需要去考虑内存的管理，<code>ARC</code> 机制会一直起作用，确保类的实例不再被使用时，可以自动释放其所占的内存。</p>
 <blockquote>
@@ -221,6 +249,8 @@
       <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
     
       <category term="Swift" scheme="http://yoursite.com/tags/Swift/"/>
+    
+      <category term="ARC" scheme="http://yoursite.com/tags/ARC/"/>
     
   </entry>
   
