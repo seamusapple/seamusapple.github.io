@@ -289,7 +289,7 @@
               
                 
                 <a class="post-title-link" href="/2017/01/05/iOS中的Runtime-Swift/" itemprop="url">
-                  iOS中的Runtime-Swift
+                  iOS中的Runtime-Swift(使用篇)
                 </a>
               
             
@@ -379,7 +379,7 @@
 
           
           
-             <span id="/2017/01/05/iOS中的Runtime-Swift/" class="leancloud_visitors" data-flag-title="iOS中的Runtime-Swift">
+             <span id="/2017/01/05/iOS中的Runtime-Swift/" class="leancloud_visitors" data-flag-title="iOS中的Runtime-Swift(使用篇)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,9 +407,14 @@
 
       
         
-          
-            
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用 Obejective-C 开发 iOS 程序的同学一定对 Runtime 运行时机制不陌生，由于 Obejective-C 是一门动态语言，它会将一些工作从编译时推迟到运行时。实际上，由于 Objective-C 的消息分发机制，所有使用 Objective-C 编写的函数或方法，本质上都是通过 Objective-C Runtime 的 <code>objc_msgSend</code> 函数发送的一个消息传递。于是，我们可以通过 Objective-C Runtime 机制的特点，来动态的改变函数的实现，实现 Method Swizzling，亦或是通过 category 来给类扩展存储属性。</p>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/05/iOS中的Runtime-Swift/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -595,7 +600,6 @@
 <p><code>ARC</code> 只会对引用类型起作用，结构体(Struct)和枚举类型(enum)是值类型，不是引用类型，也不是通过引用的方式存储和传递。</p>
 </blockquote>
 <p>然而在少数情况下，<code>ARC</code> 需要我们提供更多的代码之间的信息来更好的管理内存，这篇文章则主要关注这些少数情况。</p>
-<h2 id="ARC-的工作机制"><a href="#ARC-的工作机制" class="headerlink" title="ARC 的工作机制"></a>ARC 的工作机制</h2><p>当我们每次创建一个类的新的实例的时候，ARC 会分配一大块内存用来储存实例的信息。内存中会包含实例的类型信息，以及这个实例所有相关属性的值。此外，当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。这确保了不再被使用的实例，不会一直占用内存空间。</p>
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/01/04/ARC-in-Swift/#more" rel="contents">
