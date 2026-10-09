@@ -166,24 +166,24 @@
     renderBudget();
   }
 
-  /* ---------- 高德：手机上直接拉起 App，没装再退回网页 ---------- */
+  /* ---------- 高德：手机上链接本身就是 App scheme，没装 App 再退回网页 ---------- */
   var ua = navigator.userAgent || '';
   var isIOS = /iPhone|iPad|iPod/.test(ua), isAndroid = /Android/.test(ua);
   if (isIOS || isAndroid) {
     $$('a[data-amap-kw]').forEach(function (a) {
-      a.addEventListener('click', function (e) {
-        var kw = a.getAttribute('data-amap-kw'), c = a.getAttribute('data-amap-center').split(',');
-        var lon = +c[0], lat = +c[1], d = 0.15, web = a.href, scheme;
-        if (isIOS) {
-          scheme = 'iosamap://poi?sourceApplication=seamusapple&name=' + encodeURIComponent(kw) +
-            '&lat1=' + (lat - d).toFixed(5) + '&lon1=' + (lon - d).toFixed(5) + '&lat2=' + (lat + d).toFixed(5) + '&lon2=' + (lon + d).toFixed(5) + '&dev=0';
-        } else {
-          scheme = 'androidamap://arroundpoi?sourceApplication=seamusapple&keywords=' + encodeURIComponent(kw) + '&lat=' + lat + '&lon=' + lon + '&dev=0';
-        }
-        e.preventDefault();
+      var kw = a.getAttribute('data-amap-kw'), c = a.getAttribute('data-amap-center').split(',');
+      var lon = +c[0], lat = +c[1], d = 0.15, web = a.href;
+      a.setAttribute('data-web', web);
+      a.removeAttribute('target');
+      if (isIOS) {
+        a.href = 'iosamap://poi?sourceApplication=seamusapple&name=' + encodeURIComponent(kw) +
+          '&lat1=' + (lat - d).toFixed(5) + '&lon1=' + (lon - d).toFixed(5) + '&lat2=' + (lat + d).toFixed(5) + '&lon2=' + (lon + d).toFixed(5) + '&dev=0';
+      } else {
+        a.href = 'androidamap://arroundpoi?sourceApplication=seamusapple&keywords=' + encodeURIComponent(kw) + '&lat=' + lat + '&lon=' + lon + '&dev=0';
+      }
+      a.addEventListener('click', function () {
         var t0 = Date.now();
-        location.href = scheme;
-        setTimeout(function () { if (!document.hidden && Date.now() - t0 < 2600) location.href = web; }, 1800);
+        setTimeout(function () { if (!document.hidden && Date.now() - t0 < 3000) location.href = web; }, 2000);
       });
     });
   }
