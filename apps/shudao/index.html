@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>蜀道三星堆三日手账</title>
+<meta name="description" content="西安出发、沿西成高铁一路向南的 3 天：广元皇泽寺千佛崖、昭化古城、剑门关、翠云廊、三星堆。车次、门票预约、打勾清单和预算。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Long+Cang&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+<div class="wrap">
+
+<header class="topbar">
+  <nav class="nav" aria-label="页面导航">
+    <a class="chip" href="../../">⌂ 首页</a>
+    <a class="chip" href="#route">🗺 路线</a>
+    <a class="chip" href="#go">🚄 车次</a>
+    <a class="chip" href="#days">📅 每日行程</a>
+    <a class="chip" href="#map">⛰ 剑门关地图</a>
+    <a class="chip" href="#stay">🛏 住宿</a>
+    <a class="chip" href="#eat">🍲 吃什么</a>
+    <a class="chip" href="#todo">✅ 清单</a>
+    <a class="chip" href="#budget">💰 预算</a>
+    <a class="chip" href="#info">☎ 实用</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div>
+      <h1>蜀道 · 三星堆<br>三日手账<span class="sub">西安出发 · 10/13–10/15 · 不租车 · 石窟 · 关楼 · 青铜 · 一路向南</span></h1>
+      <div class="facts" style="margin-top:12px">
+        <span class="chip lake">🚄 西成高铁，每段不超过 2.5 小时</span>
+        <span class="chip leaf">🏯 剑门关 105 元，背出《蜀道难》免票</span>
+        <span class="chip pine">🗿 三星堆 72 元，每晚 20:00 放第 5 天票</span>
+      </div>
+      <div class="countdown sketch soft" style="margin-top:14px">
+        <div><span class="big num" id="cd-days">—</span> <span class="hand" style="font-size:1.2rem">天后出发</span></div>
+        <label for="dep-date">出发日 <input type="date" id="dep-date" value="2026-10-13" min="2026-10-10" max="2026-12-31"></label>
+      </div>
+    </div>
+    <div>
+      <svg class="people" viewBox="0 0 360 230" role="img" aria-label="两个小人站在剑门关关楼前，两边是直立的崖壁，脚下是古柏夹着的石板路">
+        <g class="drift"><path class="cloud" d="M48 46c-10 0-16-8-12-16 3-7 12-9 18-5 3-9 17-10 22-2 8-4 17 2 15 10 8 0 11 13 1 13z"/></g>
+        <g class="drift d1"><path class="cloud" d="M250 34c-8 0-13-7-9-13 3-6 10-7 15-4 2-8 14-8 18-1 7-3 14 2 12 8 7 0 9 10 1 10z"/></g>
+        <circle class="sun" cx="318" cy="46" r="16"/>
+        <!-- two cliffs -->
+        <path class="mt" d="M0 190 L8 60 L40 36 L70 70 L92 56 L110 110 L118 190 Z"/>
+        <path class="mt" d="M242 190 L250 98 L272 58 L300 40 L330 74 L352 60 L360 190 Z"/>
+        <path class="ink" d="M30 80 L36 110 M60 90 L58 130 M290 76 L286 120 M318 90 L322 130" opacity=".5"/>
+        <!-- gate tower between cliffs -->
+        <rect x="128" y="124" width="104" height="66" rx="3" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="2.5"/>
+        <path d="M150 190 L150 156 Q180 130 210 156 L210 190" fill="var(--paper)" stroke="var(--ink)" stroke-width="2.5"/>
+        <rect x="120" y="100" width="120" height="28" rx="3" fill="var(--leaf-red)" stroke="var(--ink)" stroke-width="2.5"/>
+        <path d="M110 100 Q180 70 250 100 Z" fill="var(--ink)"/>
+        <path d="M118 84 Q180 58 242 84" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+        <rect x="140" y="106" width="14" height="16" fill="var(--marker)"/><rect x="172" y="106" width="14" height="16" fill="var(--marker)"/><rect x="204" y="106" width="14" height="16" fill="var(--marker)"/>
+        <!-- cypress trees -->
+        <g><line class="trunk" x1="22" y1="196" x2="22" y2="178"/><path class="tree g" d="M22 140 l-9 40 h18 z"/></g>
+        <g><line class="trunk" x1="100" y1="196" x2="100" y2="180"/><path class="tree g" d="M100 148 l-8 34 h16 z"/></g>
+        <g><line class="trunk" x1="262" y1="196" x2="262" y2="180"/><path class="tree g" d="M262 146 l-8 36 h16 z"/></g>
+        <g><line class="trunk" x1="340" y1="196" x2="340" y2="178"/><path class="tree g" d="M340 138 l-9 42 h18 z"/></g>
+        <path class="ground" d="M8 198 Q90 192 180 198 T352 198"/>
+        <!-- traveler 1 -->
+        <g transform="translate(150 118)"><g class="bob">
+          <rect class="bag" x="-30" y="22" width="22" height="34" rx="8" stroke="var(--ink)" stroke-width="2"/>
+          <rect class="c3" x="-20" y="20" width="40" height="46" rx="14" stroke="var(--ink)" stroke-width="2.2"/>
+          <path class="ink" d="M-10 66v18M10 66v18"/>
+          <path d="M-16 84h14M4 84h14" class="ink" stroke-width="5"/>
+          <circle class="skin" cx="0" cy="2" r="19" stroke="var(--ink)" stroke-width="2.2"/>
+          <path class="c2" d="M-20 -2c0-14 9-22 20-22s20 8 20 22c-6-6-13-9-20-9s-14 3-20 9z" stroke="var(--ink)" stroke-width="2.2"/>
+          <g class="eyes"><circle cx="-7" cy="4" r="2.2" fill="var(--ink)"/><circle cx="7" cy="4" r="2.2" fill="var(--ink)"/></g>
+          <path class="ink" d="M-6 11q6 6 12 0"/>
+          <circle cx="-13" cy="9" r="3" fill="var(--leaf-red)" opacity=".45"/><circle cx="13" cy="9" r="3" fill="var(--leaf-red)" opacity=".45"/>
+          <g class="wave"><path class="ink" d="M20 30 L36 10"/><circle class="skin" cx="38" cy="8" r="5" stroke="var(--ink)" stroke-width="2"/></g>
+          <path class="ink" d="M-20 30 L-30 52"/>
+        </g></g>
+        <!-- traveler 2 holding a gold mask -->
+        <g transform="translate(206 122)"><g class="bob d1">
+          <rect class="bag" x="10" y="20" width="22" height="32" rx="8" stroke="var(--ink)" stroke-width="2"/>
+          <rect class="c2" x="-19" y="18" width="38" height="44" rx="14" stroke="var(--ink)" stroke-width="2.2"/>
+          <path class="ink" d="M-9 62v18M9 62v18"/>
+          <path d="M-15 80h14M3 80h14" class="ink" stroke-width="5"/>
+          <circle class="skin" cx="0" cy="0" r="18" stroke="var(--ink)" stroke-width="2.2"/>
+          <path class="hair" d="M-19 -3c0-13 8-20 19-20s19 7 19 20c-5-5-12-8-19-8s-14 3-19 8z"/>
+          <circle class="hair" cx="0" cy="-20" r="7"/>
+          <g class="eyes"><circle cx="-6.5" cy="3" r="2.2" fill="var(--ink)"/><circle cx="6.5" cy="3" r="2.2" fill="var(--ink)"/></g>
+          <path class="ink" d="M-5 10q5 5 10 0"/>
+          <circle cx="-12" cy="8" r="3" fill="var(--leaf-red)" opacity=".45"/><circle cx="12" cy="8" r="3" fill="var(--leaf-red)" opacity=".45"/>
+          <path class="ink" d="M-19 28 L-34 36"/>
+          <path d="M-52 26 h22 l-2 20 q-9 6 -18 0 z" fill="var(--leaf)" stroke="var(--ink)" stroke-width="2"/>
+          <path class="ink" d="M-47 34 h5 M-37 34 h5 M-44 42 q3 2 6 0"/>
+          <path class="ink" d="M19 28 L30 44"/>
+        </g></g>
+        <text x="180" y="224" text-anchor="middle" style="font-family:var(--font-hand);font-size:15px;fill:var(--ink-soft)">一夫当关，背完《蜀道难》免门票</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="route">
+  <div class="sec-head"><h2>路线总览</h2><span class="tag">一条高铁线串起来，不走回头路</span></div>
+  <div class="sketch">
+    <svg class="route-map" viewBox="0 0 360 330" role="img" aria-label="手绘路线图：西安北沿西成高铁向南，广元下车看石窟，住昭化古城；第二天剑门关和翠云廊，坐高铁到广汉；第三天三星堆后坐高铁回西安">
+      <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--line)"/></marker></defs>
+      <path class="mtn" d="M20 120 L48 80 L70 104 L96 66 L124 112 L146 92 L170 126 L20 126 Z" opacity=".8"/>
+      <path class="mtn" d="M196 196 L220 160 L240 184 L262 150 L290 192 L310 176 L330 200 L196 200 Z" opacity=".8"/>
+      <path id="go-all" d="M110 38 C130 90 160 130 190 150 C215 166 230 200 236 232 C240 258 246 280 258 300" fill="none" stroke="none"/>
+      <path class="path lake" d="M110 38 C130 90 160 130 190 150" marker-end="url(#arr)"/>
+      <path class="path leaf" d="M198 168 C172 176 150 190 134 206" marker-end="url(#arr)"/>
+      <path class="path leaf" d="M138 220 C170 222 210 228 230 236" marker-end="url(#arr)"/>
+      <path class="path lake" d="M240 250 C246 268 250 284 256 300" marker-end="url(#arr)"/>
+      <path class="path" d="M268 312 C290 318 310 320 330 322" opacity=".4"/>
+      <path class="path leaf" d="M284 300 C300 240 290 160 240 90 C210 60 160 44 126 40" marker-end="url(#arr)" opacity=".8"/>
+      <text class="sm" x="120" y="96" text-anchor="start" transform="rotate(50 120 96)">G3437 ≈2h</text>
+      <text class="sm" x="150" y="200" text-anchor="middle">打车 40 分钟</text>
+      <text class="sm" x="186" y="246" text-anchor="middle">打车 45 分钟</text>
+      <text class="sm" x="268" y="276" text-anchor="start">D1931 ≈1h</text>
+      <text class="sm" x="312" y="332" text-anchor="middle">成都 ×</text>
+      <text class="sm" x="322" y="214" text-anchor="start" transform="rotate(-80 322 214)">D1930 回西安 ≈3h50</text>
+      <g class="node" data-day="1" tabindex="0" role="button" aria-label="西安北，起点"><circle cx="110" cy="36" r="16"/><text class="lbl" x="110" y="41" text-anchor="middle">西安</text><text class="sm" x="150" y="40" text-anchor="start">07:25 出发</text></g>
+      <g class="node" data-day="1" tabindex="0" role="button" aria-label="广元，第一天"><circle cx="196" cy="156" r="17"/><text class="lbl" x="196" y="161" text-anchor="middle">广元</text><text class="sm" x="220" y="150" text-anchor="start">Day 1 · 皇泽寺 · 千佛崖</text></g>
+      <g class="node" data-day="1" tabindex="0" role="button" aria-label="昭化古城，第一晚"><circle cx="128" cy="214" r="16"/><text class="lbl" x="128" y="219" text-anchor="middle">昭化</text><text class="sm" x="60" y="218" text-anchor="start">古城 · 第 1 晚</text></g>
+      <g class="node" data-day="2" tabindex="0" role="button" aria-label="剑门关，第二天"><circle cx="238" cy="240" r="17"/><text class="lbl" x="238" y="245" text-anchor="middle">剑门关</text><text class="sm" x="262" y="236" text-anchor="start">Day 2 · 翠云廊</text></g>
+      <g class="node" data-day="3" tabindex="0" role="button" aria-label="广汉三星堆，第二晚第三天"><circle cx="262" cy="306" r="17"/><text class="lbl" x="262" y="311" text-anchor="middle">广汉</text><text class="sm" x="196" y="312" text-anchor="start">第 2 晚 · Day 3 三星堆</text></g>
+      <g class="walker"><g>
+        <animateMotion dur="12s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#go-all" href="#go-all"/></animateMotion>
+        <circle r="6" fill="var(--leaf)" stroke="var(--line)" stroke-width="1.5" cy="-2"/><circle r="3.5" fill="#F6D3B5" stroke="var(--line)" stroke-width="1.2" cy="-11"/>
+      </g></g>
+    </svg>
+    <div class="legend"><span><i class="lake"></i>高铁</span><span><i class="leaf"></i>打车 / 回程</span><span>圆圈可点</span></div>
+  </div>
+</section>
+
+<section class="block" id="go">
+  <div class="sec-head"><h2>车次</h2><span class="tag">三段票分开买，12306 提前 15 天放</span></div>
+  <div class="plan-toggle">
+    <button class="chip" id="plan-a" aria-pressed="true">🚄 推荐车次</button>
+    <button class="chip" id="plan-b" aria-pressed="false">🔁 备选车次</button>
+  </div>
+  <div class="sketch" id="plan-a-box">
+    <div class="legs">
+      <div class="leg"><span class="ico">🚄</span><div><div class="t">10/13 西安北 → 广元 · G3437</div><div class="d">07:25 → 09:28，2h03。到广元站出站就打车去皇泽寺。</div></div><span class="cost num">≈152 元</span></div>
+      <div class="leg"><span class="ico">🚄</span><div><div class="t">10/14 剑门关 → 广汉北 · D1931</div><div class="d">15:02 → 16:08，1h06。剑门关站离景区 15 km，打车 20 分钟，14:30 前从剑门关镇出发。</div></div><span class="cost num">≈40 元</span></div>
+      <div class="leg"><span class="ico">🚄</span><div><div class="t">10/15 广汉北 → 西安北 · D1930</div><div class="d">13:00 → 16:49，3h49。三星堆 11:45 出馆，打车 20–30 分钟到站刚好。</div></div><span class="cost num">≈230 元</span></div>
+    </div>
+    <div class="sum"><span>车上总共约 7 小时</span><span class="num">车票 ≈ 420 元 / 人</span></div>
+    <p class="muted" style="margin-top:8px;font-size:.9rem">车次是通用时刻表，10 月中旬以 12306 当天显示为准；二等座价格按同线常见价估。</p>
+  </div>
+  <div class="sketch alt" id="plan-b-box">
+    <div class="legs">
+      <div class="leg"><span class="ico">🚄</span><div><div class="t">西安北 → 广元</div><div class="d">D1911 07:05→09:19 · G2239 07:40→09:44 · D1913 07:53→10:00 · G3763 08:02→10:12</div></div><span class="cost num">152 元</span></div>
+      <div class="leg"><span class="ico">🚄</span><div><div class="t">剑门关 → 广汉北</div><div class="d">D1957 14:29→15:34（不去翠云廊就坐这班）· G8785 18:19→19:48（想走猿猱道又要去翠云廊就坐这班，在剑门关镇吃完豆腐宴再走）</div></div><span class="cost num">≈40 元</span></div>
+      <div class="leg"><span class="ico">🚄</span><div><div class="t">广汉北 → 西安北</div><div class="d">D1924 12:01→15:54 · G1888 12:12→16:02 · D1934 14:39→18:28（想去连山吃回锅肉就坐这班）</div></div><span class="cost num">≈230 元</span></div>
+    </div>
+    <p class="muted" style="margin-top:8px;font-size:.9rem">昭化去剑门关没有直达车，打车约 45 分钟；嫌贵就打车回广元站，坐 C/D 字头 14 分钟到剑门关站（15 元），再换 7 路公交到北门。</p>
+  </div>
+</section>
+
+<section class="block" id="days">
+  <div class="sec-head"><h2>每日行程</h2><span class="tag">按天切换，时间是建议节奏</span></div>
+  <div class="tabs" role="tablist" aria-label="每日行程">
+    <button class="chip" role="tab" id="tab-day1" aria-selected="true" aria-controls="panel-day1">Day 1 · 广元 → 昭化</button>
+    <button class="chip" role="tab" id="tab-day2" aria-selected="false" aria-controls="panel-day2">Day 2 · 剑门关 → 广汉</button>
+    <button class="chip" role="tab" id="tab-day3" aria-selected="false" aria-controls="panel-day3">Day 3 · 三星堆 → 回家</button>
+  </div>
+
+  <div class="panel" id="panel-day1" role="tabpanel" aria-labelledby="tab-day1">
+    <div class="day-title"><h3>Day 1 · 皇泽寺 → 千佛崖 → 昭化古城</h3><span class="date" data-day-offset="0"></span></div>
+    <div class="day-meta"><span class="chip lake">🚄 07:25 出发</span><span class="chip leaf">🎫 皇泽寺 50 + 千佛崖 50 + 古城套票 ≈50</span><span class="chip">🛏 住 昭化古城</span></div>
+    <div class="sketch">
+      <div class="tl">
+        <div class="item"><div class="time">06:45</div><div class="what">到西安北，07:25 G3437</div><div class="tip">早饭在车上吃。广元站很小，出站口就有出租车。</div></div>
+        <div class="item hi"><div class="time">09:40</div><div class="what">打车 10 分钟到皇泽寺</div><div class="tip">武则天的出生地祀庙，50 元，08:00–18:00。看则天殿里的武后真容像和崖壁上的北魏、唐代造像，1 小时。</div></div>
+        <div class="item hi"><div class="time">10:50</div><div class="what">打车 15 分钟到千佛崖</div><div class="tip">嘉陵江边的唐代摩崖，7000 多尊造像沿崖壁排了 400 米，50 元，<strong>要提前在公众号预约</strong>。沿栈道一路看过去，1.5 小时。</div></div>
+        <div class="item food"><div class="time">12:30</div><div class="what">午饭：女皇蒸凉面 + 核桃饼</div><div class="tip">回市区随便找一家凉面店，蒸凉面是广元人的早饭和午饭，米做的，软糯带辣；核桃饼当路上零食。</div></div>
+        <div class="item"><div class="time">13:30</div><div class="what">打车 40 分钟到昭化古城（26 km）</div><div class="tip">约 60–70 元。路上跟司机要个微信，明早去剑门关还能叫他。</div></div>
+        <div class="item stay"><div class="time">14:30</div><div class="what">入住古城民宿</div><div class="tip">让老板帮忙<strong>约明早 7:15 去剑门关北门的车</strong>，顺便问清古城套票哪里买。</div></div>
+        <div class="item"><div class="time">15:00</div><div class="what">逛古城：瞻凤门 → 太守街 → 县衙、考棚 → 城墙 → 临清门</div><div class="tip">三国的葭萌关，张飞挑灯战马超的地方。街道免费，县衙、考棚、汉城博物馆是套票，约 50 元。城不大，两小时走完。</div></div>
+        <div class="item hi"><div class="time">17:45</div><div class="what">走到城外嘉陵江、白龙江交汇处看日落</div><div class="tip">日落约 18:20，两条江颜色不一样。回来路上顺便看费祎墓。</div></div>
+        <div class="item food"><div class="time">18:40</div><div class="what">晚饭：嘉陵江鱼或豆腐</div><div class="tip">古城里的馆子都差不多，挑人多的那家。</div></div>
+        <div class="item"><div class="time">20:00</div><div class="what">古城夜景，早睡</div><div class="tip">灯笼一亮很安静，没有酒吧街那种吵。明天 6:45 起。</div></div>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure class="photo"><img src="img/huangze.jpg" alt="皇泽寺摩崖造像" loading="lazy"><figcaption>皇泽寺的崖壁造像</figcaption></figure>
+      <figure class="photo r"><img src="img/qianfoya.jpg" alt="千佛崖摩崖造像" loading="lazy"><figcaption>千佛崖 · 嘉陵江边 400 米崖壁</figcaption></figure>
+      <figure class="photo r"><img src="img/zhaohua-lou.jpg" alt="昭化古城临清门城楼" loading="lazy"><figcaption>昭化古城的城楼</figcaption></figure>
+      <figure class="photo"><img src="img/zhaohua-street.jpg" alt="古城街景" loading="lazy"><figcaption>古城的街</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-day2" role="tabpanel" aria-labelledby="tab-day2">
+    <div class="day-title"><h3>Day 2 · 剑门关 → 翠云廊 → 高铁到广汉</h3><span class="date" data-day-offset="1"></span></div>
+    <div class="day-meta"><span class="chip leaf">🎫 剑门关 105 + 索道 50 + 翠云廊 40</span><span class="chip pine">🧗 猿猱道 68，可选</span><span class="chip">🛏 住 广汉</span></div>
+    <div class="sketch lake" style="margin-bottom:12px">
+      <p><strong>动线：</strong>北门进 → 索道上 → 梁山寺 → （猿猱道或栈道）→ 关楼 → 南门出，4–5 小时。索道、栈道、猿猱道遇阴雨大风都会停，周三是多云，正好。<span class="mark">猿猱道和鸟道只能上行、二选一</span>，猿猱道要提前在公众号预约。下面的地图可以点。</p>
+    </div>
+    <div class="sketch">
+      <div class="tl">
+        <div class="item"><div class="time">06:45</div><div class="what">早饭，07:15 上车去剑门关北门</div><div class="tip">约 40 km，45 分钟，100 元上下。退房带行李，今晚不回来。</div></div>
+        <div class="item hi"><div class="time">08:00</div><div class="what">北门进，坐 1 号索道上山</div><div class="tip">单程 50 元，早上排队最短。上去就是梁山寺和山顶观景台，剑门七十二峰在眼前。</div></div>
+        <div class="item hi"><div class="time">09:00</div><div class="what">猿猱道（预约了的话）或仙云栈道</div><div class="tip">猿猱道 440 米、30 厘米宽、外侧没护栏，挂安全绳走 1 小时，7–59 岁、1.2 米以上、签协议。恐高就走栈道和悬空玻璃台，风景一样。</div></div>
+        <div class="item hi"><div class="time">10:30</div><div class="what">下到关楼</div><div class="tip">两座崖壁中间就这一个口子，「一夫当关，万夫莫开」说的就是它。关楼上下看一圈，一线天往外走。</div></div>
+        <div class="item"><div class="time">12:00</div><div class="what">南门出，剑门关镇</div><div class="tip">南门出来就是镇子，不用再绕回北门。</div></div>
+        <div class="item food"><div class="time">12:15</div><div class="what">午饭：剑门豆腐宴</div><div class="tip">镇上十几家豆腐店，六娃子豆腐人均 30 出头，一桌全是豆腐做的不同菜。</div></div>
+        <div class="item"><div class="time">13:15</div><div class="what">翠云廊，1 小时</div><div class="tip">南门有专线车，打车 10 分钟也行。40 元，当场默写《翠云廊》全文免票。7000 多棵古柏夹着古蜀道，剑阁柏 2300 年，是世界上最老的柏树。</div></div>
+        <div class="item"><div class="time">14:30</div><div class="what">打车 20 分钟到剑门关站</div><div class="tip">15:02 D1931。赶不上就坐 18:19 的 G8785，在镇上多吃一顿。</div></div>
+        <div class="item stay"><div class="time">16:10</div><div class="what">到广汉北，打车 25 分钟入住</div><div class="tip">住三星堆附近，明早开馆就能进。雨天广汉北不好打车，今天不下雨。</div></div>
+        <div class="item food"><div class="time">18:00</div><div class="what">晚饭：缠丝兔，逛雒城夜市</div><div class="tip">缠丝兔是广汉的地理标志，凉拌切片。夜市在老城，吃完散步回去。</div></div>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure class="photo"><img src="img/jmg-lou.jpg" alt="剑门关关楼" loading="lazy"><figcaption>剑门关关楼</figcaption></figure>
+      <figure class="photo r"><img src="img/jmg-zhandao.jpg" alt="剑门关崖壁栈道" loading="lazy"><figcaption>崖壁上的栈道</figcaption></figure>
+      <figure class="photo r"><img src="img/shisunfeng.jpg" alt="石笋峰" loading="lazy"><figcaption>石笋峰</figcaption></figure>
+      <figure class="photo"><img src="img/gushudao.jpg" alt="翠云廊古蜀道石板路" loading="lazy"><figcaption>翠云廊里的古蜀道</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-day3" role="tabpanel" aria-labelledby="tab-day3">
+    <div class="day-title"><h3>Day 3 · 三星堆 → 回西安</h3><span class="date" data-day-offset="2"></span></div>
+    <div class="day-meta"><span class="chip leaf">🎫 72 元 · 10/10 20:00 放票</span><span class="chip">⏰ 08:30 开馆 · 17:00 停止入馆</span><span class="chip lake">🚄 13:00 D1930 回西安</span></div>
+    <div class="sketch">
+      <div class="tl">
+        <div class="item"><div class="time">07:30</div><div class="what">早饭、退房，行李带着</div><div class="tip">三星堆游客中心能寄存行李。身份证放手边，进馆刷脸。</div></div>
+        <div class="item"><div class="time">08:00</div><div class="what">打车 20–30 分钟到三星堆</div><div class="tip">开馆 08:30，这个点进去人最少。公众号上买电子导览 10 元，自带耳机。</div></div>
+        <div class="item hi"><div class="time">08:30</div><div class="what">新馆，3 小时</div><div class="tip">顺着「世纪逐梦 → 巍然王都 → 天地人神」走。必看：<strong>青铜神树</strong>（4 米高）、<strong>青铜大立人</strong>、<strong>黄金面具</strong>、<strong>纵目面具</strong>、青铜神坛、龟背形网格器。别在第一个厅耗太久，好东西都在后面。</div></div>
+        <div class="item"><div class="time">11:00</div><div class="what">文物修复馆，30 分钟</div><div class="tip">在旧馆那边，隔着玻璃看修文物的人。时间紧可跳过。</div></div>
+        <div class="item food"><div class="time">11:40</div><div class="what">午饭：游客中心或门口的馆子</div><div class="tip">想吃连山回锅肉（代木儿，连山镇，人均 60）就多留 1.5 小时，回程改坐 14:39 的 D1934。</div></div>
+        <div class="item"><div class="time">12:20</div><div class="what">打车到广汉北，13:00 D1930</div><div class="tip">提前 30 分钟到站就行，站很小。</div></div>
+        <div class="item stay"><div class="time">16:49</div><div class="what">到西安北 🎉</div><div class="tip">三天看了唐代石窟、三国古城、蜀道雄关和 3000 年前的青铜，够讲一阵子了。</div></div>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure class="photo"><img src="img/sxd-1.jpg" alt="三星堆博物馆新馆" loading="lazy"><figcaption>2023 年开的新馆</figcaption></figure>
+      <figure class="photo r"><img src="img/sxd-5.jpg" alt="青铜神树" loading="lazy"><figcaption>青铜神树</figcaption></figure>
+      <figure class="photo r"><img src="img/sxd-3.jpg" alt="青铜大立人" loading="lazy"><figcaption>青铜大立人</figcaption></figure>
+      <figure class="photo"><img src="img/sxd-2.jpg" alt="三星堆人像" loading="lazy"><figcaption>展厅里的人像</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="map">
+  <div class="sec-head"><h2>剑门关怎么走</h2><span class="tag">点地名，看照片和贴士</span></div>
+  <div class="sketch lake">
+    <p>景区是两座崖壁夹着一条沟，北门在沟底、南门在山那头的镇子边。<span class="mark">北门进，索道上山，一路往下走到关楼，南门出</span>，不走回头路，出来就是吃豆腐的地方。</p>
+    <svg class="park-map" viewBox="0 0 360 330" role="img" aria-label="手绘剑门关景区地图：北门、索道、梁山寺、猿猱道、栈道、关楼、南门、剑门关镇、翠云廊、剑门关站">
+      <path d="M30 60 L70 40 L96 90 L84 150 L60 200 L30 240 Z" fill="var(--paper-2)" stroke="var(--line)" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M330 60 L290 40 L264 90 L276 150 L300 200 L330 240 Z" fill="var(--paper-2)" stroke="var(--line)" stroke-width="2.5" stroke-linejoin="round"/>
+      <text x="40" y="130" class="ordr" style="font-size:13px">大剑山</text>
+      <text x="282" y="130" class="ordr" style="font-size:13px">小剑山</text>
+      <!-- cableway -->
+      <path class="walk" d="M96 262 L104 90" stroke="var(--lake)"/>
+      <text class="sm" x="70" y="180" style="font-family:var(--font-hand);font-size:11px;fill:var(--ink-soft)" transform="rotate(-86 70 180)">1 号索道 ↑</text>
+      <!-- trail -->
+      <path class="road" d="M104 90 C140 100 160 120 180 150 C196 176 196 200 180 228 C170 246 180 262 196 276"/>
+      <path class="walk" d="M120 98 C150 86 190 100 180 150"/>
+      <!-- spots -->
+      <g class="spot" data-spot="beimen" tabindex="0" role="button"><ellipse cx="96" cy="276" rx="30" ry="12"/><text x="96" y="280" text-anchor="middle">北门</text><text class="ordr" x="60" y="280">①</text></g>
+      <g class="spot" data-spot="liangshan" tabindex="0" role="button"><ellipse cx="104" cy="76" rx="40" ry="12"/><text x="104" y="80" text-anchor="middle">梁山寺 · 山顶</text><text class="ordr" x="150" y="80">②</text></g>
+      <g class="spot" data-spot="yuannao" tabindex="0" role="button"><ellipse cx="176" cy="112" rx="34" ry="12"/><text x="176" y="116" text-anchor="middle">猿猱道</text><text class="ordr" x="216" y="116">③</text></g>
+      <g class="spot" data-spot="zhandao" tabindex="0" role="button"><ellipse cx="140" cy="156" rx="40" ry="12"/><text x="140" y="160" text-anchor="middle">仙云栈道</text><text class="ordr" x="186" y="160">③'</text></g>
+      <g class="spot" data-spot="guanlou" tabindex="0" role="button"><ellipse cx="192" cy="204" rx="30" ry="13"/><text x="192" y="208" text-anchor="middle">关楼</text><text class="ordr" x="228" y="208">④</text></g>
+      <g class="spot" data-spot="nanmen" tabindex="0" role="button"><ellipse cx="200" cy="280" rx="30" ry="12"/><text x="200" y="284" text-anchor="middle">南门</text><text class="ordr" x="236" y="284">⑤</text></g>
+      <g class="hub"><rect x="236" y="296" width="92" height="26" rx="8"/><text x="282" y="314" text-anchor="middle">剑门关镇 · 豆腐</text></g>
+      <g class="spot" data-spot="cuiyunlang" tabindex="0" role="button"><ellipse cx="300" cy="262" rx="36" ry="12"/><text x="300" y="266" text-anchor="middle">翠云廊 10 km</text><text class="ordr" x="256" y="256">⑥</text></g>
+      <text class="sm" x="30" y="318" style="font-family:var(--font-hand);font-size:11px;fill:var(--ink-soft)">剑门关站 ← 15 km · 7 路公交 / 打车 20 分钟</text>
+    </svg>
+    <div class="legend"><span><i class="lake"></i>索道</span><span><i></i>步行主线</span><span><i class="leaf"></i>猿猱道</span></div>
+    <div class="spot-card" id="spot-card">
+      <div>
+        <h3 id="spot-name">关楼</h3>
+        <p class="muted" id="spot-meta">两崖之间 · 动线第 ④ 站</p>
+        <p id="spot-text" style="margin-top:6px">大剑山和小剑山中间唯一的口子，三国时诸葛亮在这里立关。现在的关楼是 2009 年重建的，但那个口子还是那个口子。</p>
+        <p class="tip muted" id="spot-tip" style="margin-top:6px;font-size:.92rem">贴士：从山顶往下走到关楼大约 1 小时台阶，膝盖不好就慢点。关楼里能上二层，往南看是镇子，往北看是来路。</p>
+      </div>
+      <figure class="photo r"><img id="spot-img" src="img/jmg-lou.jpg" alt="关楼" loading="lazy"><figcaption id="spot-cap">剑门关关楼</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="stay">
+  <div class="sec-head"><h2>住宿</h2><span class="tag">第 1 晚昭化古城，第 2 晚广汉</span></div>
+  <div class="sketch lake" style="margin-bottom:12px">
+    <p><strong>怎么选：</strong>昭化住古城里面，晚上和早上的古城只属于住客；广汉住三星堆附近或广汉北站附近，第二天早上进馆快。价格以订房平台 10 月实价为准，下面是携程上评分靠前的。</p>
+  </div>
+  <div class="tier">昭化古城（第 1 晚）</div>
+  <div class="cards">
+    <div class="sketch card"><h4>花筑 · 詹霖小筑（古城店） <span class="price">300–500 元</span></h4><div class="where">📍 古城衙门巷附近</div><div class="why">百年川西老宅改的，评分 4.8。老板能帮忙叫去剑门关的车。</div><div class="links"><a class="chip" data-amap-kw="花筑詹霖小筑 昭化古城" data-amap-center="105.693,32.32" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=510000&center=105.693,32.32&keyword=%E8%8A%B1%E7%AD%91%E8%A9%B9%E9%9C%96%E5%B0%8F%E7%AD%91%20%E6%98%AD%E5%8C%96%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card alt"><h4>驿花溢轻奢民宿（古城店） <span class="price">250–450 元</span></h4><div class="where">📍 县衙街 104 号</div><div class="why">2024 年开的，新，有停车场。</div><div class="links"><a class="chip" data-amap-kw="驿花溢轻奢民宿 昭化古城" data-amap-center="105.693,32.32" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=510000&center=105.693,32.32&keyword=%E9%A9%BF%E8%8A%B1%E6%BA%A2%E8%BD%BB%E5%A5%A2%E6%B0%91%E5%AE%BF%20%E6%98%AD%E5%8C%96%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card"><h4>龙门客栈（古城店） <span class="price">150–300 元</span></h4><div class="where">📍 汉城博物馆附近</div><div class="why">老牌客栈，有家庭房，便宜。</div><div class="links"><a class="chip" data-amap-kw="龙门客栈 昭化古城" data-amap-center="105.693,32.32" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=510000&center=105.693,32.32&keyword=%E9%BE%99%E9%97%A8%E5%AE%A2%E6%A0%88%20%E6%98%AD%E5%8C%96%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card alt"><h4>备选：剑门关天赐温泉酒店 <span class="price">400–700 元</span></h4><div class="where">📍 剑门关镇</div><div class="why">不想早起赶路就住镇上，第二天走路进景区，还能泡温泉。</div><div class="links"><a class="chip" data-amap-kw="剑门关天赐温泉酒店" data-amap-center="105.5,32.23" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=510000&center=105.5,32.23&keyword=%E5%89%91%E9%97%A8%E5%85%B3%E5%A4%A9%E8%B5%90%E6%B8%A9%E6%B3%89%E9%85%92%E5%BA%97" target="_blank" rel="noopener">高德地图</a></div></div>
+  </div>
+  <div class="tier">广汉（第 2 晚）</div>
+  <div class="cards">
+    <div class="sketch card"><h4>岷山景韵大酒店（三星堆店） <span class="price">300–450 元</span></h4><div class="where">📍 三星堆博物馆旁</div><div class="why">评分 4.8，三星堆主题，早上走路就能到馆。</div><div class="links"><a class="chip" data-amap-kw="岷山景韵大酒店 广汉三星堆店" data-amap-center="104.282,30.977" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=510000&center=104.282,30.977&keyword=%E5%B2%B7%E5%B1%B1%E6%99%AF%E9%9F%B5%E5%A4%A7%E9%85%92%E5%BA%97%20%E5%B9%BF%E6%B1%89%E4%B8%89%E6%98%9F%E5%A0%86%E5%BA%97" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card alt"><h4>艺龙安云酒店（三星堆店） <span class="price">200–350 元</span></h4><div class="where">📍 广汉老城，近雒城夜市</div><div class="why">2026 年新开，晚上吃夜市方便，到三星堆打车 15 分钟。</div><div class="links"><a class="chip" data-amap-kw="艺龙安云酒店 广汉三星堆店" data-amap-center="104.282,30.977" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=510000&center=104.282,30.977&keyword=%E8%89%BA%E9%BE%99%E5%AE%89%E4%BA%91%E9%85%92%E5%BA%97%20%E5%B9%BF%E6%B1%89%E4%B8%89%E6%98%9F%E5%A0%86%E5%BA%97" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card"><h4>鼎汉华悦酒店 <span class="price">200–300 元</span></h4><div class="where">📍 汽车客运中心步行 5 分钟</div><div class="why">评分 4.7，位置居中，两头都不远。</div><div class="links"><a class="chip" data-amap-kw="广汉鼎汉华悦酒店" data-amap-center="104.282,30.977" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=510000&center=104.282,30.977&keyword=%E5%B9%BF%E6%B1%89%E9%BC%8E%E6%B1%89%E5%8D%8E%E6%82%A6%E9%85%92%E5%BA%97" target="_blank" rel="noopener">高德地图</a></div></div>
+  </div>
+</section>
+
+<section class="block" id="eat">
+  <div class="sec-head"><h2>吃什么</h2><span class="tag">一路都是川北的味道</span></div>
+  <div class="sketch" style="margin-bottom:12px">
+    <div class="dishes">
+      <span class="dish"><b>女皇蒸凉面</b> · 广元，米做的凉面，软糯带辣</span>
+      <span class="dish"><b>核桃饼</b> · 广元，路上零食</span>
+      <span class="dish"><b>酸菜豆花面</b> · 广元早饭</span>
+      <span class="dish"><b>剑门豆腐宴</b> · 一桌全是豆腐，剑门关镇</span>
+      <span class="dish"><b>嘉陵江河鲜</b> · 昭化古城</span>
+      <span class="dish"><b>缠丝兔</b> · 广汉，凉拌切片</span>
+      <span class="dish"><b>连山回锅肉</b> · 巴掌大一片，连山镇</span>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="sketch card"><h4>六娃子豆腐 <span class="price">人均 32</span></h4><div class="where">📍 剑门关镇</div><div class="why">豆腐宴老店，Day 2 午饭。点豆腐宴套餐，两个人够。</div><div class="links"><a class="chip" data-amap-kw="六娃子豆腐 剑门关" data-amap-center="105.5,32.23" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=510000&center=105.5,32.23&keyword=%E5%85%AD%E5%A8%83%E5%AD%90%E8%B1%86%E8%85%90%20%E5%89%91%E9%97%A8%E5%85%B3" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card alt"><h4>代木儿回锅肉 <span class="price">人均 60</span></h4><div class="where">📍 广汉连山镇川陕路</div><div class="why">连山回锅肉的传承店，一人一两片就够，11–14 点排队。离三星堆 10 km，Day 3 想去就改晚班车。</div><div class="links"><a class="chip" data-amap-kw="代木儿回锅肉 连山镇" data-amap-center="104.282,30.977" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=510000&center=104.282,30.977&keyword=%E4%BB%A3%E6%9C%A8%E5%84%BF%E5%9B%9E%E9%94%85%E8%82%89%20%E8%BF%9E%E5%B1%B1%E9%95%87" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card"><h4>雒城夜市 <span class="price">人均 40</span></h4><div class="where">📍 广汉老城</div><div class="why">Day 2 晚饭，缠丝兔、烧烤、冰粉都在这。</div><div class="links"><a class="chip" data-amap-kw="雒城夜市 广汉" data-amap-center="104.282,30.977" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=510000&center=104.282,30.977&keyword=%E9%9B%92%E5%9F%8E%E5%A4%9C%E5%B8%82%20%E5%B9%BF%E6%B1%89" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card alt"><h4>广元蒸凉面店 <span class="price">人均 12</span></h4><div class="where">📍 广元利州区老城</div><div class="why">随便哪家都行，看本地人多的进。Day 1 午饭。</div><div class="links"><a class="chip" data-amap-kw="蒸凉面 广元利州区" data-amap-center="105.8447,32.4354" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=510000&center=105.8447,32.4354&keyword=%E8%92%B8%E5%87%89%E9%9D%A2%20%E5%B9%BF%E5%85%83%E5%88%A9%E5%B7%9E%E5%8C%BA" target="_blank" rel="noopener">高德地图</a></div></div>
+  </div>
+</section>
+
+<section class="block" id="todo">
+  <div class="sec-head"><h2>清单</h2><span class="tag">勾过的会记在这台手机上</span></div>
+  <div class="sketch">
+    <div class="todo-head"><div><span class="hand" style="font-size:1.2rem">完成 </span><span class="num" id="todo-count">0 / 0</span></div><button class="btn sm" id="todo-reset" type="button">全部清空</button></div>
+    <div class="progress"><i id="todo-bar"></i></div>
+    <div class="todo-group"><h4>今明两天 <small>票先到手</small></h4><ul class="todo">
+      <li><input type="checkbox" id="t1" data-key="t1"><label for="t1">12306 买 3 段票 <small>西安北→广元 G3437 · 剑门关→广汉北 D1931 · 广汉北→西安北 D1930</small></label></li>
+      <li><input type="checkbox" id="t2" data-key="t2"><label for="t2">10/10 晚 20:00 抢三星堆 10/15 的票 <small>公众号「三星堆博物馆」，实名，现场没票</small></label></li>
+      <li><input type="checkbox" id="t3" data-key="t3"><label for="t3">订昭化古城 1 晚 + 广汉 1 晚</label></li>
+      <li><input type="checkbox" id="t4" data-key="t4"><label for="t4">千佛崖公众号预约 10/13</label></li>
+      <li><input type="checkbox" id="t5" data-key="t5"><label for="t5">剑门关预约 10/14；想走猿猱道再单独约 <small>7–59 岁、1.2 米以上、签协议</small></label></li>
+    </ul></div>
+    <div class="todo-group"><h4>出发前 1 天 <small>手机里的事</small></h4><ul class="todo">
+      <li><input type="checkbox" id="t6" data-key="t6"><label for="t6">再看一次广元、德阳天气 <small>周四广元小雨不影响，人已在广汉</small></label></li>
+      <li><input type="checkbox" id="t7" data-key="t7"><label for="t7">车票、门票、酒店截图存相册；高德下载广元、德阳离线地图</label></li>
+      <li><input type="checkbox" id="t8" data-key="t8"><label for="t8">（可选）背《蜀道难》 <small>背全文免剑门关 105 元，默写《翠云廊》免 40 元</small></label></li>
+    </ul></div>
+    <div class="todo-group"><h4>行李 <small>三天两万步</small></h4><ul class="todo">
+      <li><input type="checkbox" id="p1" data-key="p1"><label for="p1">防滑运动鞋 <small>剑门关全是台阶，千佛崖是栈道</small></label></li>
+      <li><input type="checkbox" id="p2" data-key="p2"><label for="p2">薄外套 + 长袖 <small>15–28°C，山上早晚凉</small></label></li>
+      <li><input type="checkbox" id="p3" data-key="p3"><label for="p3">折叠伞</label></li>
+      <li><input type="checkbox" id="p4" data-key="p4"><label for="p4">有线耳机 <small>三星堆电子导览用</small></label></li>
+      <li><input type="checkbox" id="p5" data-key="p5"><label for="p5">充电宝、身份证、少量现金</label></li>
+    </ul></div>
+    <div class="todo-group"><h4>到了之后 <small>每天一件关键事</small></h4><ul class="todo">
+      <li><input type="checkbox" id="d1" data-key="d1"><label for="d1">Day 1 到昭化先约好明早 7:15 去剑门关北门的车</label></li>
+      <li><input type="checkbox" id="d2" data-key="d2"><label for="d2">Day 2 08:00 北门进；14:30 前离开剑门关镇去车站</label></li>
+      <li><input type="checkbox" id="d3" data-key="d3"><label for="d3">Day 3 08:30 开馆就进三星堆；12:20 去广汉北</label></li>
+    </ul></div>
+    <p class="done-msg" id="todo-done" hidden>全勾完了，出发吧 🗿</p>
+  </div>
+</section>
+
+<section class="block" id="budget">
+  <div class="sec-head"><h2>预算</h2><span class="tag">改人数和档位，自动算</span></div>
+  <div class="sketch alt">
+    <div class="budget-ctl">
+      <label for="b-people">人数 <input type="number" id="b-people" min="1" max="6" value="2"></label>
+      <label for="b-stay">住宿档
+        <select id="b-stay">
+          <option value="eco">经济 ≈200 元/晚/间</option>
+          <option value="mid" selected>舒适 ≈350 元/晚/间</option>
+          <option value="high">高端 ≈650 元/晚/间</option>
+        </select>
+      </label>
+      <label for="b-yuannao"><input type="checkbox" id="b-yuannao"> 走猿猱道（+68）</label>
+    </div>
+    <table class="btable">
+      <thead><tr><th>项目</th><th class="n">每人</th><th class="n">合计</th></tr></thead>
+      <tbody id="b-body">
+        <tr><td>高铁 3 段<small>152 + 40 + 230</small></td><td class="n">422</td><td class="n">844</td></tr>
+        <tr><td>门票<small>皇泽寺 50 · 千佛崖 50 · 昭化套票 50 · 剑门关 105 · 索道 50 · 翠云廊 40 · 三星堆 72 · 导览 10</small></td><td class="n">427</td><td class="n">854</td></tr>
+        <tr><td>住宿 2 晚<small>1 间 × 2 晚 × 350 元</small></td><td class="n">350</td><td class="n">700</td></tr>
+        <tr><td>吃饭 3 天<small>每人每天 120 元</small></td><td class="n">360</td><td class="n">720</td></tr>
+        <tr><td>打车<small>广元市内、广元→昭化、昭化→剑门关、镇→站、广汉北↔三星堆，按 330 元/车估，2 人分摊</small></td><td class="n">165</td><td class="n">330</td></tr>
+        <tr class="total"><td>合计（2 人）</td><td class="n">≈1,724</td><td class="n">≈3,448</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top:10px;font-size:.85rem">门票按 2025–2026 各平台价；车票按同线常见价估；住宿按两人一间。背出《蜀道难》能省 105。实际上下浮动两三成。</p>
+  </div>
+</section>
+
+<section class="block" id="info">
+  <div class="sec-head"><h2>实用信息</h2><span class="tag">电话可以点一下复制</span></div>
+  <div class="stack">
+    <div class="sketch">
+      <h3 style="margin-bottom:8px">天气（10/9 的预报，出发前一天再看一次）</h3>
+      <div class="weather">
+        <div class="wbox sketch soft"><div class="l">周二 广元</div><div class="t">多云 27/15</div></div>
+        <div class="wbox sketch soft"><div class="l">周三 剑门关</div><div class="t">多云 28/15</div></div>
+        <div class="wbox sketch soft"><div class="l">周四 广汉</div><div class="t">多云转阴 23/16</div></div>
+        <div class="wbox sketch soft"><div class="l">日出 / 日落</div><div class="t">07:05 / 18:20</div></div>
+      </div>
+      <p class="muted" style="margin-top:8px;font-size:.9rem">周四广元会下小雨，但那天人已经在广汉，不影响。剑门关山上比山下低三四度，索道上去先穿外套。</p>
+    </div>
+
+    <details class="sketch" open>
+      <summary>票怎么买</summary>
+      <div class="body">
+        <p>🚄 <strong>高铁</strong>：12306，提前 15 天放票，三段分开买。</p>
+        <p>🗿 <strong>三星堆</strong>：公众号「三星堆博物馆」（微信里搜不到就点「账号 → 服务号」），每晚 20:00 放第 5 天的票，72 元，实名，<span class="mark">现场没有散客票</span>。08:30–18:00，17:00 停止入馆。电子导览在公众号里买，10 元。</p>
+        <p>🏯 <strong>剑门关</strong>：公众号「剑门关景区」预约，105 元；索道单程 50，观光车 15；猿猱道 68 要单独实名预约。08:00–17:00，16:30 停售。背出《蜀道难》全文免门票。</p>
+        <p>🌲 <strong>翠云廊</strong>：40 元，默写《翠云廊》免票。南门有专线车。</p>
+        <p>🪨 <strong>千佛崖</strong>：公众号预约，约 50 元。<strong>皇泽寺</strong>：现场买，约 50 元，08:00–18:00。<strong>昭化古城</strong>：街道免费，县衙、考棚等套票约 50 元。</p>
+      </div>
+    </details>
+
+    <details class="sketch alt">
+      <summary>避坑 10 条</summary>
+      <div class="body">
+        <ul class="plain">
+          <li>三星堆<strong>没有现场票</strong>，第三方代买的票可能进不去，只认公众号。</li>
+          <li>剑门关索道、栈道、猿猱道<strong>阴雨大风就停</strong>，出发前看公众号公告。</li>
+          <li>猿猱道和鸟道都是单向上行、二选一；鸟道免费但排队最长。</li>
+          <li>昭化到剑门关没有班车，前一晚就让民宿约好车，别早上现找。</li>
+          <li>昭化回广元的巴士约 1 小时一班、坐满就走，别压着时间。</li>
+          <li>剑门关站离景区 15 km，7 路公交到北门和南门，打车 20 分钟。</li>
+          <li>广汉北下雨天难打车，提前 10 分钟在 App 上叫。</li>
+          <li>千佛崖要预约，国庆前后名额紧，现在就约。</li>
+          <li>三星堆第一个厅是背景介绍，别耗 1 小时，神树和面具在后面。</li>
+          <li>背《蜀道难》免票是真的，但要在售票处当场全文背完，中间卡壳不算。</li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="sketch">
+      <h3 style="margin-bottom:8px">电话</h3>
+      <div class="phones">
+        <div class="phone"><div><div class="n">120</div><div class="l">急救</div></div><div class="r"><button class="btn sm" type="button">复制</button></div></div>
+        <div class="phone"><div><div class="n">110</div><div class="l">报警</div></div><div class="r"><button class="btn sm" type="button">复制</button></div></div>
+        <div class="phone"><div><div class="n">0839-12345</div><div class="l">广元政务热线 · 旅游投诉</div></div><div class="r"><button class="btn sm" type="button">复制</button></div></div>
+        <div class="phone"><div><div class="n">0838-12345</div><div class="l">德阳（广汉）政务热线</div></div><div class="r"><button class="btn sm" type="button">复制</button></div></div>
+        <div class="phone"><div><div class="n">12306</div><div class="l">铁路客服</div></div><div class="r"><button class="btn sm" type="button">复制</button></div></div>
+      </div>
+    </div>
+
+    <details class="sketch soft">
+      <summary>资料来源 · 图片版权</summary>
+      <div class="body credits">
+        <p>车次：hao86 时刻表（西安北→广元、剑门关→广汉北、广汉北→西安北，通用时刻，10 月以 12306 为准）。剑门关、翠云廊：<a href="https://cd.bendibao.com/tour/2024419/182432.shtm" target="_blank" rel="noopener">剑门关景区指南（成都本地宝，2024）</a>、携程景点页。三星堆：<a href="http://cd.bendibao.com/tour/2024926/189724.shtm" target="_blank" rel="noopener">三星堆预约时间表（成都本地宝，2026）</a>、<a href="https://www.sohu.com/a/1003123565_122511057" target="_blank" rel="noopener">2026-04 实测报告</a>。广元石窟与昭化：携程、四川在线 2023–2026 游记。住宿、吃：携程 2025–2026 评分与评论。天气：中国天气网 2026-10-09。价格会变，以官方渠道为准。</p>
+        <p>实景照片来自 Wikimedia Commons：Suicasmo（三星堆新馆与文物 ×4，CC0）、剑林（剑门关栈道、石笋峰，CC BY-SA 3.0）、ping lin（关楼、昭化城楼、古城街景，CC BY-SA 3.0）、晾衣杆（翠云廊古蜀道，CC BY-SA 4.0）、Nekitarc（皇泽寺、千佛崖造像，CC BY-SA 4.0）。小人和地图是手绘风格示意，不按比例。</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<footer style="padding-block:28px 8px;text-align:center" class="muted hand">
+  <p style="font-size:1.1rem">蜀道难，走一走就不难 🗿</p>
+  <p style="font-size:.8rem;font-family:var(--font-body)">整理于 2026-10-10 · 10/10 晚 20:00 别忘了抢三星堆的票</p>
+</footer>
+
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/app.js?v=1"></script>
+</body>
+</html>

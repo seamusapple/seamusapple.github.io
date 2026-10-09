@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>CubeView 自测</title>
+<style>
+  :root { --bg:#0B0E14; --panel:#121722; --text:#E6E9EF; --muted:#8B93A5; --line:#232A3A; --accent:#FFD500; --cyan:#4CC9F0; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:14px/1.5 -apple-system, "Noto Sans SC", sans-serif; }
+  #view { height:60vh; width:100%; touch-action:none; border-bottom:1px solid var(--line); }
+  main { padding:12px 16px 32px; max-width:900px; margin:0 auto; }
+  .row { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0; align-items:center; }
+  button { background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:6px;
+    padding:6px 10px; font:600 14px "JetBrains Mono", Menlo, monospace; min-width:44px; cursor:pointer; }
+  button:hover { border-color:var(--cyan); }
+  button.wide { font-family:inherit; font-weight:500; }
+  input[type=text] { flex:1; min-width:160px; background:var(--panel); color:var(--text); border:1px solid var(--line);
+    border-radius:6px; padding:6px 8px; font:14px "JetBrains Mono", Menlo, monospace; }
+  label { color:var(--muted); }
+  #state { font:13px "JetBrains Mono", Menlo, monospace; display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:6px; margin-top:10px; }
+  #state div { background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:6px 8px; }
+  #state b { color:var(--accent); margin-right:6px; }
+  #log { color:var(--muted); font:12px "JetBrains Mono", Menlo, monospace; min-height:1.5em; }
+  #result { white-space:pre-wrap; word-break:break-all; }
+  #raw { word-break:break-all; color:var(--muted); font:12px "JetBrains Mono", Menlo, monospace; }
+</style>
+</head>
+<body>
+<div id="view"></div>
+<main>
+  <div class="row" id="moves"></div>
+  <div class="row">
+    <button class="wide" id="reset">复原</button>
+    <button class="wide" id="scramble">随机打乱 20 步</button>
+    <button class="wide" data-look="bottom">看底面</button>
+    <button class="wide" data-look="front">看正面</button>
+    <button class="wide" data-look="top">看顶面</button>
+    <button class="wide" data-look="back">看背面</button>
+    <button class="wide" id="axes">显示面标签</button>
+  </div>
+  <div class="row">
+    <button class="wide" data-hl="UF">高亮 UF</button>
+    <button class="wide" data-hl="UFR">高亮 UFR</button>
+    <button class="wide" data-hl="face:D">高亮 face:D</button>
+    <button class="wide" data-hl="layer:D">高亮 layer:D</button>
+    <button class="wide" data-hl="centers">高亮 centers</button>
+    <button class="wide" id="clearhl">取消高亮</button>
+  </div>
+  <div class="row">
+    <label for="speed">速度</label>
+    <input id="speed" type="range" min="0" max="1000" step="50" value="350">
+    <span id="speedv">350ms</span>
+  </div>
+  <div class="row">
+    <input id="alg" type="text" value="R U R' U'" aria-label="公式">
+    <button class="wide" id="run">执行</button>
+    <button class="wide" id="cancel">取消队列</button>
+  </div>
+  <div id="log"></div>
+  <div id="state"></div>
+  <div id="raw"></div>
+  <pre id="result" hidden></pre>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/cube-3d.js"></script>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var view = new CubeView(document.getElementById('view'), { state: params.get('state') || undefined });
+  window.view = view;
+  var $ = function (id) { return document.getElementById(id); };
+  var log = function (t) { $('log').textContent = t; };
+
+  function render() {
+    var s = view.getState(), names = ['U','R','F','D','L','B'];
+    $('state').innerHTML = names.map(function (f, i) {
+      var p = s.slice(i * 9, i * 9 + 9);
+      return '<div><b>' + f + '</b>' + p.slice(0,3) + ' ' + p.slice(3,6) + ' ' + p.slice(6,9) + '</div>';
+    }).join('');
+    $('raw').textContent = s;
+  }
+  view.on('move', function (m) { render(); });
+  view.on('drag', function () { log('拖拽中…'); });
+
+  var mv = $('moves');
+  ['U','D','F','B','R','L','x','y','z'].forEach(function (b) {
+    [b, b + "'", b + '2'].forEach(function (m) {
+      var btn = document.createElement('button'); btn.textContent = m;
+      btn.onclick = function () { view.move(m); };
+      mv.appendChild(btn);
+    });
+  });
+  $('reset').onclick = function () { view.setState(CubeView.SOLVED); render(); };
+  $('scramble').onclick = function () {
+    var faces = ['U','D','F','B','R','L'], sfx = ['', "'", '2'], out = [], prev = '';
+    while (out.length < 20) {
+      var f = faces[Math.floor(Math.random() * 6)];
+      if (f === prev) continue;
+      prev = f; out.push(f + sfx[Math.floor(Math.random() * 3)]);
+    }
+    log('打乱：' + out.join(' '));
+    view.move(out.join(' '), { duration: 0 });
+  };
+  document.querySelectorAll('[data-look]').forEach(function (b) { b.onclick = function () { view.lookAt(b.dataset.look); }; });
+  var axes = false;
+  $('axes').onclick = function () { axes = !axes; view.setAxes(axes); this.textContent = axes ? '隐藏面标签' : '显示面标签'; };
+  document.querySelectorAll('[data-hl]').forEach(function (b) { b.onclick = function () { view.highlight([b.dataset.hl]); }; });
+  $('clearhl').onclick = function () { view.clearHighlight(); };
+  $('speed').oninput = function () { view.setSpeed(+this.value); $('speedv').textContent = this.value + 'ms'; };
+  $('run').onclick = function () {
+    view.move($('alg').value).then(function () { log('完成：' + $('alg').value); }, function (e) { log('错误：' + e.message); });
+  };
+  $('cancel').onclick = function () { view.cancel(); };
+  render();
+
+  // automated check: ?alg=R  -> runs instantly, writes getState() into #result
+  var auto = params.get('alg');
+  if (auto != null) {
+    if (params.get('look')) view.lookAt(params.get('look'), { duration: 0 });
+    if (params.get('axes')) view.setAxes(true);
+    if (params.get('hl')) view.highlight(params.get('hl').split(','));
+    view.move(auto, params.get('anim') ? {} : { duration: 0 }).then(function (s) {
+      $('result').hidden = false; $('result').textContent = 'STATE=' + s; render();
+    }, function (e) { $('result').hidden = false; $('result').textContent = 'ERROR=' + e.message; });
+  }
+})();
+</script>
+</body>
+</html>
