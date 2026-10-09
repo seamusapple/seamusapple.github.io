@@ -23,6 +23,7 @@ apps/<slug>/          一个应用一个目录，入口 index.html，资源放�
 - 页面状态（清单、选项、日期）只用 `localStorage`，记在访客自己的设备上；读写都包 try/catch，存不了也要能正常用。
 - 没有 JS 也要能读完：面板默认可见，由脚本再收起。
 - 图片控制在单张 300 KB 以内，手机优先。
+- 魔方应用的纯逻辑（`apps/cube/js/cube-model.js`、`solver.js`）在 Node 里也能跑：`node apps/cube/test/engine.test.js`、`node apps/cube/test/content.test.js`。
 
 ## 应用
 

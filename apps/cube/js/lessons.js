@@ -183,7 +183,8 @@
     cFront: 'YYRYYGYYGOOYBOOYOOGGWGGYGGGWWOWWWWWWBRRRRRRRRBOOBBBBBB',       // setup R U R' U'
     cLeft: 'YGRYYYRYYOOYOOOOOOGGGYGGYGGGWWWWWWWWBBWRRRRRRBROBBBBBB',        // setup U' L' U L
     mRight: 'YYGYYRBOYOYYBOOOOOYGGGGYGGGWWWWWWWWWBGRRRRRRRROOBBBBBB',       // setup F' U' F U R U R' U'
-    mLeft: 'GYYOYYYRBOGBOOOOOOGGYYGGGGGWWWWWWWWWYYRRRBRRRRROBBBBBB'         // setup F U F' U' L' U' L U
+    mLeft: 'GYYOYYYRBOGBOOOOOOGGYYGGGGGWWWWWWWWWYYRRRBRRRRROBBBBBB',        // setup F U F' U' L' U' L U
+    mFlip: 'BYRYYYGBYBRGGOOOOOYYOGGOGGGWWWWWWWWWYOORRRRRRYGRBBBBBB'         // setup SET.midFlip
   };
   var TOP = {
     dot: { u: 'YOOGYBYRO', b: 'RYG', r: 'YYY', f: 'RYB', l: 'GYB' },
@@ -196,7 +197,9 @@
     // 黄角：左前角已对位，其余三角需要轮换（箭头 = 公式把块送往的位置）
     corners: { u: 'YYYYYYYYY', b: 'OBO', r: 'GOR', f: 'GGB', l: 'BRR', arrows: [[2, 8], [8, 0], [0, 2]], mark: [6] },
     // 黄棱：后面整齐，其余三棱轮换
-    edges: { u: 'YYYYYYYYY', b: 'BBB', r: 'ORO', f: 'GOG', l: 'RGR', arrows: [[3, 7], [7, 5], [5, 3]] }
+    edges: { u: 'YYYYYYYYY', b: 'BBB', r: 'ORO', f: 'GOG', l: 'RGR', arrows: [[3, 7], [7, 5], [5, 3]] },
+    // 黄角：相邻双交换，转遍 4 个 U 角度对位数只有 0 / 2 / 0 / 2
+    corners0: { u: 'YYYYYYYYY', b: 'OBR', r: 'BOG', f: 'OGR', l: 'BRG' }
   };
   var SET = {
     dot: "F U R U' R' U R U' R' F' U2 F U R U' R' F'",
@@ -206,10 +209,11 @@
     zero: inv(rep(A.sune, 2)),
     two: inv(rep(A.sune, 3)),
     corners: inv(A.yCorners),
-    corners0: "R2 B2 R F R' B2 R F' R y R2 B2 R F R' B2 R F' R",
+    corners0: inv(A.yCorners) + " y' " + inv(A.yCorners) + " y", // 相邻双交换：4 个 U 角度对位数 0/2/0/2
     edges: inv(A.yEdges),
     edges2: inv(rep(A.yEdges, 2)),
-    edges0: "R2 U R U R' U' R' U' R' U R' y' R2 U R U R' U' R' U' R' U R'"
+    edges0: "R2 U R U R' U' R' U' R' U R' y' R2 U R U R' U' R' U' R' U R' y",
+    midFlip: "F' U' F U R U R' U F' U' F U R U R' U'" // 绿橙棱在右前槽但颜色反了
   };
   function code(alg) { return '<code>' + alg + '</code>'; }
 
@@ -235,7 +239,7 @@
       id: 'intro', num: '00', title: '你为什么学不会', tagline: '不是你笨，是大多数教程让你记错了东西', stage: null,
       sections: [
         { type: 'fact', num: '43,252,003,274,489,856,000', unit: '种状态', note: '每秒试一种，要试 1.37 万亿年——约为宇宙年龄的 100 倍。' },
-        { type: 'prose', html: '这个数字只说明一件事：<strong>魔方不可能靠"转着转着就好了"还原。</strong>但能还原它的人里，绝大多数并不比你聪明。他们手里有一套把一个 4.3 × 10<sup>19</sup> 的问题拆成 <strong>7 个小问题</strong>的方法——每一步只关心 2 到 4 个块，其余的块要么已经放好，要么暂时不管。' },
+        { type: 'prose', html: '这个数字只说明一件事：<strong>魔方不可能靠"转着转着就好了"还原。</strong>但能还原它的人里，绝大多数并不比你聪明。他们手里有一套把一个 4.3 × 10<sup>19</sup> 的问题拆成 <strong>7 个小问题</strong>的方法——每一步只盯 1 到 4 个块，其余的块要么已经放好，要么暂时不管。' },
         { type: 'fact', num: '20', unit: '步', note: '"上帝之数"：2010 年借助谷歌约 35 CPU 年的算力证明，任何打乱最多 20 步（半圈记 1 步）即可还原。我们要学的方法一般需要 100–150 步：它为人脑好记而设计，不为步数最少。' },
         { type: 'callout', kind: 'warn', title: '看了好几遍还不会，通常是这三个原因', html: '<ol><li><strong>背公式，不看块。</strong>公式只在魔方处于特定情况时有用。你记住了"做什么"，却没学会"什么时候做"、"做完应该看到什么"。</li><li><strong>不认识块。</strong>魔方不是 54 张贴纸，而是 26 个塑料块。"把白色贴纸弄到底面"是错误目标；"把白绿棱块放进白中心和绿中心之间"才是正确目标。</li><li><strong>不知道公式在干什么。</strong>一条公式看上去把魔方搅得稀烂，最后只改了 3 个块。如果你不知道它保护了哪些块，你就不会信任它，一出错就慌，然后从头再来。</li></ol>' },
         { type: 'prose', html: '这套教程按相反的顺序来：先认识块（01），再学记号（02），再弄清楚<em>公式为什么只动少数几块</em>（03）——然后才是 7 个步骤。每一步都是同一个结构：目标 → 判读 → 公式 → 为什么有效 → 练习 → 常见错误。' },
@@ -359,7 +363,7 @@
         { say: '第 6 遍……', do: A.sexy },
         { say: '完全复原。24 步，净效果为零。', hl: [], wait: 2400 },
         { say: 'R 拿出来，U 换一块，R\' 放回去，U\' 转回来。', do: A.sexy, wait: 1200 },
-        { say: '只有两层重叠的地方会被改变。', hl: ['UFR', 'UR', 'UBR'], wait: 2400 },
+        { say: '只有两层重叠处附近的 7 块会被改变。', hl: ['UFR', 'DFR', 'UBR', 'UBL', 'UR', 'UB', 'FR'], wait: 2400 },
         { say: '这就是公式：大面积转动，小范围调整。', do: rep(A.sexy, 5), hl: [] }
       ]
     },
@@ -371,11 +375,11 @@
         { type: 'prose', html: '<strong>目标：</strong>底面（白中心那面）出现白色十字，<strong>并且</strong> 4 条白棱的侧面颜色分别和侧面中心对齐。只有底面白十字、侧面没对齐，不算完成。' },
         { type: 'figure', svg: FIG.cross, caption: '目标：D 面白十字，侧面最下一行的中间格与中心同色。灰色 = 这一步不关心。' },
         { type: 'callout', kind: 'why', title: '为什么第一步就让白色朝下', html: '白十字做在底面，之后第 2 到第 7 步你都看着顶面和前面操作，全程不用翻魔方。代价是：检查十字时要看底面——点工具栏的「底面」视角，或者把魔方往前倾一下。用手拿着时，抬起来瞄一眼底面就行。' },
-        { type: 'prose', html: '<strong>判读：</strong>白棱一共 4 条：白绿、白橙、白蓝、白红。找到其中一条，先看它<strong>另一种颜色</strong>——那决定了它要去哪个侧面中心的正下方。再看白色贴纸朝哪里，按下面三种情况处理（以白绿棱为例，绿中心在前）。如果它已经在底层但位置或方向不对，先用 ' + code('F2') + ' 之类把它拿到顶层，再按情况一处理。' },
+        { type: 'prose', html: '<strong>判读：</strong>白棱一共 4 条：白绿、白橙、白蓝、白红。找到其中一条，先看它<strong>另一种颜色</strong>——那决定了它要去哪个侧面中心的正下方。再看白色贴纸朝哪里，按下面三种情况处理。总纲：<strong>用 y 把目标中心转到前面，再按图做</strong>（下面以白绿棱为例，绿中心在前）。如果它已经在底层但位置或方向不对，先用 ' + code('F2') + ' 之类把它拿到顶层，再按情况一处理。' },
         { type: 'cases', title: '白棱在哪儿 → 怎么放', items: [
           { name: '在顶层，白色朝上', svg: iso(keep(S.crossUp, [7, 19]), { label: '白绿棱在顶层白色朝上' }), alg: 'F2', setup: 'F2', hl: ['UF'], desc: '先转 U，让绿色贴纸对准绿中心（白绿棱正好停在绿中心上方），再 F2 把它压到底面。' },
-          { name: '在顶层，白色朝前', svg: iso(keep(S.crossFront, [7, 19]), { label: '白绿棱在顶层白色朝前' }), alg: "U' R' F R", setup: "R' F' R U", hl: ['UF'], desc: "U' 把它挪到右边，R' 给它让出位置，F 把它压进底面，R 把右边复原。" },
-          { name: '在中层', svg: iso(keep(S.crossMid, [23, 12]), { label: '白绿棱在中层' }), alg: 'F', setup: "F'", hl: ['FR'], desc: "绿色在前、白色朝右：一下 F 直接落位。若它在左边（白色朝左），用 F'。" }
+          { name: '在顶层，白色朝前', svg: iso(keep(S.crossFront, [7, 19]), { label: '白绿棱在顶层白色朝前' }), alg: "U' R' F R", setup: "R' F' R U", hl: ['UF'], desc: "先转 U 让它停在绿中心正上方（这时白色正好朝前）。然后 U' 把它挪到右边，R' 给它让出位置，F 把它压进底面，R 把右边复原。" },
+          { name: '在中层', svg: iso(keep(S.crossMid, [23, 12]), { label: '白绿棱在中层' }), alg: 'F', setup: "F'", hl: ['FR'], desc: "绿色在前、白色朝右：一下 F 直接落位。若它在左边（白色朝左），用 F'。若它侧面颜色和所在面中心不一样：先 R U R'（在右槽）或 L' U' L（在左槽）把它顶到顶层——这两招不碰底层——再按顶层情况处理。" }
         ] },
         { type: 'callout', kind: 'why', title: '为什么侧面一定要对齐', html: '中心块不会动，所以白绿棱在整个魔方上只有一个正确位置：白中心和绿中心之间。底面看起来是白十字、侧面却没对齐，意味着 4 条棱里至少两条互相放错了位置——第二步你会发现角块怎么都放不进去。对齐不是"好看"，是"正确"。' },
         { type: 'callout', kind: 'tip', title: '先用 U 对齐，再往下压', html: '顶层的 U 转动碰不到底面，所以先转 U 对准中心、再压下去最安全。转 D 会把已经放好的棱一起带走——不是不能用，但要成对：自动解法里常见 <code>D … D\'</code> 这样先把位置让开、事后转回来的写法。' },
@@ -412,9 +416,9 @@
           { name: '白色朝右', svg: iso(keep(S.cRight, [8, 20, 9]), { label: '白色朝右' }), alg: A.sexy, repeat: 1, setup: inv(A.sexy), hl: ['UFR'], desc: "R U R' U' 做 1 遍。" },
           { name: '白色朝上', svg: iso(keep(S.cTop, [8, 20, 9]), { label: '白色朝上' }), alg: A.sexy, repeat: 3, setup: inv(rep(A.sexy, 3)), hl: ['UFR'], desc: '做 3 遍。' },
           { name: '白色朝前', svg: iso(keep(S.cFront, [8, 20, 9]), { label: '白色朝前' }), alg: A.sexy, repeat: 5, setup: A.sexy, hl: ['UFR'], desc: '做 5 遍。（周期是 6，所以做 5 遍 = 倒着做 1 遍。）' },
-          { name: '白色朝左（角在左前上）', svg: iso(keep(S.cLeft, [6, 18, 38]), { view: 'fl', label: '白色朝左' }), alg: A.sexyL, repeat: 1, setup: inv(A.sexyL), hl: ['UFL'], desc: "左手镜像 L' U' L U，1 遍。槽在左前下时用它更顺手。" }
+          { name: '可选：左手镜像（白色朝左，角在左前上）', svg: iso(keep(S.cLeft, [6, 18, 38]), { view: 'fl', label: '白色朝左' }), alg: A.sexyL, repeat: 1, setup: inv(A.sexyL), hl: ['UFL'], desc: "可选：槽在左前下、不想用 y 转魔方时，用左手镜像 L' U' L U，白色朝左做 1 遍。" }
         ] },
-        { type: 'callout', kind: 'tip', title: '记不住 1 / 3 / 5？不用记', html: '只有一条规则：<strong>把角放在目标槽正上方，一直重复 ' + code(A.sexy) + '，直到它归位</strong>。最多 5 遍。这就是第 03 章"周期 6"的直接用法——角块在槽里每两遍换一个朝向，总会转到对的那一个。' },
+        { type: 'callout', kind: 'tip', title: '记不住 1 / 3 / 5？不用记', html: '只有一条规则：<strong>把角放在目标槽正上方，一直重复 ' + code(A.sexy) + '，直到它归位</strong>。最多 5 遍。这就是第 03 章"周期 6"的直接用法——每做两遍它回到顶层、白色换一个朝向（前→上→右），总会转到朝右的那一遍。' },
         { type: 'callout', kind: 'why', title: '为什么十字不会被打乱', html: '在底层，R U R\' U\' 只碰右前下这一个角槽。R 把底层右边那条白棱抬起来，中间的 U 只转顶层、碰不到它，R\' 又原样放回。所以每做完一遍，十字和其他已放好的白角都回到原位——只有目标槽在被"刷新"。' },
         { type: 'prose', html: '<strong>白角在底层但放错了</strong>（位置不对，或白色没朝下）：用 y 把那个槽转到右前下，做 1 遍 ' + code(A.sexy) + ' 把它顶到顶层，再按上面的情况处理。' },
         { type: 'practice', stage: 'corners', html: '出题时白十字已经做好。把 4 个白角放进去，直到第一层完成。' },
@@ -427,7 +431,7 @@
         { say: '归位。十字没被碰。', hl: ['DFR'], wait: 2000 },
         { say: '这次白色朝上。', setup: inv(rep(A.sexy, 3)), hl: ['UFR'], wait: 2000 },
         { say: '第 1 遍。', do: A.sexy },
-        { say: '第 2 遍——角下去了，但方向还不对。', do: A.sexy },
+        { say: '第 2 遍——它又回到顶层，白色改朝右了。', do: A.sexy },
         { say: '第 3 遍。', do: A.sexy },
         { say: '归位。白色朝上 = 3 遍。', hl: ['DFR'], wait: 2000 },
         { say: '白色朝前呢？做 5 遍。', setup: A.sexy, hl: ['UFR'], wait: 2000 },
@@ -444,13 +448,14 @@
       sections: [
         { type: 'prose', html: '<strong>目标：</strong>中间那一圈的 4 条棱归位，前两层完成。做完后，魔方只剩顶层是乱的。' },
         { type: 'figure', svg: FIG.middle, caption: '目标：前两层完成——四个侧面的下两行与中心同色。' },
-        { type: 'prose', html: '<strong>判读：</strong>中层棱就是<strong>不含黄色</strong>的 4 条棱：绿橙、橙蓝、蓝红、红绿。在顶层找一条不含黄色的棱，转 U，让它<strong>朝前的颜色</strong>对上前面的中心（前面形成一个竖条）。再看它<strong>顶上的颜色</strong>：和右边中心相同 → 往右放；和左边中心相同 → 往左放。' },
+        { type: 'prose', html: '<strong>判读：</strong>中层棱就是<strong>不含黄色</strong>的 4 条棱：绿橙、橙蓝、蓝红、红绿。在顶层找一条不含黄色的棱，转 U，直到这条棱<strong>侧面那格</strong>颜色和它正下方的中心一样（侧面出现一个倒 T）。然后用 <code>y</code> 把这一面转到前面。再看它<strong>顶上那格</strong>：和右边中心同色 → 往右；和左边中心同色 → 往左。' },
         { type: 'cases', title: '往右 / 往左', items: [
           { name: '往右放', svg: iso(keep(S.mRight, [7, 19]), { label: '绿橙棱往右放' }), alg: A.midR, setup: inv(A.midR), hl: ['UF', 'FR'], desc: '前面绿对绿，顶上是橙（右边中心色）。' },
-          { name: '往左放', svg: iso(keep(S.mLeft, [7, 19]), { view: 'fl', label: '红绿棱往左放' }), alg: A.midL, setup: inv(A.midL), hl: ['UF', 'FL'], desc: '前面绿对绿，顶上是红（左边中心色）。镜像公式。' }
+          { name: '往左放', svg: iso(keep(S.mLeft, [7, 19]), { view: 'fl', label: '红绿棱往左放' }), alg: A.midL, setup: inv(A.midL), hl: ['UF', 'FL'], desc: '前面绿对绿，顶上是红（左边中心色）。镜像公式。' },
+          { name: '在槽里但颜色反了', svg: iso(keep(S.mFlip, [23, 12]), { label: '绿橙棱在右前槽但颜色反了' }), alg: A.midR + ' U2 ' + A.midR, setup: SET.midFlip, hl: ['FR'], desc: '绿橙棱在右前槽，但橙色朝前、绿色朝右。先做一次往右的公式把它顶到顶层；U2 让绿色对上绿中心、顶上的橙色指向右边；再做一次往右的公式。' }
         ] },
         { type: 'callout', kind: 'why', title: '拆成两半看，一点也不神秘', html: '前半 <code>U R U\' R\'</code> 是右手公式的变形：把棱挪开，同时把右前下的白角连同它旁边的中层槽"拿出来"到顶层。后半 <code>U\' F\' U F</code> 是同一招从前面做的左手版：把白角放回原槽——而要放的那条棱已经被摆在白角旁边，于是被一起带进中层。两半各自都是"拿出来—放回去"，所以第一层毫发无损，只多了一条归位的棱。' },
-        { type: 'prose', html: '<strong>特殊情况：</strong>顶层一条不含黄色的棱都没有，但中层还有棱放错（位置不对，或颜色反了）。把错的那个槽转到右前，任意拿一条顶层棱做一遍往右的公式——错的棱被顶到顶层，再正常处理它。' },
+        { type: 'prose', html: '<strong>特殊情况：</strong>顶层一条不含黄色的棱都没有，但中层还有棱放错（位置不对，或颜色反了）。把错的那个槽转到右前，任意拿一条顶层棱做一遍往右的公式——错的棱被顶到顶层，再正常处理它。<strong>中层棱在正确的槽里但颜色反了，也算错位</strong>，同样先顶出来。' },
         { type: 'practice', stage: 'middle', html: '出题时第一层已经完成。把中层 4 条棱放好。' },
         { type: 'callout', kind: 'warn', title: '常见错误', html: '<ul><li><strong>用前面的颜色判断方向。</strong>前面的颜色用来对齐，方向要看<strong>顶上</strong>那一格。</li><li><strong>拿带黄色的棱来放。</strong>带黄色的棱属于顶层，放进中层只会占坑。</li><li><strong>左右公式做串。</strong>往右的公式第一步是 U，往左的是 U\'：先把棱"让开"的方向，正好和要放进去的方向相反。</li><li><strong>做完第一层坏了一个角。</strong>公式中途停顿或漏步，十有八九是漏了最后的 F 或 F\'。</li></ul>' }
       ],
@@ -477,14 +482,14 @@
         { type: 'figure', svg: FIG.yCross, caption: '判读：只看顶面中间那个十字上的 4 条棱（角先忽略）。每个箭头 = 做一次公式。' },
         { type: 'alg', name: '黄十字公式', moves: A.yCross, setup: SET.line, hl: ['UF', 'UR', 'UB', 'UL'], desc: '一字横放时做一次，直接得到十字。' },
         { type: 'cases', title: '摆好再做', items: [
-          { name: '点', svg: top(onlyY(TOP.dot, true)), alg: A.yCross, setup: SET.dot, desc: '随便从哪个方向做一次，变成 L 形或一字，再按下面处理。' },
+          { name: '点', svg: top(onlyY(TOP.dot, true)), alg: A.yCross, setup: SET.dot, desc: '做一次必定变成 L 形，而且出现在右前；U2 把它转到左后，再做。' },
           { name: 'L 形', svg: top(onlyY(TOP.L, true)), alg: A.yCross, setup: SET.L, desc: '转 U，把 L 摆在<strong>左后</strong>（黄棱在后和左），做一次得到一字。' },
           { name: '一字', svg: top(onlyY(TOP.line, true)), alg: A.yCross, setup: SET.line, desc: '转 U，让一字<strong>横放</strong>（黄棱在左和右），做一次得到十字。' }
         ] },
-        { type: 'callout', kind: 'why', title: "R U R' U' 被 F 包起来", html: '看结构：<code>F · (R U R\' U\') · F\'</code>。先 F，把前面一层顺时针转 90°——原本在顶层的前棱和右前角，被送进了 R U R\' U\' 会动到的那两个槽位；中间的 R U R\' U\' 在那里重新排列它们（顺带翻转棱的朝向）；最后 F\' 把前面一层转回去。前两层的块在 F 与 F\' 之间被"借出"又原样归还。外层的 F 决定<strong>在哪里做</strong>，内层的 R U R\' U\' 决定<strong>做什么</strong>——这种结构叫"共轭"。' },
+        { type: 'callout', kind: 'why', title: "R U R' U' 被 F 包起来", html: '看结构：<code>F · (R U R\' U\') · F\'</code>。先 F，把前面一层顺时针转 90°——顶层的前棱被"立"进右前槽——这一立本身就是一次翻转（R、U 转动从不改变棱的朝向，翻转全来自 F）；中间的 R U R\' U\' 把它换到顶层另一格；最后 F\' 把前面一层转回去，又把一条顶棱"立"回顶层——两条棱各翻一次。前两层的块在 F 与 F\' 之间被"借出"又原样归还。外层的 F 决定<strong>在哪里做</strong>，内层的 R U R\' U\' 决定<strong>做什么</strong>——这种结构叫"共轭"。' },
         { type: 'callout', kind: 'why', title: '为什么翻错的棱永远是偶数', html: '把一条棱的"朝向"定义好之后可以证明：U、D、R、L 转动不改变任何棱的朝向，F、B 转动每次恰好翻转 4 条。所以无论怎么转，翻错的棱总数都是偶数。这也是为什么拆开乱装的魔方有时"永远差一条棱"——那个状态用转动根本到不了。' },
         { type: 'practice', stage: 'yellowCross', html: '出题时前两层已经完成。做出黄十字（只要求 4 条棱黄色朝上）。' },
-        { type: 'callout', kind: 'warn', title: '常见错误', html: '<ul><li><strong>L 摆错位置。</strong>L 在右前、左前或右后时做公式，会得到另一个 L 或点，而不是一字——一直绕圈。L 一定在<strong>左后</strong>。</li><li><strong>一字竖放。</strong>竖放做一次会回到点或 L。一字要<strong>横放</strong>。</li><li><strong>被角块干扰判读。</strong>这一步只看 4 条棱，角上有没有黄色都不影响。</li><li><strong>忘了最后的 F\'。</strong>前两层会被打乱。</li></ul>' }
+        { type: 'callout', kind: 'warn', title: '常见错误', html: '<ul><li><strong>L 放错位置。</strong>在右前做会变成竖一字，在左前或右后做等于白做。L 一定在<strong>左后</strong>。</li><li><strong>一字竖放。</strong>一字竖放做一次会退回点。一字要<strong>横放</strong>。</li><li><strong>被角块干扰判读。</strong>这一步只看 4 条棱，角上有没有黄色都不影响。</li><li><strong>忘了最后的 F\'。</strong>前两层会被打乱。</li></ul>' }
       ],
       script: [
         { say: '第四步：顶面做出黄十字。', setup: 'solved', look: 'front', hl: ['UF', 'UR', 'UB', 'UL'], wait: 2200 },
@@ -518,7 +523,7 @@
           { name: '2 个朝上', svg: top(onlyY(TOP.two)), alg: A.sune, setup: SET.two, desc: '同样：转 U 让<strong>左前角的黄色朝左</strong>，做一次 Sune，再重新判读。' }
         ] },
         { type: 'figure', svg: FIG.yFace, caption: '三类情况一览。无论哪类，做 Sune 后重新判读，最多 3 次。' },
-        { type: 'callout', kind: 'why', title: '为什么"只差一个角拧一下"的状态不存在', html: '把每个角"拧了几分之一圈"加起来，总和必须是整圈——这是魔方转动保持的一个不变量。所以如果 4 个角里只有 1 个朝上，另外 3 个一定都往<strong>同一个方向</strong>偏了 1/3 圈（3 × 1/3 = 1 圈）。Sune 恰好把 3 个角各拧 1/3 圈：里面的 <code>R U R\'</code> 和 <code>R U2 R\'</code> 是两次"把右前角拿下去、转一下顶层、再拿上来"，每次 R\' 结束时前两层都原样回家。' },
+        { type: 'callout', kind: 'why', title: '为什么"只差一个角拧一下"的状态不存在', html: '把每个角"拧了几分之一圈"加起来，总和必须是整圈——这是魔方转动保持的一个不变量。所以如果 4 个角里只有 1 个朝上，另外 3 个一定都往<strong>同一个方向</strong>偏了 1/3 圈（3 × 1/3 = 1 圈）。Sune 恰好把 3 个角各拧 1/3 圈：第一个 R 把右前下的白角连同右前中层棱一起提到顶层，之后它们被 U 搬了三次（右前上 → 左前上 → 左后上 → 右前上），直到最后一个 R\' 才回到原槽；右层其余前两层块每次只在右层里挪一下、U 碰不到，R\' 立刻还原。净效果：顶层 3 个角各拧 1/3 圈（位置也会换，但这一步只看朝向）。' },
         { type: 'callout', kind: 'tip', title: '每做一次，重新看', html: '不要试图预判"要做几次"。做完一次 Sune，<strong>重新数朝上的角</strong>：1 个就摆鱼头，0 或 2 个就让左前角黄色朝左。按这个规则，任何情况最多 3 次 Sune。' },
         { type: 'practice', stage: 'yellowFace', html: '出题时黄十字已经完成。把顶面做成全黄。' },
         { type: 'callout', kind: 'warn', title: '常见错误', html: '<ul><li><strong>鱼头放错角。</strong>鱼头在左前，不是右前。</li><li><strong>0 / 2 个时看错方向。</strong>要的是左前角的黄色<strong>朝左</strong>（在左面上），不是朝前。</li><li><strong>中途用 y 转了魔方。</strong>公式做到一半换方向，前两层会坏。</li><li><strong>看到侧面乱了就以为做错。</strong>这一步只保证顶面全黄，侧面乱是预期之内。</li></ul>' }
@@ -542,16 +547,16 @@
       id: 'yellowCorners', num: '09', title: '第六步 · 黄角归位', tagline: '三个角，一次轮换一格', stage: 'yellowCorners',
       sections: [
         { type: 'prose', html: '<strong>目标：</strong>4 个顶角都到正确位置：每个角的两种侧面颜色，和它挨着的两个侧面中心相同。棱先不管。' },
-        { type: 'prose', html: '<strong>判读：</strong>先看有没有已经<strong>对位</strong>的角——角块的三种颜色和它周围三个中心一致（顶面都是黄的，实际只需看两个侧面贴纸；同一面上的棱还没对，不用管）。<br>· 4 个都对位 → 跳过这一步。<br>· 有对位的角 → 用 <code>y</code> 整体转魔方，把它放在<strong>左前</strong>，做一次公式；没好就再做一次。<br>· 一个都没有 → 先随便做一次公式，再找对位角放到左前。' },
+        { type: 'prose', html: '<strong>判读：</strong>先转 U，数有几个角<strong>对位</strong>——角块的三种颜色和它周围三个中心一致（顶面都是黄的，只需看两个侧面贴纸；同一面上的棱还没对，不用管）。<br>· 恰好 1 个 → 用 <code>y</code> 把它放到<strong>左前</strong>，做公式；不对就再做一次。<br>· 4 个 → 跳过这一步。<br>· 转遍 4 个角度都只有 0 或 2 个（2 个 = U 角度不对的信号，不是"有对位角"）→ 随便做一次公式，再转 U 重数，这时一定能找到恰好 1 个。' },
         { type: 'figure', svg: FIG.yCorners, caption: '左前角已对位（圈出）。公式让其余三个角沿箭头轮换一格：右后 → 右前 → 左后 → 右后；黄色始终朝上。' },
         { type: 'alg', name: '黄角三循环（A 置换）', moves: A.yCorners, setup: SET.corners, hl: ['UFR', 'UBR', 'UBL'], desc: '左前角保持不动，其余三个角轮换一格，黄色面始终朝上。转的方向不对，就再做一次。' },
         { type: 'cases', title: '有没有对位的角', items: [
-          { name: '有 1 个对位', svg: top(TOP.corners), alg: A.yCorners, setup: SET.corners, desc: '用 y 把对位角放在左前，做一次；若三个角转的方向不对，再做一次。' },
-          { name: '一个都没有', alg: A.yCorners, setup: SET.corners0, desc: '随便从哪个方向先做一次，再用 y 把出现的对位角转到左前，再做。' }
+          { name: '恰好 1 个对位', svg: top(TOP.corners), alg: A.yCorners, setup: SET.corners, desc: '用 y 把对位角放在左前，做一次；若三个角转的方向不对，再做一次。' },
+          { name: '转遍 4 个角度都没有恰好 1 个', svg: top(TOP.corners0), alg: A.yCorners, setup: SET.corners0, desc: '转遍 4 个角度，对位数只有 0 / 2 / 0 / 2。随便做一次公式，再转 U 重数——这时一定能找到恰好 1 个，再判读。' }
         ] },
         { type: 'callout', kind: 'why', title: '为什么只有 3 个角在动，而且黄面不会坏', html: '这条公式只让<strong>右前、右后、左后</strong>三个角换位，左前角和前两层全部原样保留；顶层的棱也不受影响。更关键的是：三个角在换位时<strong>黄色面始终朝上</strong>——它只"搬家"、不"拧角"，所以上一步做好的黄面不会被破坏。结构上，它是 <code>R\' · (F · R\' B2 R · F\' · R\' B2 R) · R</code>：中间是第 03 章那种"拿出来—换一下—放回去"的交换子，两组动作只在一个角上重叠，于是只剩一个<strong>三循环</strong>；外面的 R\' … R 负责把它挪到顶层。三循环做 3 次回原样，所以最多做 2 次。' },
         { type: 'practice', stage: 'yellowCorners', html: '出题时黄面已经完成。把 4 个顶角放到正确位置。' },
-        { type: 'callout', kind: 'warn', title: '常见错误', html: '<ul><li><strong>用 U 去把对位角挪到左前。</strong>U 会让它离开正确位置。要用 <code>y</code> 转整个魔方。</li><li><strong>拿顶面颜色判断对位。</strong>顶面都是黄的，没有信息——要看两个侧面贴纸。</li><li><strong>B2 做成 B。</strong>这条公式里两次 B2 都是半圈；B 从前面看方向是反的，好在半圈不分方向。</li></ul>' }
+        { type: 'callout', kind: 'warn', title: '常见错误', html: '<ul><li><strong>看到 2 个对位就把其中一个放左前做公式。</strong>2 个对位说明 U 角度不对，先转 U；找到恰好 1 个之后，挪它用 <code>y</code>，不用 U。</li><li><strong>拿顶面颜色判断对位。</strong>顶面都是黄的，没有信息——要看两个侧面贴纸。</li><li><strong>B2 做成 B。</strong>这条公式里两次 B2 都是半圈；B 从前面看方向是反的，好在半圈不分方向。</li></ul>' }
       ],
       script: [
         { say: '第六步：把 4 个顶角放到正确位置。', setup: SET.corners, look: 'front', hl: ['UFR', 'UFL', 'UBR', 'UBL'], wait: 2400 },
@@ -563,9 +568,11 @@
         { say: '它只让三个角搬家，不拧角。', setup: SET.corners, hl: ['UFR', 'UBR', 'UBL'], wait: 2200 },
         { say: '再看一遍，盯住左前角：它一动不动。', do: A.yCorners, hl: ['UFL'] },
         { say: '方向转反了？再做一次就是反向轮换。', wait: 2400 },
-        { say: '一个都不对位时，先随便做一次。', setup: SET.corners0, hl: ['UFR', 'UFL', 'UBR', 'UBL'], wait: 2400 },
-        { say: '做一次。', do: A.yCorners, hl: [] },
-        { say: '出现对位角后，用 y 转到左前，再做。', wait: 2400 }
+        { say: '转遍 4 个角度都没有恰好 1 个对位？', setup: SET.corners0, hl: ['UFR', 'UFL', 'UBR', 'UBL'], wait: 2400 },
+        { say: '转 U 数一数：0 个、2 个、0 个、2 个。', do: 'U U U U', wait: 1600 },
+        { say: '随便做一次公式。', do: A.yCorners, hl: [] },
+        { say: '再转 U 重数，一定能找到恰好 1 个。', wait: 2400 },
+        { say: '找到后用 y 转到左前，再做公式。', wait: 2400 }
       ]
     },
 
@@ -585,7 +592,7 @@
         { type: 'callout', kind: 'why', title: '只动 3 条棱，所以最多做两次', html: '这条公式是一个只作用在 3 条顶层棱上的轮换：左 → 前 → 右 → 左；角和前两层全部保持不动。三循环有方向：做一次转一格，做两次转两格——等于反方向转一格。所以不管三条棱怎么错，<strong>最多两次</strong>。同样的道理：一个三循环做 3 次一定回到原样，周期又一次出现。' },
         { type: 'fact', num: '≈ 120', unit: '步', note: '用这套方法，一次完整还原通常需要 100–150 步。熟练后整个过程可以压到 1 分钟以内。' },
         { type: 'practice', stage: 'yellowEdges', html: '出题时只剩顶层棱。做完这一步，魔方就完全复原了。' },
-        { type: 'callout', kind: 'warn', title: '常见错误', html: '<ul><li><strong>整齐面放在前面。</strong>它必须在后面。</li><li><strong>漏步。</strong>11 步里 R 出现 7 次，最容易少做一个；边做边默念"右上右上右上右"。</li><li><strong>最后一步做成 R 而不是 R2。</strong>结尾差一层没对齐，多半是它。</li><li><strong>做完顶层差一个 U。</strong>所有侧面都"错一格"时，转 U 对齐即可——这不是错。</li></ul>' }
+        { type: 'callout', kind: 'warn', title: '常见错误', html: '<ul><li><strong>整齐面放在前面。</strong>它必须在后面。</li><li><strong>漏步。</strong>11 步里 R 出现 7 次，最容易少做一个；分三段记：<code>R U\' R U</code> | <code>R U R U\'</code> | <code>R\' U\' R2</code>。</li><li><strong>最后一步做成 R 而不是 R2。</strong>结尾差一层没对齐，多半是它。</li><li><strong>做完顶层差一个 U。</strong>所有侧面都"错一格"时，转 U 对齐即可——这不是错。</li></ul>' }
       ],
       script: [
         { say: '最后一步：顶层三条棱。', setup: SET.edges, look: 'front', hl: ['UF', 'UR', 'UB', 'UL'], wait: 2200 },
