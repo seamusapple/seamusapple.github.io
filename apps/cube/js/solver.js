@@ -15,7 +15,7 @@ var CubeSolver = (function (CM) {
     middleLeft: "U' L' U L U F U' F'",
     yellowCross: "F R U R' U' F'",
     sune: "R U R' U R U2 R'",
-    yellowCorners: "U R U' L' U R' U' L",
+    yellowCorners: "R' F R' B2 R F' R' B2 R2",
     yellowEdges: "R U' R U R U R U' R' U' R2"
   };
 
@@ -54,10 +54,6 @@ var CubeSolver = (function (CM) {
       }
     }
     return null;
-  }
-  function pieceSolved(s, colors, isCorner) {
-    var p = findPiece(s, colors, isCorner);
-    return p.facelets.every(function (k) { return ok(s, k); });
   }
 
   var Y_ADJ = ['', 'y', 'y2', "y'"];
@@ -518,13 +514,16 @@ var CubeSolver = (function (CM) {
         }
         var before = apply(st, g.adj);
         var n = cornerPositioned(before), faceOK = CM.isStageSolved(before, 'yellowFace');
-        var adjTxt = g.adj.length ? '先 ' + g.adj.join(' ') + '，' : '';
         var fx = formulaFixedCorner(), fixName = CORNER_CN[fx.fixed];
-        var tw = fx.twists ? '（这个公式会把轮换的角拧歪，按提示接着做会一起拧回来）' : '';
+        var uAdj = g.adj.filter(function (m) { return m[0] === 'U'; }), yAdj = g.adj.filter(function (m) { return m[0] === 'y'; });
+        var uTxt = uAdj.length ? '先转 ' + uAdj.join(' ') + ' 让顶层角尽量对位，' : '';
+        var tw = fx.twists ? '（这个公式会拧动角块，按提示接着做会一起拧回来）' : '';
         var note;
-        if (n === 4) note = adjTxt + '4 个黄角位置都对了，但有角被拧歪：' + fixName + '角保持不动，继续做黄角公式把歪的角拧回来';
-        else if (n === 1) note = adjTxt + '已对位的那个黄角放在' + fixName + '、保持不动；做黄角公式让另外 3 个角轮换' + tw;
-        else note = adjTxt + '还没有对位的黄角：先做 1 次黄角公式（' + fixName + '角不动，其余 3 个角轮换），就会出现对位的角' + tw;
+        if (n === 4) note = uTxt + '4 个黄角位置都对了，但有角被拧歪：继续做黄角公式把歪的角拧回来';
+        else if (n === 1) note = uTxt + '找一个已经对位的角（三面颜色和三个中心一致），' +
+          (yAdj.length ? '用 ' + yAdj.join(' ') + ' 把它转到' + fixName : '它已经在' + fixName) +
+          '，做一次黄角公式：' + fixName + '角不动，其余 3 个角轮换' + tw;
+        else note = uTxt + (yAdj.length ? '整体转 ' + yAdj.join(' ') + '，' : '') + '一个对位的角都没有：先随便做一次黄角公式，再找对位的角' + tw;
         var mv = g.adj.concat(g.formula.moves);
         plan.push({ moves: mv, note: note, s: st });
         st = apply(st, mv);

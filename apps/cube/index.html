@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0B0E14">
+<title>三阶魔方硬核指南</title>
+<meta name="description" content="给看过好几遍教程都没学会的人：可拖动的 3D 魔方、逐步高亮的公式、随机出题练习，用层先法 7 步、8 条公式讲清每条公式为什么有效。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="css/cube.css?v=1">
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="top-back" href="../../" aria-label="返回首页">← 首页</a>
+    <div class="top-title">
+      <span class="top-name">三阶魔方硬核指南</span>
+      <span class="top-progress-text" data-role="progress-text">0 / 12 章</span>
+    </div>
+    <details class="toc">
+      <summary class="btn btn-ghost" data-action="toggle-toc">章节</summary>
+      <nav id="toc" class="toc-panel" aria-label="章节目录"></nav>
+    </details>
+  </div>
+  <div class="progress" data-role="progress" role="progressbar" aria-label="学习进度" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0"><i data-role="progress-bar"></i></div>
+</header>
+
+<main class="layout">
+  <aside class="stage" id="stage" aria-label="3D 魔方">
+    <div class="viewport">
+      <div id="cube-view" aria-label="可拖动旋转的 3D 魔方"></div>
+      <div id="caption" class="caption" data-role="caption" aria-live="polite"></div>
+    </div>
+
+    <div class="dock moves" role="group" aria-label="转动按钮">
+        <button type="button" class="mvbtn" data-move="U" aria-label="转动 U">U</button>
+        <button type="button" class="mvbtn mv-prime" data-move="U'" aria-label="转动 U'">U'</button>
+        <button type="button" class="mvbtn mv-double" data-move="U2" aria-label="转动 U2">U2</button>
+        <button type="button" class="mvbtn" data-move="D" aria-label="转动 D">D</button>
+        <button type="button" class="mvbtn mv-prime" data-move="D'" aria-label="转动 D'">D'</button>
+        <button type="button" class="mvbtn mv-double" data-move="D2" aria-label="转动 D2">D2</button>
+        <button type="button" class="mvbtn" data-move="F" aria-label="转动 F">F</button>
+        <button type="button" class="mvbtn mv-prime" data-move="F'" aria-label="转动 F'">F'</button>
+        <button type="button" class="mvbtn mv-double" data-move="F2" aria-label="转动 F2">F2</button>
+        <button type="button" class="mvbtn" data-move="B" aria-label="转动 B">B</button>
+        <button type="button" class="mvbtn mv-prime" data-move="B'" aria-label="转动 B'">B'</button>
+        <button type="button" class="mvbtn mv-double" data-move="B2" aria-label="转动 B2">B2</button>
+        <button type="button" class="mvbtn" data-move="R" aria-label="转动 R">R</button>
+        <button type="button" class="mvbtn mv-prime" data-move="R'" aria-label="转动 R'">R'</button>
+        <button type="button" class="mvbtn mv-double" data-move="R2" aria-label="转动 R2">R2</button>
+        <button type="button" class="mvbtn" data-move="L" aria-label="转动 L">L</button>
+        <button type="button" class="mvbtn mv-prime" data-move="L'" aria-label="转动 L'">L'</button>
+        <button type="button" class="mvbtn mv-double" data-move="L2" aria-label="转动 L2">L2</button>
+        <button type="button" class="mvbtn mv-rot" data-move="x" aria-label="转动 x">x</button>
+        <button type="button" class="mvbtn mv-prime mv-rot" data-move="x'" aria-label="转动 x'">x'</button>
+        <button type="button" class="mvbtn mv-double mv-rot" data-move="x2" aria-label="转动 x2">x2</button>
+        <button type="button" class="mvbtn mv-rot" data-move="y" aria-label="转动 y">y</button>
+        <button type="button" class="mvbtn mv-prime mv-rot" data-move="y'" aria-label="转动 y'">y'</button>
+        <button type="button" class="mvbtn mv-double mv-rot" data-move="y2" aria-label="转动 y2">y2</button>
+        <button type="button" class="mvbtn mv-rot" data-move="z" aria-label="转动 z">z</button>
+        <button type="button" class="mvbtn mv-prime mv-rot" data-move="z'" aria-label="转动 z'">z'</button>
+        <button type="button" class="mvbtn mv-double mv-rot" data-move="z2" aria-label="转动 z2">z2</button>
+    </div>
+
+    <div class="dock tools" role="group" aria-label="工具">
+      <label class="tool-speed" title="转动速度">速度
+        <input type="range" id="speed" data-control="speed" min="0" max="900" step="50" value="350" aria-label="每步毫秒数">
+      </label>
+      <div class="seg" role="group" aria-label="视角">
+        <button type="button" class="btn is-on" data-action="look" data-look="front">正面</button>
+        <button type="button" class="btn" data-action="look" data-look="bottom">底面</button>
+      </div>
+      <button type="button" class="btn" data-action="reset">复原</button>
+      <button type="button" class="btn" data-action="scramble">打乱</button>
+      <label class="tool-check"><input type="checkbox" data-control="axes"> 面标签</label>
+    </div>
+
+    <div class="dock narrate" role="group" aria-label="自动讲解">
+      <span class="narrate-label" data-role="script-label">自动讲解</span>
+      <button type="button" class="btn" data-action="script-prev" aria-label="上一句">⏮</button>
+      <button type="button" class="btn btn-play" data-action="script-toggle" aria-label="播放/暂停">▶</button>
+      <button type="button" class="btn" data-action="script-next" aria-label="下一句">⏭</button>
+      <select data-control="script-rate" aria-label="倍速">
+        <option value="0.75">0.75×</option>
+        <option value="1" selected>1×</option>
+        <option value="1.5">1.5×</option>
+        <option value="2">2×</option>
+      </select>
+    </div>
+  </aside>
+
+  <section id="chapters" class="chapters" aria-label="教程章节">
+    <noscript>
+      <div class="noscript">
+        <h1>三阶魔方硬核指南</h1>
+        <p>这份教程的 3D 魔方、公式演示和练习都需要 JavaScript。请开启 JavaScript 后刷新页面。</p>
+      </div>
+    </noscript>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>三阶魔方硬核指南 · 层先法 7 步 · 白底黄顶（U 黄 D 白 F 绿 R 橙 L 红 B 蓝）</p>
+  <p><a href="../../">← 回到首页</a></p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/cube-model.js?v=1"></script>
+<script src="js/solver.js?v=1"></script>
+<script src="js/cube-3d.js?v=1"></script>
+<script src="js/lessons.js?v=1"></script>
+<script src="js/render.js?v=1"></script>
+<script src="js/app.js?v=1"></script>
+<script>if (!window.CubeApp && window.CubeRender && window.LESSONS) CubeRender.renderAll(LESSONS, document.getElementById('chapters'));</script>
+</body>
+</html>
