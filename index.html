@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="seamusapple 的个人页面：单页小应用、旅行手账和工具，打开就能用。">
+<title>seamusapple</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B6E63'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='Georgia,serif'%3Es%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;1,500&family=Noto+Serif+SC:wght@500&family=Noto+Sans+SC:wght@400;500&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <a class="brand" href="./">seamusapple</a>
+  <nav><a href="#shelf">作品</a><a href="https://github.com/seamusapple" target="_blank" rel="noopener">GitHub</a></nav>
+</header>
+
+<section class="intro">
+  <h1>把想法做成<em>一页纸</em>大小的小应用。</h1>
+  <p>做 iOS 的。这里放我做的单页小工具和手账：打开就能用，不用安装；勾过的、填过的都记在你自己的手机里，下次打开还在。</p>
+  <div class="meta mono"><a href="https://github.com/seamusapple" target="_blank" rel="noopener">github.com/seamusapple</a><span>2026 年起</span></div>
+</section>
+
+<section id="shelf">
+  <div class="shelf-head"><h2>作品</h2><span class="count mono" id="shelf-count">1 个</span></div>
+  <div class="filters" role="group" aria-label="按标签筛选">
+    <button type="button" data-tag="*" aria-pressed="true">全部</button>
+    <button type="button" data-tag="旅行攻略" aria-pressed="false">旅行攻略</button>
+    <button type="button" data-tag="手绘" aria-pressed="false">手绘</button>
+  </div>
+  <div class="shelf">
+    <a class="card" href="apps/jiuzhaigou/" data-tags="旅行攻略 手绘">
+      <div class="cover"><img src="apps/jiuzhaigou/img/wuhuahai.jpg" alt="九寨沟五花海" loading="lazy"></div>
+      <div class="body">
+        <h3>九寨沟黄龙四日手账</h3>
+        <p>西安出发、不租车的 4 天 3 晚：手绘路线图、逐小时行程、沟内地图、打勾清单和按人数算的预算。</p>
+        <div class="tags"><span class="tag">旅行攻略</span><span class="tag">手绘</span></div>
+        <div class="foot"><span class="mono">2026-10</span><span class="go">打开 →</span></div>
+      </div>
+    </a>
+  </div>
+  <p class="empty" id="shelf-empty" hidden>这个标签下还没有东西。</p>
+</section>
+
+<footer class="foot-site">
+  <span>© 2026 seamusapple</span>
+  <span>托管在 GitHub Pages · <a href="https://github.com/seamusapple/seamusapple.github.io" target="_blank" rel="noopener">源码</a></span>
+</footer>
+
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>
