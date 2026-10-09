@@ -166,6 +166,28 @@
     renderBudget();
   }
 
+  /* ---------- 高德：手机上直接拉起 App，没装再退回网页 ---------- */
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/.test(ua), isAndroid = /Android/.test(ua);
+  if (isIOS || isAndroid) {
+    $$('a[data-amap-kw]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var kw = a.getAttribute('data-amap-kw'), c = a.getAttribute('data-amap-center').split(',');
+        var lon = +c[0], lat = +c[1], d = 0.15, web = a.href, scheme;
+        if (isIOS) {
+          scheme = 'iosamap://poi?sourceApplication=seamusapple&name=' + encodeURIComponent(kw) +
+            '&lat1=' + (lat - d).toFixed(5) + '&lon1=' + (lon - d).toFixed(5) + '&lat2=' + (lat + d).toFixed(5) + '&lon2=' + (lon + d).toFixed(5) + '&dev=0';
+        } else {
+          scheme = 'androidamap://arroundpoi?sourceApplication=seamusapple&keywords=' + encodeURIComponent(kw) + '&lat=' + lat + '&lon=' + lon + '&dev=0';
+        }
+        e.preventDefault();
+        var t0 = Date.now();
+        location.href = scheme;
+        setTimeout(function () { if (!document.hidden && Date.now() - t0 < 2600) location.href = web; }, 1800);
+      });
+    });
+  }
+
   /* ---------- 电话复制 ---------- */
   function copyText(t, el) {
     function fallback() {
