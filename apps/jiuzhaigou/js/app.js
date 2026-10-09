@@ -183,8 +183,15 @@
       }
       a.addEventListener('click', function () {
         var t0 = Date.now();
+        toast('正在打开高德地图…');
         setTimeout(function () { if (!document.hidden && Date.now() - t0 < 3000) location.href = web; }, 2000);
       });
+      if (isIOS) {
+        var apple = document.createElement('a');
+        apple.className = 'chip'; apple.textContent = 'Apple 地图';
+        apple.href = 'https://maps.apple.com/?q=' + encodeURIComponent(kw) + '&sll=' + lat + ',' + lon + '&z=13';
+        a.parentNode.appendChild(apple);
+      }
     });
   }
 
