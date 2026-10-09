@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>重庆山城三日手账</title>
+<meta name="description" content="西安出发、不租车的重庆 2–3 天手绘攻略：渝中夜景动线、李子坝磁器口南山、可选武隆一日、火锅清单、打勾清单和预算。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Long+Cang&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+<div class="wrap">
+
+<header class="topbar">
+  <nav class="nav" aria-label="页面导航">
+    <a class="chip" href="../../">⌂ 首页</a>
+    <a class="chip" href="#route">🗺 路线</a>
+    <a class="chip" href="#go">🚄 怎么去</a>
+    <a class="chip" href="#days">📅 每日行程</a>
+    <a class="chip" href="#map">🏙 渝中地图</a>
+    <a class="chip" href="#stay">🛏 住宿</a>
+    <a class="chip" href="#eat">🍲 吃什么</a>
+    <a class="chip" href="#todo">✅ 清单</a>
+    <a class="chip" href="#budget">💰 预算</a>
+    <a class="chip" href="#info">☎ 实用</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div>
+      <h1>重庆 · 山城<br>三日手账<span class="sub">西安出发 · 2–3 天 · 不租车 · 看夜景吃火锅 · 2026 年 10 月</span></h1>
+      <div class="facts" style="margin-top:12px">
+        <span class="chip lake">🚄 高铁约 5 小时</span>
+        <span class="chip leaf">🌉 洪崖洞亮灯 18:30–22:00</span>
+        <span class="chip pine">🏞 武隆天生三桥 · 多留一天可去</span>
+      </div>
+      <div class="countdown sketch soft" style="margin-top:14px">
+        <div><span class="big num" id="cd-days">—</span> <span class="hand" style="font-size:1.2rem">天后出发</span></div>
+        <label for="dep-date">出发日 <input type="date" id="dep-date" value="2026-10-16" min="2026-10-09" max="2026-12-31"></label>
+      </div>
+    </div>
+    <div>
+      <svg class="people" viewBox="0 0 360 230" role="img" aria-label="两个小人站在重庆江边，身后是层层叠叠的楼房、穿楼的轻轨和过江索道">
+        <g class="drift"><path class="cloud" d="M40 44c-10 0-16-8-12-16 3-7 12-9 18-5 3-9 17-10 22-2 8-4 17 2 15 10 8 0 11 13 1 13z"/></g>
+        <g class="drift d1"><path class="cloud" d="M236 30c-8 0-13-7-9-13 3-6 10-7 15-4 2-8 14-8 18-1 7-3 14 2 12 8 7 0 9 10 1 10z"/></g>
+        <circle class="sun" cx="316" cy="44" r="16"/>
+        <!-- stacked city -->
+        <g class="mt">
+          <rect x="18" y="96" width="34" height="90" rx="3"/><rect x="56" y="70" width="28" height="116" rx="3"/><rect x="88" y="112" width="40" height="74" rx="3"/>
+          <rect x="196" y="84" width="30" height="102" rx="3"/><rect x="230" y="60" width="26" height="126" rx="3"/><rect x="260" y="100" width="36" height="86" rx="3"/><rect x="300" y="78" width="30" height="108" rx="3"/>
+        </g>
+        <g fill="var(--marker)" opacity=".9">
+          <rect x="24" y="104" width="6" height="8"/><rect x="36" y="118" width="6" height="8"/><rect x="62" y="80" width="6" height="8"/><rect x="72" y="96" width="6" height="8"/><rect x="236" y="70" width="6" height="8"/><rect x="244" y="92" width="6" height="8"/><rect x="306" y="90" width="6" height="8"/><rect x="316" y="110" width="6" height="8"/><rect x="268" y="112" width="6" height="8"/>
+        </g>
+        <!-- monorail through the middle building -->
+        <path class="ink" d="M86 150 L136 150"/>
+        <rect x="94" y="136" width="36" height="14" rx="4" fill="var(--lake)" stroke="var(--ink)" stroke-width="2"/>
+        <rect x="99" y="139" width="7" height="6" fill="var(--card)"/><rect x="110" y="139" width="7" height="6" fill="var(--card)"/><rect x="121" y="139" width="6" height="6" fill="var(--card)"/>
+        <!-- cable car -->
+        <path class="ink" d="M140 92 L290 118" stroke-dasharray="4 3"/>
+        <g class="bob d1"><rect x="204" y="98" width="16" height="12" rx="3" fill="var(--leaf-red)" stroke="var(--ink)" stroke-width="2"/><path class="ink" d="M212 98 L212 104"/></g>
+        <!-- river -->
+        <path class="lake" d="M0 196 C60 188 120 204 180 196 S300 188 360 196 L360 214 L0 214z"/>
+        <path class="ground" d="M8 188 Q90 182 180 188 T352 188"/>
+        <!-- traveler 1 -->
+        <g transform="translate(150 112)"><g class="bob">
+          <rect class="bag" x="-30" y="22" width="22" height="34" rx="8" stroke="var(--ink)" stroke-width="2"/>
+          <rect class="c4" x="-20" y="20" width="40" height="46" rx="14" stroke="var(--ink)" stroke-width="2.2"/>
+          <path class="ink" d="M-10 66v18M10 66v18"/>
+          <path d="M-16 84h14M4 84h14" class="ink" stroke-width="5"/>
+          <circle class="skin" cx="0" cy="2" r="19" stroke="var(--ink)" stroke-width="2.2"/>
+          <path class="c2" d="M-20 -2c0-14 9-22 20-22s20 8 20 22c-6-6-13-9-20-9s-14 3-20 9z" stroke="var(--ink)" stroke-width="2.2"/>
+          <g class="eyes"><circle cx="-7" cy="4" r="2.2" fill="var(--ink)"/><circle cx="7" cy="4" r="2.2" fill="var(--ink)"/></g>
+          <path class="ink" d="M-6 11q6 6 12 0"/>
+          <circle cx="-13" cy="9" r="3" fill="var(--leaf-red)" opacity=".45"/><circle cx="13" cy="9" r="3" fill="var(--leaf-red)" opacity=".45"/>
+          <g class="wave"><path class="ink" d="M20 30 L36 10"/><circle class="skin" cx="38" cy="8" r="5" stroke="var(--ink)" stroke-width="2"/></g>
+          <path class="ink" d="M-20 30 L-30 52"/>
+        </g></g>
+        <!-- traveler 2 with hotpot bowl -->
+        <g transform="translate(178 116)"><g class="bob d1">
+          <rect class="bag" x="10" y="20" width="22" height="32" rx="8" stroke="var(--ink)" stroke-width="2"/>
+          <rect class="c2" x="-19" y="18" width="38" height="44" rx="14" stroke="var(--ink)" stroke-width="2.2"/>
+          <path class="ink" d="M-9 62v18M9 62v18"/>
+          <path d="M-15 80h14M3 80h14" class="ink" stroke-width="5"/>
+          <circle class="skin" cx="0" cy="0" r="18" stroke="var(--ink)" stroke-width="2.2"/>
+          <path class="hair" d="M-19 -3c0-13 8-20 19-20s19 7 19 20c-5-5-12-8-19-8s-14 3-19 8z"/>
+          <circle class="hair" cx="0" cy="-20" r="7"/>
+          <g class="eyes"><circle cx="-6.5" cy="3" r="2.2" fill="var(--ink)"/><circle cx="6.5" cy="3" r="2.2" fill="var(--ink)"/></g>
+          <path class="ink" d="M-5 10q5 5 10 0"/>
+          <circle cx="-12" cy="8" r="3" fill="var(--leaf-red)" opacity=".45"/><circle cx="12" cy="8" r="3" fill="var(--leaf-red)" opacity=".45"/>
+          <path class="ink" d="M-19 28 L-34 38"/>
+          <ellipse cx="-40" cy="42" rx="12" ry="6" fill="var(--leaf-red)" stroke="var(--ink)" stroke-width="2"/>
+          <path class="ink" d="M-46 34q2-6 0-10M-38 34q2-6 0-10" opacity=".7"/>
+          <path class="ink" d="M19 28 L30 44"/>
+        </g></g>
+        <text x="180" y="226" text-anchor="middle" style="font-family:var(--font-hand);font-size:15px;fill:var(--ink-soft)">导航说 300 米，可能是往上 300 米</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="route">
+  <div class="sec-head"><h2>路线总览</h2><span class="tag">点圆圈，跳到那一天</span></div>
+  <div class="sketch">
+    <svg class="route-map" viewBox="0 0 360 300" role="img" aria-label="手绘路线图：西安坐高铁到重庆，两天在渝中、南岸、沙坪坝，可选第三天去武隆，再坐高铁回西安">
+      <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--line)"/></marker></defs>
+      <path class="mtn" d="M160 236 L186 196 L204 218 L228 184 L256 226 L276 206 L300 240 Z" opacity=".9"/>
+      <path d="M20 262 C80 250 120 270 170 258 S240 236 300 262" fill="none" stroke="var(--lake)" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+      <text class="sm" x="104" y="284" text-anchor="middle">长 江</text>
+      <path id="go-all" d="M300 50 C330 110 320 190 240 232 L210 236 C140 240 100 220 60 190" fill="none" stroke="none"/>
+      <path id="go1" class="path lake" d="M300 50 C330 110 320 190 240 232" marker-end="url(#arr)"/>
+      <path class="path leaf" d="M226 240 C140 244 100 222 68 194" marker-end="url(#arr)"/>
+      <path class="path leaf" d="M62 174 C110 150 170 180 214 212" marker-end="url(#arr)"/>
+      <path class="path leaf" d="M250 216 C290 170 310 110 286 60" marker-end="url(#arr)"/>
+      <text class="sm" x="338" y="140" text-anchor="middle" transform="rotate(90 338 140)">高铁 ≈5h</text>
+      <text class="sm" x="150" y="226" text-anchor="middle">动车 ≈1h50</text>
+      <text class="sm" x="138" y="162" text-anchor="middle">玩完当天回重庆</text>
+      <text class="sm" x="270" y="140" text-anchor="middle" transform="rotate(-72 270 140)">回西安</text>
+      <g class="node" data-day="1" tabindex="0" role="button" aria-label="西安，起点"><circle cx="300" cy="46" r="16"/><text class="lbl" x="300" y="51" text-anchor="middle">西安</text><text class="sm" x="300" y="24" text-anchor="middle">起点 / 终点</text></g>
+      <g class="node" data-day="1" tabindex="0" role="button" aria-label="重庆渝中，第一二天"><circle cx="232" cy="232" r="19"/><text class="lbl" x="232" y="237" text-anchor="middle">重庆</text><text class="sm" x="232" y="270" text-anchor="middle">Day 1–2 · 住解放碑</text></g>
+      <g class="node" data-day="4" tabindex="0" role="button" aria-label="武隆，加一天"><circle cx="60" cy="182" r="16"/><text class="lbl" x="60" y="187" text-anchor="middle">武隆</text><text class="sm" x="60" y="212" text-anchor="middle">天生三桥 · 地缝</text></g>
+      <g class="walker"><g>
+        <animateMotion dur="12s" repeatCount="indefinite" rotate="0"><mpath xlink:href="#go-all" href="#go-all"/></animateMotion>
+        <circle r="6" fill="var(--leaf-red)" stroke="var(--line)" stroke-width="1.5" cy="-2"/><circle r="3.5" fill="#F6D3B5" stroke="var(--line)" stroke-width="1.2" cy="-11"/>
+      </g></g>
+    </svg>
+    <div class="legend"><span><i class="lake"></i>去程</span><span><i class="leaf"></i>武隆加一天 · 回程</span><span>圆圈可点</span></div>
+  </div>
+</section>
+
+<section class="block" id="go">
+  <div class="sec-head"><h2>怎么去</h2><span class="tag">高铁最省心，飞机不比它快</span></div>
+  <div class="plan-toggle">
+    <button class="chip" id="plan-a" aria-pressed="true">🚄 方案 A · 高铁（推荐）</button>
+    <button class="chip" id="plan-b" aria-pressed="false">✈ 方案 B · 飞机</button>
+  </div>
+  <div class="sketch" id="plan-a-box">
+    <div class="legs">
+      <div class="leg"><span class="ico">🚄</span><div><div class="t">西安北 → 重庆北 / 重庆西</div><div class="d">D 字头最快 5h04–5h13，一天约 38 班。<strong>认准「西安北」发车</strong>，西安东发的那几趟要 6 小时以上。西渝高铁重庆段 2028 年才通，今年别指望。</div></div><span class="cost num">328–453 元</span></div>
+      <div class="leg"><span class="ico">🚇</span><div><div class="t">重庆北站南广场 → 解放碑</div><div class="d">3 号线到牛角沱，换 2 号线到临江门，出站就是解放碑，约 35 分钟。到重庆西站的话坐环线到较场口更近。</div></div><span class="cost num">4–5 元</span></div>
+    </div>
+    <div class="sum"><span>门到门约 6.5 小时</span><span class="num">单程 ≈ 400 元 / 人</span></div>
+    <p class="muted" style="margin-top:8px;font-size:.9rem">12306 提前 15 天放票。到达站重庆北和重庆西都行，重庆北到解放碑更顺。</p>
+  </div>
+  <div class="sketch alt" id="plan-b-box">
+    <div class="legs">
+      <div class="leg"><span class="ico">✈</span><div><div class="t">西安咸阳 → 重庆江北</div><div class="d">飞 1h20，10 月淡季约 260 元起，但两头机场各留 1.5 小时，全程不比高铁省。</div></div><span class="cost num">260–690 元</span></div>
+      <div class="leg"><span class="ico">🚇</span><div><div class="t">江北机场 → 解放碑</div><div class="d">T2 有 3 号线和 10 号线，T3 只有 10 号线；10 号线到重庆北站南广场换 3 号线，再换 2 号线到临江门，50–70 分钟。末班约 22:30，晚到只能打车，60–80 元。</div></div><span class="cost num">7 元</span></div>
+    </div>
+    <div class="sum"><span>门到门约 5.5–6 小时</span><span class="num">单程 ≈ 400–700 元 / 人</span></div>
+  </div>
+</section>
+
+<section class="block" id="days">
+  <div class="sec-head"><h2>每日行程</h2><span class="tag">2 天看主城，3 天加南山或武隆</span></div>
+  <div class="tabs" role="tablist" aria-label="每日行程">
+    <button class="chip" role="tab" id="tab-day1" aria-selected="true" aria-controls="panel-day1">Day 1 · 渝中夜景</button>
+    <button class="chip" role="tab" id="tab-day2" aria-selected="false" aria-controls="panel-day2">Day 2 · 穿楼 · 古镇 · 南山</button>
+    <button class="chip" role="tab" id="tab-day3" aria-selected="false" aria-controls="panel-day3">Day 3 · 收尾回程</button>
+    <button class="chip" role="tab" id="tab-day4" aria-selected="false" aria-controls="panel-day4">加一天 · 武隆</button>
+  </div>
+
+  <div class="panel" id="panel-day1" role="tabpanel" aria-labelledby="tab-day1">
+    <div class="day-title"><h3>Day 1 · 到达 → 解放碑 → 千厮门大桥 → 洪崖洞</h3><span class="date" data-day-offset="0"></span></div>
+    <div class="day-meta"><span class="chip lake">🚄 上午在路上</span><span class="chip">🛏 住 解放碑 / 较场口</span><span class="chip leaf">🌉 今晚看洪崖洞</span></div>
+    <div class="sketch">
+      <div class="tl">
+        <div class="item"><div class="time">07:30</div><div class="what">西安北出发</div><div class="tip">车上把午饭解决一半，到重庆直接吃小面。</div></div>
+        <div class="item"><div class="time">≈12:45</div><div class="what">到重庆北，3 号线 → 牛角沱 → 2 号线 → 临江门</div><div class="tip">进站用支付宝或微信乘车码，<strong>进出站用同一个 App</strong>，不然按最高票价扣。</div></div>
+        <div class="item stay"><div class="time">13:30</div><div class="what">入住，放下行李</div><div class="tip">换运动鞋。今天剩下的路全是坡和梯坎。</div></div>
+        <div class="item food"><div class="time">14:00</div><div class="what">午饭：一碗豌杂面</div><div class="tip">花市豌杂面（民生路）走路 10 分钟，14 元。吃完顺路去解放碑。</div></div>
+        <div class="item"><div class="time">14:45</div><div class="what">解放碑 → 八一路好吃街</div><div class="tip">碑本身 5 分钟看完，八一路买杯冰粉边走边吃；酸辣粉留着晚上当夜宵。</div></div>
+        <div class="item"><div class="time">15:30</div><div class="what">白象居老楼</div><div class="tip">解放碑往东南走 15 分钟。楼间天桥能拍到长江索道从头顶过。楼里有住户，轻声。</div></div>
+        <div class="item hi"><div class="time">16:15</div><div class="what">长江索道（新华路站）</div><div class="tip">抢到了公众号的票就坐，往返 50 元，4 分钟过江再回来。<strong>没票或排队超过 1 小时就跳过</strong>，Day 2 从南岸那头坐。</div></div>
+        <div class="item hi"><div class="time">17:45</div><div class="what">走上千厮门大桥，等日落</div><div class="tip">10 月中日落约 18:20。桥面人行道是拍洪崖洞全景的标准位置，站桥的东侧。</div></div>
+        <div class="item hi"><div class="time">18:30</div><div class="what">洪崖洞亮灯，过桥到江北嘴看正面</div><div class="tip">过桥 10 分钟，江北嘴江边能把洪崖洞、大桥、渝中楼群一起框进去。拍够了再走回来。</div></div>
+        <div class="item food"><div class="time">19:30</div><div class="what">晚饭：火锅</div><div class="tip">珮姐（较场口总店）或洞子老火锅（解放碑防空洞里）。<strong>下午 5 点就在大众点评上取号</strong>，不然等 1 小时起。微辣就够，九宫格点一个中间格的毛肚。</div></div>
+        <div class="item"><div class="time">21:00</div><div class="what">走进洪崖洞里逛一圈</div><div class="tip">从 11 楼（沧白路）进，电梯或楼梯下到 1 楼（嘉滨路），出来就是江边。灯 22:00 前后关，别拖。</div></div>
+        <div class="item"><div class="time">22:00</div><div class="what">回酒店</div><div class="tip">走回解放碑 10 分钟。想看夜景更久就加两江夜游（19:30–20:30 朝天门上船，98–198 元，提前一天订）。</div></div>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure class="photo"><img src="img/cq-2025-03.jpg" alt="洪崖洞夜景" loading="lazy"><figcaption>江北嘴看过去的洪崖洞</figcaption></figure>
+      <figure class="photo r"><img src="img/hongyadong-sunset.jpg" alt="日落时的洪崖洞" loading="lazy"><figcaption>日落前的洪崖洞</figcaption></figure>
+      <figure class="photo r"><img src="img/jiefangbei-night.jpg" alt="解放碑步行街夜景" loading="lazy"><figcaption>解放碑步行街</figcaption></figure>
+      <figure class="photo"><img src="img/cableway-cbd.jpg" alt="长江索道车厢" loading="lazy"><figcaption>长江索道</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-day2" role="tabpanel" aria-labelledby="tab-day2">
+    <div class="day-title"><h3>Day 2 · 磁器口 → 鹅岭二厂 → 李子坝 → 山城巷 → 南山</h3><span class="date" data-day-offset="1"></span></div>
+    <div class="day-meta"><span class="chip">🚇 1 号线 + 2 号线</span><span class="chip leaf">🌃 南山看夜景</span><span class="chip pine">🚶 全天 2 万步</span></div>
+    <div class="sketch">
+      <div class="tl">
+        <div class="item food"><div class="time">07:45</div><div class="what">早饭：小面</div><div class="tip">酒店附近随便一家面馆，二两小面 10 块上下。</div></div>
+        <div class="item hi"><div class="time">08:30</div><div class="what">1 号线到磁器口，9:30 前进街</div><div class="tip">临江门 → 较场口换 1 号线 → 磁器口，约 35 分钟。主街一条逛到江边码头再绕回来，1–1.5 小时够。陈麻花认准「陈昌银」。</div></div>
+        <div class="item"><div class="time">10:45</div><div class="what">1 号线回程，鹅岭站下，走到鹅岭二厂</div><div class="tip">出站上坡 15 分钟。文创园里逛逛小店、天台看两江，午饭在园区解决。</div></div>
+        <div class="item hi"><div class="time">13:00</div><div class="what">两路口换 2 号线，到李子坝看轻轨穿楼</div><div class="tip">A 出口外的观景平台，跟<strong>官方指示牌</strong>走，别跟商场里画的「观景台」箭头。一班车 3–5 分钟，等两班就能拍到。</div></div>
+        <div class="item"><div class="time">14:00</div><div class="what">2 号线坐回较场口，走十八梯 → 山城巷</div><div class="tip">十八梯是重建的老街，山城巷才是老重庆，崖壁栈道看长江。走一圈 2 小时，台阶多，慢慢走。</div></div>
+        <div class="item"><div class="time">16:30</div><div class="what">打车去南山一棵树（约 30 分钟）</div><div class="tip">门票 30 元，09:00–22:30。想省钱坐 346 / 347 路到四中站再走 10 分钟。</div></div>
+        <div class="item hi"><div class="time">17:30</div><div class="what">南山一棵树：看日落，等亮灯</div><div class="tip">整个渝中半岛摊在脚下，18:30 前后楼群亮灯。雾大的话就当看云海，重庆秋天常这样。</div></div>
+        <div class="item food"><div class="time">19:00</div><div class="what">晚饭：南山泉水鸡</div><div class="tip">观景台下山方向就是泉水鸡一条街，一只鸡三吃，两个人点半只。</div></div>
+        <div class="item"><div class="time">20:30</div><div class="what">下山到南岸，从上新街站坐长江索道回渝中</div><div class="tip">Day 1 没坐成的话今晚补：南岸这头排队少一半。坐完就在新华路站，走回解放碑 10 分钟。</div></div>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure class="photo"><img src="img/ciqikou.jpg" alt="磁器口古镇主街" loading="lazy"><figcaption>磁器口 · 10 点以后就是这样</figcaption></figure>
+      <figure class="photo r"><img src="img/liziba-2025.jpg" alt="李子坝轻轨穿楼" loading="lazy"><figcaption>李子坝 · 轻轨穿楼</figcaption></figure>
+      <figure class="photo r"><img src="img/yuzhong-from-nanan.jpg" alt="从南岸看渝中半岛" loading="lazy"><figcaption>从南岸看渝中（雾天）</figcaption></figure>
+      <figure class="photo"><img src="img/hongyadong.jpg" alt="白天的洪崖洞" loading="lazy"><figcaption>白天路过洪崖洞</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-day3" role="tabpanel" aria-labelledby="tab-day3">
+    <div class="day-title"><h3>Day 3 · 朝天门 → 来福士 → 回西安</h3><span class="date" data-day-offset="2"></span></div>
+    <div class="day-meta"><span class="chip">☕ 上午慢一点</span><span class="chip lake">🚄 中午的车，傍晚到家</span></div>
+    <div class="sketch lake" style="margin-bottom:12px">
+      <p><strong>只有 2 天？</strong>把 Day 2 砍成「磁器口 → 李子坝 → 南山」，鹅岭二厂和山城巷跳过，Day 2 晚上直接从南山去重庆北赶 20 点前后的车，或者住一晚第二天早上走。<strong>有 4 天？</strong>把「加一天 · 武隆」插在 Day 2 和 Day 3 之间。</p>
+    </div>
+    <div class="sketch">
+      <div class="tl">
+        <div class="item food"><div class="time">08:30</div><div class="what">早饭、退房，行李寄前台</div><div class="tip">今天只带手机和水。</div></div>
+        <div class="item"><div class="time">09:30</div><div class="what">走到朝天门，看两江交汇</div><div class="tip">解放碑往东走 20 分钟到底。嘉陵江和长江两种颜色的水在这里碰头，秋天分界最清楚。</div></div>
+        <div class="item hi"><div class="time">10:15</div><div class="what">来福士「探索舱」（可选）</div><div class="tip">八栋楼顶连起来的空中观景台，120 元，10:00 开。不想花钱就在朝天门广场看看来福士的「帆」。</div></div>
+        <div class="item"><div class="time">11:15</div><div class="what">回酒店取行李，去重庆北</div><div class="tip">2 号线临江门 → 牛角沱换 3 号线 → 重庆北站南广场，35 分钟。提前 40 分钟到站。</div></div>
+        <div class="item"><div class="time">≈12:30</div><div class="what">高铁回西安（≈5 小时）</div><div class="tip">路上把照片整理了。到西安北约 17:45。</div></div>
+        <div class="item stay"><div class="time">≈18:00</div><div class="what">到家 🎉</div><div class="tip">辣是会想的，下周再来一顿。</div></div>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure class="photo"><img src="img/cq-2025-02.jpg" alt="渝中天际线日落" loading="lazy"><figcaption>渝中的楼</figcaption></figure>
+      <figure class="photo r"><img src="img/qiansimen-2025.jpg" alt="千厮门大桥" loading="lazy"><figcaption>千厮门大桥</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-day4" role="tabpanel" aria-labelledby="tab-day4">
+    <div class="day-title"><h3>加一天 · 武隆：天生三桥 + 龙水峡地缝</h3><span class="date" data-day-offset="2"></span></div>
+    <div class="day-meta"><span class="chip leaf">🎫 155 + 105 元</span><span class="chip lake">🚄 动车 ≈1h50</span><span class="chip pine">⏰ 景区 08:30–16:30</span></div>
+    <div class="sketch leaf" style="margin-bottom:12px">
+      <p><strong>值不值得：</strong>值得，但要早起、要前一天订好票。当天往返能玩完天生三桥 + 地缝，回到解放碑在晚上 8 点前后。只有 3 天的话，去武隆就意味着放弃南山和山城巷，二选一。<strong>备选：</strong>不想赶的话换大足石刻（宝顶山 115 元，公众号「大足石刻」预约），重庆北到大足南约 40 分钟，景区集中，下午 3 点就能往回走。</p>
+    </div>
+    <div class="sketch">
+      <div class="tl">
+        <div class="item hi"><div class="time">07:15</div><div class="what">重庆北 → 武隆南（动车，1h44–1h50）</div><div class="tip">12306 买票时<strong>看清到达站是「武隆南」还是「武隆站」</strong>，大多数 G/D 停武隆南。二等座 52–71 元。</div></div>
+        <div class="item"><div class="time">≈09:10</div><div class="what">武隆南 → 仙女山游客中心</div><div class="tip">出站找景区直通车或蓝色大巴（约 10 元，40 分钟）。别坐拉客的面包车。</div></div>
+        <div class="item hi"><div class="time">10:00</div><div class="what">天生三桥：换乘车 → 电梯下到谷底 → 天龙桥 → 天福官驿 → 青龙桥 → 黑龙桥</div><div class="tip">155 元含换乘车和电梯。谷底走 3–4 公里不走回头路，最后一段是上坡台阶，留 3 小时。天福官驿是《满城尽带黄金甲》《变形金刚 4》取景地。</div></div>
+        <div class="item food"><div class="time">13:15</div><div class="what">午饭</div><div class="tip">三桥出口和地缝中转站之间有饭店，碗杂面或炒菜；也可以早上在重庆北买好带着。</div></div>
+        <div class="item hi"><div class="time">14:00</div><div class="what">龙水峡地缝：从入口一路往下走到出口</div><div class="tip">105 元含换乘车和电梯。峡谷里最窄的地方只有 1 米宽，栈道湿滑，1.5–2 小时。</div></div>
+        <div class="item"><div class="time">16:15</div><div class="what">景区巴士回游客中心 → 大巴回武隆南</div><div class="tip">景区 16:30 闭园，往回走别晚于 16:00。</div></div>
+        <div class="item"><div class="time">≈17:40</div><div class="what">动车回重庆北</div><div class="tip">提前把回程票也买好，晚班车不多。</div></div>
+        <div class="item stay"><div class="time">≈19:30</div><div class="what">回到解放碑，吃火锅收工</div><div class="tip">走了一天台阶，今晚点个清汤鸳鸯锅不丢人。</div></div>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure class="photo"><img src="img/three-bridges.jpg" alt="天生三桥谷底的天福官驿" loading="lazy"><figcaption>天生三桥 · 谷底的天福官驿</figcaption></figure>
+      <figure class="photo r"><img src="img/tianlongqiao.jpg" alt="天龙桥" loading="lazy"><figcaption>天龙桥</figcaption></figure>
+      <figure class="photo r"><img src="img/longshuixia.jpg" alt="龙水峡地缝栈道" loading="lazy"><figcaption>龙水峡地缝</figcaption></figure>
+      <figure class="photo"><img src="img/difeng-zhandao.jpg" alt="地缝栈道" loading="lazy"><figcaption>地缝里的栈道</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="map">
+  <div class="sec-head"><h2>渝中半岛怎么走</h2><span class="tag">点地名，看照片和贴士</span></div>
+  <div class="sketch lake">
+    <p>渝中是夹在嘉陵江和长江中间的一个半岛，解放碑在正中间，想去的地方基本都在步行 20 分钟内，只是<span class="mark">上下落差能有十几层楼</span>。2 号线沿嘉陵江走，去李子坝就靠它。</p>
+    <svg class="park-map" viewBox="0 0 360 300" role="img" aria-label="手绘渝中半岛地图，标出解放碑、洪崖洞、千厮门大桥、朝天门、长江索道、十八梯、李子坝、鹅岭二厂、江北嘴、南山">
+      <path d="M0 88 C80 70 200 74 300 110 C330 122 348 140 350 150 C348 160 330 178 300 190 C200 226 80 230 0 212 Z" fill="var(--lake-soft)" stroke="var(--lake)" stroke-width="2" opacity=".9"/>
+      <path d="M10 112 C100 96 220 100 320 150 C220 200 100 204 10 188 Z" fill="var(--card)" stroke="var(--line)" stroke-width="2.5" stroke-linejoin="round"/>
+      <text x="150" y="86" class="ordr" style="font-size:13px">嘉陵江</text>
+      <text x="150" y="246" class="ordr" style="font-size:13px">长 江</text>
+      <text x="22" y="66" class="ordr" style="font-size:13px">江北区</text>
+      <text x="20" y="280" class="ordr" style="font-size:13px">南岸区</text>
+      <!-- line 2 -->
+      <path class="road" d="M30 120 C90 112 160 110 236 122" stroke="var(--lake)" stroke-dasharray="6 5"/>
+      <text class="sm" x="60" y="134" style="font-family:var(--font-hand);font-size:11px;fill:var(--ink-soft)">2 号线</text>
+      <!-- bridges & cableway -->
+      <path class="walk" d="M248 108 L268 62"/>
+      <path class="walk" d="M250 192 L286 250"/>
+      <!-- spots -->
+      <g class="spot" data-spot="liziba" tabindex="0" role="button"><ellipse cx="78" cy="118" rx="30" ry="12"/><text x="78" y="122" text-anchor="middle">李子坝</text></g>
+      <g class="spot" data-spot="eling" tabindex="0" role="button"><ellipse cx="116" cy="160" rx="34" ry="12"/><text x="116" y="164" text-anchor="middle">鹅岭二厂</text></g>
+      <g class="spot" data-spot="hongyadong" tabindex="0" role="button"><ellipse cx="226" cy="116" rx="30" ry="12"/><text x="226" y="120" text-anchor="middle">洪崖洞</text></g>
+      <g class="spot" data-spot="qiansimen" tabindex="0" role="button"><ellipse cx="292" cy="92" rx="38" ry="12"/><text x="292" y="96" text-anchor="middle">千厮门大桥</text></g>
+      <g class="spot" data-spot="jiangbeizui" tabindex="0" role="button"><ellipse cx="276" cy="48" rx="30" ry="12"/><text x="276" y="52" text-anchor="middle">江北嘴</text></g>
+      <g class="spot" data-spot="jiefangbei" tabindex="0" role="button"><ellipse cx="206" cy="152" rx="36" ry="13"/><text x="206" y="156" text-anchor="middle">解放碑</text></g>
+      <g class="spot" data-spot="chaotianmen" tabindex="0" role="button"><ellipse cx="300" cy="150" rx="34" ry="12"/><text x="300" y="154" text-anchor="middle">朝天门</text></g>
+      <g class="spot" data-spot="baixiangju" tabindex="0" role="button"><ellipse cx="258" cy="178" rx="30" ry="12"/><text x="258" y="182" text-anchor="middle">白象居</text></g>
+      <g class="spot" data-spot="suodao" tabindex="0" role="button"><ellipse cx="236" cy="206" rx="34" ry="12"/><text x="236" y="210" text-anchor="middle">长江索道</text></g>
+      <g class="spot" data-spot="shibati" tabindex="0" role="button"><ellipse cx="170" cy="186" rx="40" ry="12"/><text x="170" y="190" text-anchor="middle">十八梯·山城巷</text></g>
+      <g class="spot" data-spot="nanshan" tabindex="0" role="button"><ellipse cx="300" cy="266" rx="40" ry="12"/><text x="300" y="270" text-anchor="middle">南山一棵树</text></g>
+      <g class="spot" data-spot="ciqikou" tabindex="0" role="button"><ellipse cx="40" cy="160" rx="30" ry="12"/><text x="40" y="164" text-anchor="middle">磁器口</text><text class="sm" x="40" y="182" text-anchor="middle" style="font-family:var(--font-hand);font-size:10px;fill:var(--ink-soft)">← 1 号线 35 分钟</text></g>
+    </svg>
+    <div class="legend"><span><i class="lake"></i>轨道 2 号线</span><span><i class="leaf"></i>大桥 / 索道</span></div>
+    <div class="spot-card" id="spot-card">
+      <div>
+        <h3 id="spot-name">洪崖洞</h3>
+        <p class="muted" id="spot-meta">嘉陵江边 · 免费 · 亮灯 18:30–22:00</p>
+        <p id="spot-text" style="margin-top:6px">11 层吊脚楼堆在崖壁上，1 楼和 11 楼都通马路，是重庆「8D」的教科书。里面是商铺，真正好看的是从外面看它亮灯。</p>
+        <p class="tip muted" id="spot-tip" style="margin-top:6px;font-size:.92rem">贴士：全景在千厮门大桥桥面和江北嘴江边；灯 22:00 前后关，别拖到太晚。</p>
+      </div>
+      <figure class="photo r"><img id="spot-img" src="img/cq-2025-03.jpg" alt="洪崖洞" loading="lazy"><figcaption id="spot-cap">洪崖洞夜景</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="stay">
+  <div class="sec-head"><h2>住宿</h2><span class="tag">住解放碑一带，哪儿都走得到</span></div>
+  <div class="sketch lake" style="margin-bottom:12px">
+    <p><strong>区域怎么选：</strong>第一次来、以夜景打卡为主，住解放碑 / 较场口 / 洪崖洞一带，走到洪崖洞 8 分钟、八一路 5 分钟、索道 10 分钟。南滨路江景好但过江要时间；观音桥适合购物；沙坪坝便宜但离景点远。价格是非节假日大致区间，以订房平台为准。</p>
+  </div>
+  <div class="tier">解放碑 · 洪崖洞 · 较场口</div>
+  <div class="cards">
+    <div class="sketch card"><h4>亚朵 S 酒店（洪崖洞江景店） <span class="price">400–700 元</span></h4><div class="where">📍 离 2 号线临江门站约 780 m</div><div class="why">评分最稳的一家，江景房能看千厮门大桥。</div><div class="links"><a class="chip" data-amap-kw="亚朵S酒店洪崖洞江景店" data-amap-center="106.5779,29.5582" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.5779,29.5582&keyword=%E4%BA%9A%E6%9C%B5S%E9%85%92%E5%BA%97%E6%B4%AA%E5%B4%96%E6%B4%9E%E6%B1%9F%E6%99%AF%E5%BA%97" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card alt"><h4>桔子酒店（解放碑洪崖洞江景店） <span class="price">300–500 元</span></h4><div class="where">📍 临江门站楼上</div><div class="why">出电梯就是地铁。节假日楼下吵，洪崖洞 22 点关灯后才安静。</div><div class="links"><a class="chip" data-amap-kw="桔子酒店解放碑洪崖洞江景店" data-amap-center="106.5779,29.5582" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.5779,29.5582&keyword=%E6%A1%94%E5%AD%90%E9%85%92%E5%BA%97%E8%A7%A3%E6%94%BE%E7%A2%91%E6%B4%AA%E5%B4%96%E6%B4%9E%E6%B1%9F%E6%99%AF%E5%BA%97" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card"><h4>厚居高空江景酒店 <span class="price">300–500 元</span></h4><div class="where">📍 离较场口站约 240 m</div><div class="why">高层看长江，去十八梯、山城巷最近。</div><div class="links"><a class="chip" data-amap-kw="厚居高空江景酒店" data-amap-center="106.5779,29.5582" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.5779,29.5582&keyword=%E5%8E%9A%E5%B1%85%E9%AB%98%E7%A9%BA%E6%B1%9F%E6%99%AF%E9%85%92%E5%BA%97" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card alt"><h4>美仑酒店（洪崖洞江景店） <span class="price">350–600 元</span></h4><div class="where">📍 离临江门站约 440 m</div><div class="why">2026 年新开，设施新。</div><div class="links"><a class="chip" data-amap-kw="美仑酒店洪崖洞江景店" data-amap-center="106.5779,29.5582" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.5779,29.5582&keyword=%E7%BE%8E%E4%BB%91%E9%85%92%E5%BA%97%E6%B4%AA%E5%B4%96%E6%B4%9E%E6%B1%9F%E6%99%AF%E5%BA%97" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card"><h4>隐·拾光江景酒店 <span class="price">110–200 元</span></h4><div class="where">📍 解放碑一带</div><div class="why">经济型里评价不错的，窗外也有江。</div><div class="links"><a class="chip" data-amap-kw="隐拾光江景酒店解放碑" data-amap-center="106.5779,29.5582" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.5779,29.5582&keyword=%E9%9A%90%E6%8B%BE%E5%85%89%E6%B1%9F%E6%99%AF%E9%85%92%E5%BA%97%E8%A7%A3%E6%94%BE%E7%A2%91" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card alt"><h4>慢舍江景酒店 <span class="price">150–250 元</span></h4><div class="where">📍 离小什字站约 1.2 km</div><div class="why">靠朝天门那头，去来福士和游船码头近。</div><div class="links"><a class="chip" data-amap-kw="慢舍江景酒店" data-amap-center="106.5779,29.5582" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.5779,29.5582&keyword=%E6%85%A2%E8%88%8D%E6%B1%9F%E6%99%AF%E9%85%92%E5%BA%97" target="_blank" rel="noopener">高德地图</a></div></div>
+  </div>
+</section>
+
+<section class="block" id="eat">
+  <div class="sec-head"><h2>吃什么</h2><span class="tag">火锅是正餐，小面是早饭</span></div>
+  <div class="sketch" style="margin-bottom:12px">
+    <div class="dishes">
+      <span class="dish"><b>九宫格火锅</b> · 牛油锅底，毛肚鸭肠黄喉，微辣就够</span>
+      <span class="dish"><b>小面 / 豌杂面</b> · 早饭标配，二两 10 块上下</span>
+      <span class="dish"><b>酸辣粉</b> · 八一路好吃街站着吃</span>
+      <span class="dish"><b>泉水鸡</b> · 南山看完夜景顺路吃</span>
+      <span class="dish"><b>万州烤鱼</b> · 两个人一条鱼</span>
+      <span class="dish"><b>冰粉 · 凉糕</b> · 辣完了救命的</span>
+      <span class="dish"><b>陈麻花</b> · 磁器口认「陈昌银」</span>
+      <span class="dish"><b>山城啤酒</b> · 配火锅，别太多</span>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="sketch card"><h4>珮姐老火锅（较场口总店） <span class="price">人均 120</span></h4><div class="where">📍 较场口</div><div class="why">九宫格的代表，翻台快但永远在排。下午 5 点前取号。</div><div class="links"><a class="chip" data-amap-kw="珮姐老火锅 较场口总店" data-amap-center="106.5779,29.5582" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.5779,29.5582&keyword=%E7%8F%AE%E5%A7%90%E8%80%81%E7%81%AB%E9%94%85%20%E8%BE%83%E5%9C%BA%E5%8F%A3%E6%80%BB%E5%BA%97" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card alt"><h4>洞子老火锅 <span class="price">人均 100</span></h4><div class="where">📍 解放碑，开在防空洞里</div><div class="why">防空洞里吃火锅，重庆独一份的体验。</div><div class="links"><a class="chip" data-amap-kw="洞子老火锅 解放碑" data-amap-center="106.5779,29.5582" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.5779,29.5582&keyword=%E6%B4%9E%E5%AD%90%E8%80%81%E7%81%AB%E9%94%85%20%E8%A7%A3%E6%94%BE%E7%A2%91" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card"><h4>周师兄火锅 <span class="price">人均 110</span></h4><div class="where">📍 解放碑 / 观音桥有店</div><div class="why">口味偏温和，第一次吃重庆火锅从它开始不会被辣哭。</div><div class="links"><a class="chip" data-amap-kw="周师兄火锅 解放碑" data-amap-center="106.5779,29.5582" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.5779,29.5582&keyword=%E5%91%A8%E5%B8%88%E5%85%84%E7%81%AB%E9%94%85%20%E8%A7%A3%E6%94%BE%E7%A2%91" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card alt"><h4>邂火锅（解放碑店） <span class="price">人均 100</span></h4><div class="where">📍 解放碑</div><div class="why">开到凌晨 2 点，看完夜景再吃的选择。</div><div class="links"><a class="chip" data-amap-kw="邂火锅 解放碑店" data-amap-center="106.5779,29.5582" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.5779,29.5582&keyword=%E9%82%82%E7%81%AB%E9%94%85%20%E8%A7%A3%E6%94%BE%E7%A2%91%E5%BA%97" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card"><h4>花市豌杂面 <span class="price">人均 14</span></h4><div class="where">📍 民生路（解放碑旁）</div><div class="why">豌杂面的老店，Day 1 到了先来一碗。</div><div class="links"><a class="chip" data-amap-kw="花市豌杂面 民生路" data-amap-center="106.5779,29.5582" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.5779,29.5582&keyword=%E8%8A%B1%E5%B8%82%E8%B1%8C%E6%9D%82%E9%9D%A2%20%E6%B0%91%E7%94%9F%E8%B7%AF" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card alt"><h4>好又来酸辣粉 <span class="price">人均 10</span></h4><div class="where">📍 八一路好吃街</div><div class="why">好吃街排最长的那家，站着吃完。</div><div class="links"><a class="chip" data-amap-kw="好又来酸辣粉 八一路" data-amap-center="106.5779,29.5582" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.5779,29.5582&keyword=%E5%A5%BD%E5%8F%88%E6%9D%A5%E9%85%B8%E8%BE%A3%E7%B2%89%20%E5%85%AB%E4%B8%80%E8%B7%AF" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card"><h4>南山泉水鸡一条街 <span class="price">人均 70</span></h4><div class="where">📍 南山一棵树下山方向</div><div class="why">Day 2 看完夜景的晚饭，一鸡三吃。</div><div class="links"><a class="chip" data-amap-kw="南山泉水鸡一条街" data-amap-center="106.6226,29.5479" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.6226,29.5479&keyword=%E5%8D%97%E5%B1%B1%E6%B3%89%E6%B0%B4%E9%B8%A1%E4%B8%80%E6%9D%A1%E8%A1%97" target="_blank" rel="noopener">高德地图</a></div></div>
+    <div class="sketch card alt"><h4>磁器口 · 陈昌银麻花 <span class="price">10–30</span></h4><div class="where">📍 磁器口正街</div><div class="why">买这一家就行；街上散装的麻花、牛肉干别买。</div><div class="links"><a class="chip" data-amap-kw="陈昌银麻花 磁器口" data-amap-center="106.4535,29.5815" href="https://uri.amap.com/search?callnative=1&src=seamusapple.github.io&city=500000&center=106.4535,29.5815&keyword=%E9%99%88%E6%98%8C%E9%93%B6%E9%BA%BB%E8%8A%B1%20%E7%A3%81%E5%99%A8%E5%8F%A3" target="_blank" rel="noopener">高德地图</a></div></div>
+  </div>
+</section>
+
+<section class="block" id="todo">
+  <div class="sec-head"><h2>清单</h2><span class="tag">勾过的会记在这台手机上</span></div>
+  <div class="sketch">
+    <div class="todo-head"><div><span class="hand" style="font-size:1.2rem">完成 </span><span class="num" id="todo-count">0 / 0</span></div><button class="btn sm" id="todo-reset" type="button">全部清空</button></div>
+    <div class="progress"><i id="todo-bar"></i></div>
+    <div class="todo-group"><h4>出发前 7–15 天 <small>票和房</small></h4><ul class="todo">
+      <li><input type="checkbox" id="t1" data-key="t1"><label for="t1">12306 买往返高铁票 <small>西安北 ↔ 重庆北，提前 15 天放票，别买西安东发车的</small></label></li>
+      <li><input type="checkbox" id="t2" data-key="t2"><label for="t2">订 2–3 晚酒店 <small>解放碑 / 较场口 / 洪崖洞一带</small></label></li>
+      <li><input type="checkbox" id="t3" data-key="t3"><label for="t3">关注公众号「长江索道」，看放票规则 <small>提前 2 天 7:45 放票，买完要取号</small></label></li>
+      <li><input type="checkbox" id="t4" data-key="t4"><label for="t4">去武隆的话：买重庆北 ↔ 武隆南 动车票 + 预约景区门票 <small>到达站看清是武隆南</small></label></li>
+      <li><input type="checkbox" id="t5" data-key="t5"><label for="t5">想坐两江夜游 / 上探索舱：提前一天订</label></li>
+    </ul></div>
+    <div class="todo-group"><h4>出发前 1–3 天 <small>手机里的事</small></h4><ul class="todo">
+      <li><input type="checkbox" id="t6" data-key="t6"><label for="t6">看重庆天气预报，雨大就把南山换到晴的那天</label></li>
+      <li><input type="checkbox" id="t7" data-key="t7"><label for="t7">支付宝或微信开通「重庆」乘车码 <small>进出站用同一个</small></label></li>
+      <li><input type="checkbox" id="t8" data-key="t8"><label for="t8">大众点评存好火锅店，到了下午 5 点先取号</label></li>
+      <li><input type="checkbox" id="t9" data-key="t9"><label for="t9">车票、酒店订单截图存相册；高德下载重庆离线地图</label></li>
+    </ul></div>
+    <div class="todo-group"><h4>行李 <small>重庆是爬出来的</small></h4><ul class="todo">
+      <li><input type="checkbox" id="p1" data-key="p1"><label for="p1">舒服的运动鞋 <small>一天两万步、几百级梯坎</small></label></li>
+      <li><input type="checkbox" id="p2" data-key="p2"><label for="p2">薄外套 + 一件长袖 <small>10 月中 16–24°C，早晚凉</small></label></li>
+      <li><input type="checkbox" id="p3" data-key="p3"><label for="p3">折叠伞 <small>秋天多阴雨，雾也常有</small></label></li>
+      <li><input type="checkbox" id="p4" data-key="p4"><label for="p4">充电宝 <small>一天拍几百张</small></label></li>
+      <li><input type="checkbox" id="p5" data-key="p5"><label for="p5">肠胃药、湿巾 <small>火锅后半夜用得上</small></label></li>
+      <li><input type="checkbox" id="p6" data-key="p6"><label for="p6">身份证 <small>高铁、酒店、索道都要</small></label></li>
+    </ul></div>
+    <div class="todo-group"><h4>到了之后 <small>每天一件关键事</small></h4><ul class="todo">
+      <li><input type="checkbox" id="d1" data-key="d1"><label for="d1">Day 1 下午 5 点前：火锅取号；17:45 上千厮门大桥</label></li>
+      <li><input type="checkbox" id="d2" data-key="d2"><label for="d2">Day 2 9:30 前进磁器口；17:30 到南山</label></li>
+      <li><input type="checkbox" id="d3" data-key="d3"><label for="d3">武隆那天 7 点出门，16:00 前往回走</label></li>
+      <li><input type="checkbox" id="d4" data-key="d4"><label for="d4">回程提前 40 分钟到重庆北</label></li>
+    </ul></div>
+    <p class="done-msg" id="todo-done" hidden>全勾完了，出发吧 🌶️</p>
+  </div>
+</section>
+
+<section class="block" id="budget">
+  <div class="sec-head"><h2>预算</h2><span class="tag">改人数、天数和档位，自动算</span></div>
+  <div class="sketch alt">
+    <div class="budget-ctl">
+      <label for="b-people">人数 <input type="number" id="b-people" min="1" max="6" value="2"></label>
+      <label for="b-days">天数
+        <select id="b-days">
+          <option value="2">2 天 1 晚</option>
+          <option value="3" selected>3 天 2 晚</option>
+          <option value="4">4 天 3 晚（含武隆）</option>
+        </select>
+      </label>
+      <label for="b-stay">住宿档
+        <select id="b-stay">
+          <option value="eco">经济 ≈200 元/晚/间</option>
+          <option value="mid" selected>舒适 ≈450 元/晚/间</option>
+          <option value="high">高端 ≈900 元/晚/间</option>
+        </select>
+      </label>
+      <label for="b-night"><input type="checkbox" id="b-night"> 加两江夜游 + 探索舱</label>
+    </div>
+    <table class="btable">
+      <thead><tr><th>项目</th><th class="n">每人</th><th class="n">合计</th></tr></thead>
+      <tbody id="b-body">
+        <tr><td>高铁往返 西安 ↔ 重庆<small>按二等座 ≈380 元估</small></td><td class="n">760</td><td class="n">1,520</td></tr>
+        <tr><td>住宿 2 晚<small>1 间 × 2 晚 × 450 元</small></td><td class="n">450</td><td class="n">900</td></tr>
+        <tr><td>吃饭 3 天<small>每人每天 150 元，含一顿火锅</small></td><td class="n">450</td><td class="n">900</td></tr>
+        <tr><td>门票<small>长江索道往返 50 + 南山一棵树 30</small></td><td class="n">80</td><td class="n">160</td></tr>
+        <tr><td>市内交通<small>轨道 + 两次打车</small></td><td class="n">90</td><td class="n">180</td></tr>
+        <tr class="total"><td>合计（2 人）</td><td class="n">≈1,830</td><td class="n">≈3,660</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top:10px;font-size:.85rem">门票按 2026 年官方价；车票按常见价；住宿按两人一间。武隆那天另算：动车往返 ≈130 + 门票 260 + 景区交通 40。实际上下浮动两三成。</p>
+  </div>
+</section>
+
+<section class="block" id="info">
+  <div class="sec-head"><h2>实用信息</h2><span class="tag">电话可以点一下复制</span></div>
+  <div class="stack">
+    <div class="sketch">
+      <h3 style="margin-bottom:8px">天气（10 月中旬，出发前 3 天再看预报）</h3>
+      <div class="weather">
+        <div class="wbox sketch soft"><div class="l">白天</div><div class="t">20–24°C</div></div>
+        <div class="wbox sketch soft"><div class="l">早晚</div><div class="t">15–18°C</div></div>
+        <div class="wbox sketch soft"><div class="l">武隆山上</div><div class="t">12–18°C</div></div>
+        <div class="wbox sketch soft"><div class="l">日出 / 日落</div><div class="t">07:00 / 18:20</div></div>
+      </div>
+      <p class="muted" style="margin-top:8px;font-size:.9rem">秋天的重庆阴天和雾是常态，蓝天是运气。雾天夜景反而有味道，别因为阴天取消南山。长袖加薄外套，带伞。</p>
+    </div>
+
+    <details class="sketch" open>
+      <summary>票怎么买</summary>
+      <div class="body">
+        <p>🚄 <strong>高铁</strong>：12306，提前 15 天放票。西安北 ↔ 重庆北，到达站重庆西也行。</p>
+        <p>🚡 <strong>长江索道</strong>：公众号搜「长江索道」买票，提前 2 天早上 7:45 放票（节假日 7:15），单程 30、往返 50。<span class="mark">买完必须在公众号里取号</span>，不然到入口刷不出来要重排。08:00–22:00。</p>
+        <p>🚇 <strong>地铁</strong>：支付宝 / 微信乘车码直接刷，2–10 元按里程。末班约 23:00。</p>
+        <p>🌃 <strong>南山一棵树</strong>：现场买，30 元，09:00–22:30。<strong>两江夜游</strong>：各平台 98–198 元，朝天门上船，提前一天。<strong>来福士探索舱</strong>：120 元，10:00–22:00。</p>
+        <p>🏞 <strong>武隆</strong>：小程序「武隆景区官方平台」或各平台，天生三桥 155、龙水峡地缝 105（都含换乘车和电梯），08:30–16:30。<strong>大足石刻</strong>：公众号「大足石刻」预约，宝顶山 115、联票 140。</p>
+      </div>
+    </details>
+
+    <details class="sketch alt">
+      <summary>避坑 10 条</summary>
+      <div class="body">
+        <ul class="plain">
+          <li>看洪崖洞全景去<strong>千厮门大桥</strong>和<strong>江北嘴</strong>，洪崖洞里面只是商场和人。</li>
+          <li>导航写「步行 300 米」可能是垂直 300 米，看路线别看直线，用高德。</li>
+          <li>长江索道<strong>渝中这头排队 1–2 小时</strong>，从南岸上新街站坐少一半；没抢到票就坐两江轮渡（10 元）。</li>
+          <li>李子坝商场里的「观景台」箭头是把你引到店门口，跟官方指示牌和人流走。</li>
+          <li>磁器口 10 点以后人挤人，9:30 前进街；散装麻花、牛肉干别买。</li>
+          <li>火锅网红店等位 1 小时起，<strong>下午 5 点先在点评取号</strong>再去看夜景。</li>
+          <li>地铁进站和出站用同一个 App，不然按最高票价扣。</li>
+          <li>高铁别买西安东发车的车次，多 1 个多小时。</li>
+          <li>武隆：动车到达站大多是「武隆南」；三桥和地缝是两张票，套票一个取消另一个不退。</li>
+          <li>南山下山打车要等，看完夜景先走到泉水鸡街吃饭再叫车。</li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="sketch">
+      <h3 style="margin-bottom:8px">电话</h3>
+      <div class="phones">
+        <div class="phone"><div><div class="n">120</div><div class="l">急救</div></div><div class="r"><button class="btn sm" type="button">复制</button></div></div>
+        <div class="phone"><div><div class="n">110</div><div class="l">报警</div></div><div class="r"><button class="btn sm" type="button">复制</button></div></div>
+        <div class="phone"><div><div class="n">023-12345</div><div class="l">重庆政务热线 · 旅游投诉也打这个</div></div><div class="r"><button class="btn sm" type="button">复制</button></div></div>
+        <div class="phone"><div><div class="n">12306</div><div class="l">铁路客服</div></div><div class="r"><button class="btn sm" type="button">复制</button></div></div>
+      </div>
+    </div>
+
+    <details class="sketch soft">
+      <summary>资料来源 · 图片版权</summary>
+      <div class="body credits">
+        <p>交通：<a href="https://m.gmw.cn/2026-09/29/content_1304569735.htm" target="_blank" rel="noopener">西渝高铁西安—安康段开通（光明网，2026-09）</a>、携程车次页（2026-08 快照）。景点与票价：<a href="https://m.cq.bendibao.com/tour/jingdianbao/detail.php?id=29542" target="_blank" rel="noopener">长江索道购票指南（重庆本地宝，2026-04）</a>、携程南山一棵树 / 来福士页面、<a href="https://www.bbtnews.com.cn/2026/0902/604606.shtml" target="_blank" rel="noopener">两江游船（北京商报，2026-09）</a>。武隆：<a href="https://cq.bendibao.com/tour/2025430/152476.shtm" target="_blank" rel="noopener">武隆交通与票价（重庆本地宝，2026-07）</a>。吃住、避坑综合自小红书、知乎、携程、大众点评 2025–2026 年的帖子。乘车码：<a href="https://m.gmw.cn/2025-03/23/content_1303998628.htm" target="_blank" rel="noopener">光明网 2025-03</a>。价格会变，以官方渠道为准。</p>
+        <p>实景照片来自 Wikimedia Commons：Jay Huang（千厮门大桥与洪崖洞夜景，CC BY 2.0）、Renek78（洪崖洞夜景、渝中天际线，CC0）、HoweyYuan（洪崖洞、解放碑，CC BY-SA 4.0）、Harveychl / Chen Hualin（洪崖洞日落、长江索道、李子坝，CC BY-SA 4.0）、ForwardXu（解放碑夜景，CC BY-SA 4.0）、Yumeto（李子坝，CC BY-SA 4.0）、王桁霽（千厮门大桥，CC BY-SA 4.0）、Limingqimonkey（南岸看渝中，CC BY-SA 3.0）、rheins（磁器口、天龙桥、龙水峡地缝，CC BY 3.0）、RoyalCathayan（天生三桥，CC BY-SA 4.0）、Nyx Ning（地缝栈道，CC BY-SA 3.0）、Jpbowen（磁器口牌坊，CC BY-SA 4.0）。小人和地图是手绘风格示意，不按比例。</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<footer style="padding-block:28px 8px;text-align:center" class="muted hand">
+  <p style="font-size:1.1rem">多走梯坎，少看导航 🌶️</p>
+  <p style="font-size:.8rem;font-family:var(--font-body)">整理于 2026-10-09 · 出发前再核一遍车票和索道</p>
+</footer>
+
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/app.js?v=1"></script>
+</body>
+</html>
