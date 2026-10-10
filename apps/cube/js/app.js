@@ -680,11 +680,13 @@
     var host = document.getElementById('cube-net');
     if (!host || !window.CubeNet) return;
     var parts = [new CubeNet(host, { state: view.getState(), onPick: onNetPick })];
-    var ringHost = document.getElementById('cube-ring');
-    if (ringHost && window.CubeRing) {
-      try { parts.push(new CubeRing(ringHost, { state: view.getState(), onPick: onNetPick })); }
-      catch (e) { console.warn('环形图不可用：', e && e.message); }
-    }
+    var modes = ['flat'];
+    [['cube-ring2d', 'CubeRing2D', 'ring'], ['cube-ring', 'CubeRing', 'sphere']].forEach(function (x) {
+      var h = document.getElementById(x[0]);
+      if (!h || !window[x[1]]) return;
+      try { parts.push(new window[x[1]](h, { state: view.getState(), onPick: onNetPick })); modes.push(x[2]); }
+      catch (e) { console.warn(x[1] + ' 不可用：', e && e.message); }
+    });
     net = makeNetGroup(parts);
     var origSet = view.setState, origHl = view.highlight, origClear = view.clearHighlight;
     view.setState = function (s) { var r = origSet.apply(view, arguments); net.update(view.getState()); return r; };
@@ -696,7 +698,8 @@
     net.setFacing(view.facing ? view.facing() : { U: 1, F: 1, R: 1 });
     var on = store('cube.net');
     setNet(on === null || on === undefined ? true : on !== '0', false);
-    setNetMode(store('cube.netMode') === 'ring' && parts.length > 1 ? 'ring' : 'flat', false);
+    var savedMode = store('cube.netMode');
+    setNetMode(modes.indexOf(savedMode) >= 0 ? savedMode : 'flat', false);
   }
   function setNetMode(mode, save) {
     $$('#net-panel [data-view]').forEach(function (e) { e.hidden = e.getAttribute('data-view') !== mode; });
@@ -704,7 +707,7 @@
       var on = b.getAttribute('data-mode') === mode;
       b.classList.toggle('is-on', on); b.setAttribute('aria-selected', on ? 'true' : 'false');
     });
-    document.body.classList.toggle('net-ring', mode === 'ring');
+    document.body.classList.toggle('net-ring', mode === 'ring' || mode === 'sphere');
     if (save) store('cube.netMode', mode);
   }
   function onNetPick(pos, k) {
@@ -1000,9 +1003,9 @@
             info: 'sync=' + a + '/' + b + ' lit=' + lit.length + ' piece ' + before + '→' + cols + ' visibleFaces=' + vis };
         });
       }),
-      tryStep('环形图与 3D 同步（每环 12 点、转动后颜色一致、高亮跟块）', function () {
-        var ring = net && net.parts[1];
-        if (!ring) return { ok: false, info: '没有环形图' };
+      tryStep('球面图与 3D 同步（每环 12 点、转动后颜色一致、高亮跟块）', function () {
+        var ring = net && net.parts.filter(function (p) { return window.CubeRing && p instanceof CubeRing; })[0];
+        if (!ring) return { ok: false, info: '没有球面图' };
         stopAll();
         view.setState(CM.apply(SOLVED, "F2 L' U B D' R"));
         var a = ring.getState() === view.getState();
@@ -1014,6 +1017,22 @@
           view.clearHighlight();
           return { ok: a && b && lit.length === 2 && belts === 6 && CubeRing.SIGN === -1,
             info: 'sync=' + a + '/' + b + ' lit=' + lit.length + ' belts=' + belts + ' sign=' + CubeRing.SIGN };
+        });
+      }),
+      tryStep('平面环形图：布局与模型一致、同步、动画终点正确', function () {
+        var r2 = net && net.parts.filter(function (p) { return window.CubeRing2D && p instanceof CubeRing2D; })[0];
+        if (!r2) return { ok: false, info: '没有平面环形图' };
+        stopAll();
+        view.setState(CM.apply(SOLVED, "B' D R2 F U' L"));
+        var a = r2.getState() === view.getState();
+        view.highlight(['UFR']);
+        return view.move("U R' y F2").then(function () {
+          var st = view.getState(), lit = $$('#cube-ring2d .r2-dot.is-lit');
+          var b = r2.getState() === st;
+          var dirs = ['U', 'R', 'F', 'D', 'L', 'B'].map(function (f) { return r2.L.dir[f] + '/' + r2.L.spin[f]; }).join(' ');
+          view.clearHighlight();
+          return { ok: r2.L.ok && a && b && lit.length === 3,
+            info: 'layout=' + r2.L.ok + ' sync=' + a + '/' + b + ' lit=' + lit.length + ' dir/spin ' + dirs };
         });
       })
     ];

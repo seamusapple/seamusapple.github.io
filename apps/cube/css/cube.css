@@ -359,3 +359,19 @@ body.net-off .net-panel { display: none; }
   body.net-ring.stage-collapsed .net-panel { width: min(30vw, 120px); }
   body.stage-collapsed .net-tabs { display: none; }
 }
+
+/* ---------- 平面环形图 ---------- */
+.ring2d { max-width: 380px; }
+.ring2d-svg { display: block; width: 100%; height: auto; }
+.r2-mid { fill: none; stroke: color-mix(in srgb, var(--muted) 22%, transparent); stroke-width: 1; stroke-dasharray: 2 4; }
+.r2-belt { fill: none; stroke: color-mix(in srgb, var(--muted) 45%, transparent); stroke-width: 1.3; transition: stroke .2s, stroke-width .2s; }
+.r2-belt.is-turning { stroke: var(--cyan); stroke-width: 3; }
+.r2-plate { fill: color-mix(in srgb, var(--bg) 70%, transparent); stroke: var(--line-2); stroke-width: 1; }
+.r2-plate.is-visible { stroke: var(--cyan); stroke-width: 1.8; }
+.r2-label { font: 600 9.5px var(--font-body); fill: var(--muted); }
+.r2-dot { stroke: rgba(0, 0, 0, .7); stroke-width: 1.1; cursor: pointer; transition: opacity .2s; }
+.r2-dot:hover { stroke: #fff; }
+.r2-dot.is-center { stroke: var(--fg); stroke-width: 1.4; }
+.r2-dot.is-dim { opacity: .15; }
+.r2-dot.is-lit { stroke: #fff; stroke-width: 2.2; }
+.r2-move { font: 700 14px var(--font-mono); fill: var(--cyan); }

@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="css/cube.css?v=4">
+<link rel="stylesheet" href="css/cube.css?v=5">
 </head>
 <body>
 
@@ -41,11 +41,14 @@
       <div class="seg net-tabs" role="tablist" aria-label="二维视图">
         <button type="button" class="btn is-on" role="tab" aria-selected="true" data-action="net-mode" data-mode="flat">展开图</button>
         <button type="button" class="btn" role="tab" aria-selected="false" data-action="net-mode" data-mode="ring">环形图</button>
+        <button type="button" class="btn" role="tab" aria-selected="false" data-action="net-mode" data-mode="sphere">球面图</button>
       </div>
       <div id="cube-net" class="net" data-view="flat"></div>
-      <div id="cube-ring" class="net ring" data-view="ring" hidden></div>
+      <div id="cube-ring2d" class="net ring2d" data-view="ring" hidden></div>
+      <div id="cube-ring" class="net ring" data-view="sphere" hidden></div>
       <figcaption class="net-cap" data-view="flat">平面展开图 · 与 3D 实时同步 · <span class="net-key">青框</span> = 3D 里正看得到的面 · 点一格高亮那一块</figcaption>
-      <figcaption class="net-cap" data-view="ring" hidden>环形拓扑图 · 转一个面 = 一圈点沿<span class="net-key">青色环</span>滑动 · 角块在两环交点、棱块只在一环上、中心不在环上 · 点一个点高亮那一块</figcaption>
+      <figcaption class="net-cap" data-view="ring" hidden>平面环形图 · 6 个交叉处各是一个面 · 转一个面 = 一圈点沿<span class="net-key">青色圆</span>滑动 · 角块在两圆交点、棱块只在一个圆上、中心不在圆上 · 点一个点高亮那一块</figcaption>
+      <figcaption class="net-cap" data-view="sphere" hidden>球面环形图 · 转一个面 = 一圈点沿<span class="net-key">青色环</span>滑动 · 角块在两环交点、棱块只在一环上、中心不在环上 · 点一个点高亮那一块</figcaption>
     </figure>
 
     <div class="dock moves" role="group" aria-label="转动按钮">
@@ -122,14 +125,15 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="js/cube-model.js?v=4"></script>
-<script src="js/solver.js?v=4"></script>
-<script src="js/cube-3d.js?v=4"></script>
-<script src="js/cube-net.js?v=4"></script>
-<script src="js/cube-ring.js?v=4"></script>
-<script src="js/lessons.js?v=4"></script>
-<script src="js/render.js?v=4"></script>
-<script src="js/app.js?v=4"></script>
+<script src="js/cube-model.js?v=5"></script>
+<script src="js/solver.js?v=5"></script>
+<script src="js/cube-3d.js?v=5"></script>
+<script src="js/cube-net.js?v=5"></script>
+<script src="js/cube-ring.js?v=5"></script>
+<script src="js/cube-ring2d.js?v=5"></script>
+<script src="js/lessons.js?v=5"></script>
+<script src="js/render.js?v=5"></script>
+<script src="js/app.js?v=5"></script>
 <script>if (!window.CubeApp && window.CubeRender && window.LESSONS) CubeRender.renderAll(LESSONS, document.getElementById('chapters'));</script>
 </body>
 </html>
