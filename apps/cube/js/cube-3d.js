@@ -340,7 +340,7 @@
       if (Math.abs(mv.quarters) === 2) job.dur = dur * 1.5;
       this._current = job;
       this._dirty = true;
-      this._emit('turnstart', mv.name);
+      this._emit('turnstart', mv.name, job.dur);
       // watchdog: if rAF is stalled (background tab, headless), still complete the move
       (function (self, job) {
         job.timer = setTimeout(function () {

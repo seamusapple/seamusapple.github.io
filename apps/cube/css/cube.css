@@ -336,3 +336,26 @@ body.net-off .net-panel { display: none; }
   body.stage-collapsed .net-panel { width: min(28vw, 112px); top: 12px; }
 }
 @media print { .net-panel { display: none !important; } }
+
+/* ---------- 二维视图切换 + 环形拓扑图 ---------- */
+.net-tabs { display: flex; justify-content: center; margin: 0 auto 8px; width: max-content; }
+.net-tabs .btn { min-height: 28px; padding: 2px 12px; font-size: .8rem; }
+.ring { max-width: 340px; }
+.ring-svg { display: block; width: 100%; height: auto; }
+.ring-belt { fill: none; stroke: color-mix(in srgb, var(--muted) 55%, transparent); stroke-width: 1.6; transition: stroke .2s, stroke-width .2s; }
+.ring-belt.is-turning { stroke: var(--cyan); stroke-width: 3.2; }
+.ring-dot { stroke: rgba(0, 0, 0, .6); stroke-width: 1.2; cursor: pointer; transition: opacity .2s; }
+.ring-dot:hover { stroke: #fff; }
+.ring-dot.is-center { stroke: var(--line-2); stroke-width: 1.6; }
+.ring-dot.is-center.is-visible { stroke: var(--cyan); stroke-width: 2.4; }
+.ring-dot.is-dim { opacity: .15; }
+.ring-dot.is-lit { stroke: #fff; stroke-width: 2.2; }
+.ring-letter { font: 700 10px var(--font-mono); fill: rgba(255, 255, 255, .92); cursor: pointer; }
+.ring-letter.on-light { fill: rgba(11, 14, 20, .85); }
+@media (max-width: 959px) {
+  .net-tabs { margin-bottom: 3px; }
+  .net-tabs .btn { min-height: 20px; padding: 0 6px; font-size: .66rem; }
+  body.net-ring .net-panel { width: min(48vw, 200px); }
+  body.net-ring.stage-collapsed .net-panel { width: min(30vw, 120px); }
+  body.stage-collapsed .net-tabs { display: none; }
+}

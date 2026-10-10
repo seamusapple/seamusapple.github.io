@@ -667,20 +667,45 @@
   // 平面展开图：包一层 view 的 setState / highlight，让展开图始终和 3D 一致
   // =====================================================================
   var COLOR_CN = { W: '白', Y: '黄', G: '绿', B: '蓝', O: '橙', R: '红' };
+  // 展开图 + 环形图：两份都保持同步，只显示当前选中的那一个
+  function makeNetGroup(list) {
+    var call = function (name) {
+      return function () { var args = arguments; list.forEach(function (n) { n[name].apply(n, args); }); };
+    };
+    return { update: call('update'), highlight: call('highlight'), clearHighlight: call('clearHighlight'),
+      setFacing: call('setFacing'), setTurning: call('setTurning'),
+      getState: function () { return list[0].getState(); }, parts: list };
+  }
   function initNet() {
     var host = document.getElementById('cube-net');
     if (!host || !window.CubeNet) return;
-    net = new CubeNet(host, { state: view.getState(), onPick: onNetPick });
+    var parts = [new CubeNet(host, { state: view.getState(), onPick: onNetPick })];
+    var ringHost = document.getElementById('cube-ring');
+    if (ringHost && window.CubeRing) {
+      try { parts.push(new CubeRing(ringHost, { state: view.getState(), onPick: onNetPick })); }
+      catch (e) { console.warn('环形图不可用：', e && e.message); }
+    }
+    net = makeNetGroup(parts);
     var origSet = view.setState, origHl = view.highlight, origClear = view.clearHighlight;
     view.setState = function (s) { var r = origSet.apply(view, arguments); net.update(view.getState()); return r; };
     view.highlight = function (sel) { netPicked = null; net.highlight(sel, view.getState()); return origHl.apply(view, arguments); };
     view.clearHighlight = function () { netPicked = null; net.clearHighlight(); return origClear.apply(view, arguments); };
     view.on('move', function (m, st) { net.update(st || view.getState()); });
-    view.on('turnstart', function (m) { net.setTurning(m); });
+    view.on('turnstart', function (m, ms) { net.setTurning(m, ms); });
     view.on('view', function (f) { net.setFacing(f); });
     net.setFacing(view.facing ? view.facing() : { U: 1, F: 1, R: 1 });
     var on = store('cube.net');
     setNet(on === null || on === undefined ? true : on !== '0', false);
+    setNetMode(store('cube.netMode') === 'ring' && parts.length > 1 ? 'ring' : 'flat', false);
+  }
+  function setNetMode(mode, save) {
+    $$('#net-panel [data-view]').forEach(function (e) { e.hidden = e.getAttribute('data-view') !== mode; });
+    $$('[data-action=net-mode]').forEach(function (b) {
+      var on = b.getAttribute('data-mode') === mode;
+      b.classList.toggle('is-on', on); b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    document.body.classList.toggle('net-ring', mode === 'ring');
+    if (save) store('cube.netMode', mode);
   }
   function onNetPick(pos, k) {
     if (netPicked === pos) { view.clearHighlight(); setCaption(''); return; }
@@ -744,6 +769,7 @@
         setCaption('打乱：' + s.moves.join(' '));
         break;
       case 'print-cheatsheet': printCheatsheet(); break;
+      case 'net-mode': setNetMode(t.getAttribute('data-mode'), true); break;
       case 'toggle-stage': setCollapsed(!document.body.classList.contains('stage-collapsed'), true); break;
       case 'toggle-toc': break; // <details> 原生处理
       default: break;
@@ -972,6 +998,22 @@
           view.clearHighlight();
           return { ok: a && b && lit.length === 3 && cols === before && vis >= 2,
             info: 'sync=' + a + '/' + b + ' lit=' + lit.length + ' piece ' + before + '→' + cols + ' visibleFaces=' + vis };
+        });
+      }),
+      tryStep('环形图与 3D 同步（每环 12 点、转动后颜色一致、高亮跟块）', function () {
+        var ring = net && net.parts[1];
+        if (!ring) return { ok: false, info: '没有环形图' };
+        stopAll();
+        view.setState(CM.apply(SOLVED, "F2 L' U B D' R"));
+        var a = ring.getState() === view.getState();
+        view.highlight(['DF']);
+        return view.move("D R' z").then(function () {
+          var st = view.getState(), lit = $$('#cube-ring .ring-dot.is-lit');
+          var b = ring.getState() === st;
+          var belts = $$('#cube-ring .ring-belt').length;
+          view.clearHighlight();
+          return { ok: a && b && lit.length === 2 && belts === 6 && CubeRing.SIGN === -1,
+            info: 'sync=' + a + '/' + b + ' lit=' + lit.length + ' belts=' + belts + ' sign=' + CubeRing.SIGN };
         });
       })
     ];

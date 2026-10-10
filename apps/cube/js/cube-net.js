@@ -69,6 +69,25 @@
     return cols + '|' + state[k];
   }
 
+  // resolve CubeView-style selectors to the set of sticker identities (follows pieces later)
+  function resolve(selectors, state) {
+    if (typeof selectors === 'string') selectors = [selectors];
+    var lit = new Set(), add = function (k) { lit.add(stickerKey(state, k)); };
+    (selectors || []).forEach(function (sel) {
+      sel = String(sel); var m;
+      if (sel === 'centers') { for (var fi = 0; fi < 6; fi++) add(fi * 9 + 4); }
+      else if ((m = /^(face|layer):([UDFBRL])$/.exec(sel))) {
+        for (var k = 0; k < 54; k++) {
+          if (SLOT_OF[k].indexOf(m[2]) < 0) continue;
+          if (m[1] === 'layer' || FACE_OF[k] === m[2]) add(k);
+        }
+      } else if (/^[UDFBRL]{1,3}$/.test(sel)) {
+        (SLOT_FACELETS[norm(sel)] || []).forEach(add);
+      }
+    });
+    return lit.size ? lit : null;
+  }
+
   function el(name, attrs, parent) {
     var e = document.createElementNS(NS, name);
     for (var a in attrs) e.setAttribute(a, attrs[a]);
@@ -159,22 +178,7 @@
 
   // resolve CubeView-style selectors to the set of sticker identities at the time of the call
   P.highlight = function (selectors, state) {
-    state = state || this.state;
-    if (typeof selectors === 'string') selectors = [selectors];
-    var lit = new Set(), add = function (k) { lit.add(stickerKey(state, k)); };
-    (selectors || []).forEach(function (sel) {
-      sel = String(sel); var m;
-      if (sel === 'centers') { for (var fi = 0; fi < 6; fi++) add(fi * 9 + 4); }
-      else if ((m = /^(face|layer):([UDFBRL])$/.exec(sel))) {
-        for (var k = 0; k < 54; k++) {
-          if (SLOT_OF[k].indexOf(m[2]) < 0) continue;
-          if (m[1] === 'layer' || FACE_OF[k] === m[2]) add(k);
-        }
-      } else if (/^[UDFBRL]{1,3}$/.test(sel)) {
-        (SLOT_FACELETS[norm(sel)] || []).forEach(add);
-      }
-    });
-    this._lit = lit.size ? lit : null;
+    this._lit = resolve(selectors, state || this.state);
     this._paint();
   };
   P.clearHighlight = function () { this._lit = null; this._paint(); };
@@ -206,6 +210,8 @@
 
   CubeNet.SLOT_OF = SLOT_OF;
   CubeNet.SLOT_FACELETS = SLOT_FACELETS;
+  CubeNet.resolve = resolve;
+  CubeNet.stickerKey = stickerKey;
 
   if (typeof module !== 'undefined' && module.exports) module.exports = CubeNet; else root.CubeNet = CubeNet;
 })(typeof window !== 'undefined' ? window : this);

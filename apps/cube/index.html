@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="css/cube.css?v=3">
+<link rel="stylesheet" href="css/cube.css?v=4">
 </head>
 <body>
 
@@ -38,8 +38,14 @@
     </div>
 
     <figure class="net-panel" id="net-panel">
-      <div id="cube-net" class="net"></div>
-      <figcaption class="net-cap">平面展开图 · 与 3D 实时同步 · <span class="net-key">青框</span> = 3D 里正看得到的面 · 点一格高亮那一块</figcaption>
+      <div class="seg net-tabs" role="tablist" aria-label="二维视图">
+        <button type="button" class="btn is-on" role="tab" aria-selected="true" data-action="net-mode" data-mode="flat">展开图</button>
+        <button type="button" class="btn" role="tab" aria-selected="false" data-action="net-mode" data-mode="ring">环形图</button>
+      </div>
+      <div id="cube-net" class="net" data-view="flat"></div>
+      <div id="cube-ring" class="net ring" data-view="ring" hidden></div>
+      <figcaption class="net-cap" data-view="flat">平面展开图 · 与 3D 实时同步 · <span class="net-key">青框</span> = 3D 里正看得到的面 · 点一格高亮那一块</figcaption>
+      <figcaption class="net-cap" data-view="ring" hidden>环形拓扑图 · 转一个面 = 一圈点沿<span class="net-key">青色环</span>滑动 · 角块在两环交点、棱块只在一环上、中心不在环上 · 点一个点高亮那一块</figcaption>
     </figure>
 
     <div class="dock moves" role="group" aria-label="转动按钮">
@@ -83,7 +89,7 @@
       <button type="button" class="btn" data-action="reset">复原</button>
       <button type="button" class="btn" data-action="scramble">打乱</button>
       <label class="tool-check"><input type="checkbox" data-control="axes"> 面标签</label>
-      <label class="tool-check"><input type="checkbox" data-control="net" checked> 展开图</label>
+      <label class="tool-check"><input type="checkbox" data-control="net" checked> 二维图</label>
     </div>
 
     <div class="dock narrate" role="group" aria-label="自动讲解">
@@ -116,13 +122,14 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="js/cube-model.js?v=3"></script>
-<script src="js/solver.js?v=3"></script>
-<script src="js/cube-3d.js?v=3"></script>
-<script src="js/cube-net.js?v=3"></script>
-<script src="js/lessons.js?v=3"></script>
-<script src="js/render.js?v=3"></script>
-<script src="js/app.js?v=3"></script>
+<script src="js/cube-model.js?v=4"></script>
+<script src="js/solver.js?v=4"></script>
+<script src="js/cube-3d.js?v=4"></script>
+<script src="js/cube-net.js?v=4"></script>
+<script src="js/cube-ring.js?v=4"></script>
+<script src="js/lessons.js?v=4"></script>
+<script src="js/render.js?v=4"></script>
+<script src="js/app.js?v=4"></script>
 <script>if (!window.CubeApp && window.CubeRender && window.LESSONS) CubeRender.renderAll(LESSONS, document.getElementById('chapters'));</script>
 </body>
 </html>
