@@ -306,3 +306,33 @@ code { font-family: var(--font-mono); font-size: .9em; background: var(--panel-2
 @media (max-width: 480px) {
   .fact-num .n { font-size: clamp(.95rem, 5.1vw, 1.6rem); letter-spacing: -.03em; }
 }
+
+/* ---------- 平面展开图（与 3D 同步） ---------- */
+.net-panel { margin: 0; padding: 10px 12px 8px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); flex: none; }
+.net { max-width: 300px; margin: 0 auto; }
+.net-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.net-cell { stroke: rgba(0, 0, 0, .55); stroke-width: .35; cursor: pointer; transition: opacity .2s, filter .2s; }
+.net-cell:hover { filter: brightness(1.18); }
+.net-cell.is-dim { opacity: .18; }
+.net-cell.is-lit { stroke: #fff; stroke-width: .8; }
+.net-cell.is-turning { stroke: var(--cyan); stroke-width: .9; }
+.net-cell.is-changed { animation: net-flash .5s ease-out; }
+@keyframes net-flash { from { filter: brightness(1.9); } to { filter: none; } }
+.net-frame { fill: none; stroke: transparent; stroke-width: .7; transition: stroke .2s; }
+.net-frame.is-visible { stroke: var(--cyan); }
+.net-letter { font: 600 4.6px var(--font-mono); fill: rgba(255, 255, 255, .92); pointer-events: auto; cursor: pointer; }
+.net-letter.on-light { fill: rgba(11, 14, 20, .85); }
+.net-cap { margin-top: 6px; color: var(--muted); font-size: .76rem; line-height: 1.45; text-align: center; }
+.net-key { color: var(--cyan); }
+body.net-off .net-panel { display: none; }
+
+@media (max-width: 959px) {
+  /* 手机：展开图叠在 3D 画面左上角，不额外占高度 */
+  .stage { position: sticky; }
+  .net-panel { position: absolute; top: 14px; left: 22px; z-index: 3; width: min(33vw, 140px); padding: 4px 5px 3px; border-radius: 10px;
+    background: color-mix(in srgb, var(--panel) 55%, transparent); border-color: transparent; }
+  .net { max-width: none; }
+  .net-cap { display: none; }
+  body.stage-collapsed .net-panel { width: min(28vw, 112px); top: 12px; }
+}
+@media print { .net-panel { display: none !important; } }

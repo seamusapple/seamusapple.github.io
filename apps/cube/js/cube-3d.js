@@ -340,6 +340,7 @@
       if (Math.abs(mv.quarters) === 2) job.dur = dur * 1.5;
       this._current = job;
       this._dirty = true;
+      this._emit('turnstart', mv.name);
       // watchdog: if rAF is stalled (background tab, headless), still complete the move
       (function (self, job) {
         job.timer = setTimeout(function () {
@@ -523,9 +524,26 @@
     }
     if (this._dirty) {
       this._dirty = false;
+      this._emitFacing();
       if (this.labels.visible) this._updateLabels();
       this.renderer.render(this.scene, this.camera);
     }
+  };
+
+  // which faces point at the camera: {U: z, ...}, z in [-1, 1] (> 0 means visible)
+  P.facing = function () {
+    var out = {};
+    if (this._noGL) { out.U = out.F = out.R = 1; out.D = out.L = out.B = -1; return out; }
+    var q = this.pivot.quaternion, v = new THREE.Vector3();
+    FACE_ORDER.forEach(function (f) { var n = FACES[f].n; out[f] = v.set(n[0], n[1], n[2]).applyQuaternion(q).z; });
+    return out;
+  };
+  P._emitFacing = function () {
+    if (!(this._listeners.view && this._listeners.view.length)) return;
+    var f = this.facing(), sig = FACE_ORDER.map(function (k) { return Math.round(f[k] * 20); }).join(',');
+    if (sig === this._facingSig) return;
+    this._facingSig = sig;
+    this._emit('view', f);
   };
 
   // only show labels of faces turned toward the camera (fade near the silhouette)

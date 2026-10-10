@@ -69,6 +69,8 @@
 
   // ---------- 全局状态 ----------
   var view = null;
+  var net = null;                    // 平面展开图（CubeNet），和 3D 同步
+  var netPicked = null;
   var speed = 350;                   // 每步毫秒（滑块）
   var run = { id: 0, kind: null, el: null };
   var suppress = 0;                  // >0 时忽略 move 事件（setState / 快进时）
@@ -661,6 +663,41 @@
     setTimeout(off, 1500);
   }
 
+  // =====================================================================
+  // 平面展开图：包一层 view 的 setState / highlight，让展开图始终和 3D 一致
+  // =====================================================================
+  var COLOR_CN = { W: '白', Y: '黄', G: '绿', B: '蓝', O: '橙', R: '红' };
+  function initNet() {
+    var host = document.getElementById('cube-net');
+    if (!host || !window.CubeNet) return;
+    net = new CubeNet(host, { state: view.getState(), onPick: onNetPick });
+    var origSet = view.setState, origHl = view.highlight, origClear = view.clearHighlight;
+    view.setState = function (s) { var r = origSet.apply(view, arguments); net.update(view.getState()); return r; };
+    view.highlight = function (sel) { netPicked = null; net.highlight(sel, view.getState()); return origHl.apply(view, arguments); };
+    view.clearHighlight = function () { netPicked = null; net.clearHighlight(); return origClear.apply(view, arguments); };
+    view.on('move', function (m, st) { net.update(st || view.getState()); });
+    view.on('turnstart', function (m) { net.setTurning(m); });
+    view.on('view', function (f) { net.setFacing(f); });
+    net.setFacing(view.facing ? view.facing() : { U: 1, F: 1, R: 1 });
+    var on = store('cube.net');
+    setNet(on === null || on === undefined ? true : on !== '0', false);
+  }
+  function onNetPick(pos, k) {
+    if (netPicked === pos) { view.clearHighlight(); setCaption(''); return; }
+    view.highlight([pos]);
+    netPicked = pos;
+    var st = view.getState(), ids = CubeNet.SLOT_FACELETS[pos.split('').sort().join('')] || [k];
+    var cols = ids.map(function (i) { return COLOR_CN[st[i]] || '?'; }).join('-');
+    var kind = ids.length === 3 ? '角块（3 色）' : ids.length === 2 ? '棱块（2 色）' : '中心块（永远不动）';
+    setCaption('这一格属于 ' + cols + ' ' + kind + '，3D 里已经亮起来了；再点一次取消');
+  }
+  function setNet(on, save) {
+    document.body.classList.toggle('net-off', !on);
+    var cb = $('[data-control=net]'); if (cb) cb.checked = !!on;
+    if (save) store('cube.net', on ? '1' : '0');
+    requestAnimationFrame(function () { if (view) view.resize(); });
+  }
+
   function setCollapsed(on, save) {
     document.body.classList.toggle('stage-collapsed', !!on);
     var b = $('[data-action=toggle-stage]');
@@ -719,6 +756,7 @@
     var t = e.target;
     if (t.matches('input[data-action=done]')) setDone(t.getAttribute('data-chapter'), t.checked);
     else if (t.matches('[data-control=axes]')) view.setAxes(t.checked);
+    else if (t.matches('[data-control=net]')) setNet(t.checked, true);
     else if (t.matches('[data-control=speed]')) { setSpeed(t.value); store('cube.speed', String(speed)); }
   }
   function onInput(e) {
@@ -738,6 +776,7 @@
     catch (err) { console.warn('3D 视图不可用：', err && err.message); view = new LogicView(); }
     view.on('move', onViewMove);
     view.on('drag', function () { $$('[data-action=look]').forEach(function (b) { b.classList.remove('is-on'); }); });
+    initNet();
 
     var saved = parseInt(store('cube.speed'), 10);
     if (reducedMotion()) setSpeed(0);
@@ -917,6 +956,23 @@
         var st3 = ch.script[3];
         if (st3.setup != null) exp = setupState(st3.setup);
         return { ok: view.getState() === exp && sc.idx === 3, info: 'label=' + $('[data-role=script-label]').textContent };
+      }),
+      tryStep('展开图与 3D 同步（转动 / setState / 高亮跟块）', function () {
+        if (!net) return { ok: false, info: '没有展开图' };
+        stopAll();
+        view.setState(CM.apply(SOLVED, "R U F' L2 D B'"));
+        var a = net.getState() === view.getState();
+        view.highlight(['UFR']);
+        var before = CubeNet.SLOT_FACELETS['FRU'].map(function (i) { return view.getState()[i]; }).sort().join('');
+        return view.move("R U y").then(function () {
+          var st = view.getState(), lit = $$('#cube-net .net-cell.is-lit');
+          var cols = lit.map(function (c) { return st[+c.getAttribute('data-i')]; }).sort().join('');
+          var b = net.getState() === st;
+          var vis = $$('#cube-net .net-frame.is-visible').length;
+          view.clearHighlight();
+          return { ok: a && b && lit.length === 3 && cols === before && vis >= 2,
+            info: 'sync=' + a + '/' + b + ' lit=' + lit.length + ' piece ' + before + '→' + cols + ' visibleFaces=' + vis };
+        });
       })
     ];
     function waitIdle() {

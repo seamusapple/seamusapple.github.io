@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;700&display=swap">
-<link rel="stylesheet" href="css/cube.css?v=2">
+<link rel="stylesheet" href="css/cube.css?v=3">
 </head>
 <body>
 
@@ -36,6 +36,11 @@
       <div id="caption" class="caption" data-role="caption" aria-live="polite"></div>
       <button type="button" class="btn stage-toggle" data-action="toggle-stage" aria-expanded="true" aria-controls="stage">收起</button>
     </div>
+
+    <figure class="net-panel" id="net-panel">
+      <div id="cube-net" class="net"></div>
+      <figcaption class="net-cap">平面展开图 · 与 3D 实时同步 · <span class="net-key">青框</span> = 3D 里正看得到的面 · 点一格高亮那一块</figcaption>
+    </figure>
 
     <div class="dock moves" role="group" aria-label="转动按钮">
         <button type="button" class="mvbtn" data-move="U" aria-label="转动 U">U</button>
@@ -78,6 +83,7 @@
       <button type="button" class="btn" data-action="reset">复原</button>
       <button type="button" class="btn" data-action="scramble">打乱</button>
       <label class="tool-check"><input type="checkbox" data-control="axes"> 面标签</label>
+      <label class="tool-check"><input type="checkbox" data-control="net" checked> 展开图</label>
     </div>
 
     <div class="dock narrate" role="group" aria-label="自动讲解">
@@ -110,12 +116,13 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="js/cube-model.js?v=2"></script>
-<script src="js/solver.js?v=2"></script>
-<script src="js/cube-3d.js?v=2"></script>
-<script src="js/lessons.js?v=2"></script>
-<script src="js/render.js?v=2"></script>
-<script src="js/app.js?v=2"></script>
+<script src="js/cube-model.js?v=3"></script>
+<script src="js/solver.js?v=3"></script>
+<script src="js/cube-3d.js?v=3"></script>
+<script src="js/cube-net.js?v=3"></script>
+<script src="js/lessons.js?v=3"></script>
+<script src="js/render.js?v=3"></script>
+<script src="js/app.js?v=3"></script>
 <script>if (!window.CubeApp && window.CubeRender && window.LESSONS) CubeRender.renderAll(LESSONS, document.getElementById('chapters'));</script>
 </body>
 </html>
