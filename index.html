@@ -3,84 +3,122 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
-<meta name="description" content="seamusapple 的个人页面：单页小应用、旅行手账和工具，打开就能用。">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#EFE9E1">
+<meta name="description" content="seamusapple：旅行手账、交互教程、技术文章。">
 <title>seamusapple</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B6E63'/%3E%3Ctext x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-family='Georgia,serif'%3Es%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23EFE9E1'/%3E%3Ctext x='16' y='24' font-size='22' text-anchor='middle' fill='%230D0D0D' font-family='Didot,Bodoni 72,Georgia,serif' font-style='italic'%3E7%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;1,500&family=Noto+Serif+SC:wght@500&family=Noto+Sans+SC:wght@400;500&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@600&display=swap">
 <link rel="stylesheet" href="assets/site.css">
+<noscript><style>.book{position:static;display:block;height:auto;overflow:visible}body{overflow:auto}.panel{width:auto;height:auto;min-height:0}</style></noscript>
 </head>
 <body>
-<div class="wrap">
 
-<header class="mast">
-  <a class="brand" href="./">seamusapple</a>
-  <nav><a href="#shelf">作品</a><a href="blog/">旧博客</a><a href="https://github.com/seamusapple" target="_blank" rel="noopener">GitHub</a></nav>
+<header class="bar">
+  <a class="wordmark" href="./">seamusapple</a>
+  <nav class="counts" aria-label="栏目"><a href="#notes">手账 03</a><a href="#guides">教程 01</a><a href="#posts">文章 03</a></nav>
+  <div class="bar-r"><span class="progress" id="progress" aria-live="polite">01 / 07</span><a href="https://github.com/seamusapple" target="_blank" rel="noopener">GitHub</a></div>
 </header>
 
-<section class="intro">
-  <h1>把想法做成<em>一页纸</em>大小的小应用。</h1>
-  <div class="meta mono"><a href="https://github.com/seamusapple" target="_blank" rel="noopener">github.com/seamusapple</a><span>2026 年起</span></div>
-</section>
+<main class="book" id="book" tabindex="-1">
 
-<section id="shelf">
-  <div class="shelf-head"><h2>作品</h2><span class="count mono" id="shelf-count">3 个</span></div>
-  <div class="filters" role="group" aria-label="按标签筛选">
-    <button type="button" data-tag="*" aria-pressed="true">全部</button>
-    <button type="button" data-tag="旅行攻略" aria-pressed="false">旅行攻略</button>
-    <button type="button" data-tag="手绘" aria-pressed="false">手绘</button>
-    <button type="button" data-tag="人文" aria-pressed="false">人文</button>
-    <button type="button" data-tag="教程" aria-pressed="false">教程</button>
-    <button type="button" data-tag="交互" aria-pressed="false">交互</button>
-  </div>
-  <div class="shelf">
-    <a class="card" href="apps/shudao/" data-tags="旅行攻略 手绘 人文">
-      <div class="cover"><img src="apps/shudao/img/jmg-lou.jpg" alt="剑门关关楼" loading="lazy"></div>
-      <div class="body">
-        <h3>蜀道三星堆三日手账</h3>
-        <p>西安出发、沿西成高铁一路向南的 3 天：广元石窟、昭化古城、剑门关、翠云廊、三星堆，车次和门票预约都排好。</p>
-        <div class="tags"><span class="tag">旅行攻略</span><span class="tag">手绘</span><span class="tag">人文</span></div>
-        <div class="foot"><span class="mono">2026-10</span><span class="go">打开 →</span></div>
-      </div>
-    </a>
-    <a class="card" href="apps/cube/" data-tags="教程 交互">
-      <div class="cover"><img src="apps/cube/img/cover.svg" alt="深色背景上的彩色三阶魔方" loading="lazy"></div>
-      <div class="body">
-        <h3>三阶魔方硬核指南</h3>
-        <p>看过几遍教程还是没学会？12 章交互式 3D 教学：先讲清块和记号，再逐层练到复原，自带出题、提示和自动讲解。</p>
-        <div class="tags"><span class="tag">教程</span><span class="tag">交互</span></div>
-        <div class="foot"><span class="mono">2026-10</span><span class="go">打开 →</span></div>
-      </div>
-    </a>
-    <a class="card" href="apps/chongqing/" data-tags="旅行攻略 手绘">
-      <div class="cover"><img src="apps/chongqing/img/cq-nightscape.jpg" alt="千厮门大桥与洪崖洞夜景" loading="lazy"></div>
-      <div class="body">
-        <h3>重庆山城三日手账</h3>
-        <p>西安出发、不租车的 2–3 天：渝中夜景动线、李子坝磁器口南山、可选武隆一日、火锅清单和预算。</p>
-        <div class="tags"><span class="tag">旅行攻略</span><span class="tag">手绘</span></div>
-        <div class="foot"><span class="mono">2026-10</span><span class="go">打开 →</span></div>
-      </div>
-    </a>
-    <a class="card" href="apps/jiuzhaigou/" data-tags="旅行攻略 手绘">
-      <div class="cover"><img src="apps/jiuzhaigou/img/wuhuahai.jpg" alt="九寨沟五花海" loading="lazy"></div>
-      <div class="body">
-        <h3>九寨沟黄龙四日手账</h3>
-        <p>西安出发、不租车的 4 天 3 晚：手绘路线图、逐小时行程、沟内地图、打勾清单和按人数算的预算。</p>
-        <div class="tags"><span class="tag">旅行攻略</span><span class="tag">手绘</span></div>
-        <div class="foot"><span class="mono">2026-10</span><span class="go">打开 →</span></div>
-      </div>
-    </a>
-  </div>
-  <p class="empty" id="shelf-empty" hidden>这个标签下还没有东西。</p>
-</section>
+  <section class="panel cover" id="cover" aria-label="封面">
+    <span class="ghost" aria-hidden="true">NOTES</span>
+    <div class="issue"><span>No. 07</span><i aria-hidden="true"></i><span>2017 — 2026</span></div>
+    <div class="cover-bottom">
+      <h1 class="big" aria-label="七项">07</h1>
+      <ol class="toc">
+        <li><a href="#notes"><span class="num">01 — 03</span><span class="cat">手账</span><span class="items">蜀道 · 重庆 · 九寨沟</span></a></li>
+        <li><a href="#guides"><span class="num">04</span><span class="cat">教程</span><span class="items">三阶魔方</span></a></li>
+        <li><a href="#posts"><span class="num">05 — 07</span><span class="cat">文章</span><span class="items">iOS Runtime · ARC · 2017</span></a></li>
+        <li class="hint"><span>Scroll →</span></li>
+      </ol>
+    </div>
+  </section>
 
-<footer class="foot-site">
-  <span>© 2026 seamusapple</span>
-  <span>托管在 GitHub Pages · <a href="https://github.com/seamusapple/seamusapple.github.io" target="_blank" rel="noopener">源码</a></span>
-</footer>
+  <section class="panel look" id="notes" data-n="01">
+    <span class="ghost-n" aria-hidden="true">01</span>
+    <a class="plate" href="apps/shudao/" aria-label="蜀道三星堆三日手账"><img src="apps/shudao/img/jmg-lou.jpg" alt="剑门关关楼" width="1000" height="747"></a>
+    <div class="cap">
+      <span class="label">手账 · 2026-10</span>
+      <a class="latin" href="apps/shudao/">Shudao</a>
+      <a class="zh" href="apps/shudao/">蜀道三星堆三日手账</a>
+      <p>广元石窟、昭化古城、剑门关、翠云廊、三星堆。西成高铁，三天。</p>
+      <span class="meta">3 天 · 5 站 · 西安出发</span>
+    </div>
+  </section>
 
-</div>
+  <section class="panel look" data-n="02">
+    <span class="ghost-n" aria-hidden="true">02</span>
+    <a class="plate" href="apps/chongqing/" aria-label="重庆山城三日手账"><img src="apps/chongqing/img/hongyadong-sunset.jpg" alt="洪崖洞日落" width="1000" height="667" loading="lazy"></a>
+    <div class="cap">
+      <span class="label">手账 · 2026-10</span>
+      <a class="latin" href="apps/chongqing/">Chongqing</a>
+      <a class="zh" href="apps/chongqing/">重庆山城三日手账</a>
+      <p>渝中夜景动线、李子坝、磁器口、南山，可选武隆一日。火锅清单与预算。</p>
+      <span class="meta">2–3 天 · 西安出发</span>
+    </div>
+  </section>
+
+  <section class="panel look" data-n="03">
+    <span class="ghost-n" aria-hidden="true">03</span>
+    <a class="plate" href="apps/jiuzhaigou/" aria-label="九寨沟黄龙四日手账"><img src="apps/jiuzhaigou/img/huanglong-pools.jpg" alt="黄龙钙化池" width="900" height="599" loading="lazy"></a>
+    <div class="cap">
+      <span class="label">手账 · 2026-10</span>
+      <a class="latin" href="apps/jiuzhaigou/">Jiuzhaigou</a>
+      <a class="zh" href="apps/jiuzhaigou/">九寨沟黄龙四日手账</a>
+      <p>手绘路线图、逐小时行程、沟内地图、清单与按人数的预算。</p>
+      <span class="meta">4 天 3 晚 · 不租车</span>
+    </div>
+  </section>
+
+  <section class="panel look dark" id="guides" data-n="04">
+    <span class="ghost-n" aria-hidden="true">04</span>
+    <a class="plate cube" href="apps/cube/" aria-label="三阶魔方硬核指南">
+      <svg viewBox="0 0 300 300" aria-hidden="true">
+        <polygon points="150,150 80.7,110 150,70 219.3,110" fill="#EFE9E1"></polygon>
+        <polygon points="150,150 80.7,110 80.7,190 150,230" fill="#5A1A1D"></polygon>
+        <polygon points="150,150 219.3,110 219.3,190 150,230" fill="#E8C4B8"></polygon>
+        <g stroke="#0D0D0D" stroke-width="2" stroke-linecap="round">
+          <line x1="173.1" y1="136.7" x2="103.8" y2="96.7"></line><line x1="196.2" y1="123.3" x2="126.9" y2="83.3"></line>
+          <line x1="126.9" y1="136.7" x2="196.2" y2="96.7"></line><line x1="103.8" y1="123.3" x2="173.1" y2="83.3"></line>
+          <line x1="126.9" y1="136.7" x2="126.9" y2="216.7"></line><line x1="103.8" y1="123.3" x2="103.8" y2="203.3"></line>
+          <line x1="150" y1="176.7" x2="80.7" y2="136.7"></line><line x1="150" y1="203.3" x2="80.7" y2="163.3"></line>
+          <line x1="173.1" y1="136.7" x2="173.1" y2="216.7"></line><line x1="196.2" y1="123.3" x2="196.2" y2="203.3"></line>
+          <line x1="150" y1="176.7" x2="219.3" y2="136.7"></line><line x1="150" y1="203.3" x2="219.3" y2="163.3"></line>
+        </g>
+      </svg>
+    </a>
+    <div class="cap">
+      <span class="label">教程 · 2026-10</span>
+      <a class="latin" href="apps/cube/">Cube</a>
+      <a class="zh" href="apps/cube/">三阶魔方硬核指南</a>
+      <p>12 章交互式 3D 教学：块与记号、层先法、逐层复原。出题、提示、自动讲解。</p>
+      <span class="meta">12 章 · 7 步 · 8 条公式</span>
+    </div>
+  </section>
+
+  <section class="panel posts" id="posts" data-n="05">
+    <span class="ghost-n" aria-hidden="true">05</span>
+    <div class="posts-head">
+      <span class="label">文章 · 2017</span>
+      <span class="latin">Articles</span>
+    </div>
+    <ol class="list">
+      <li><a href="blog/2017/01/09/iOS-Runtime/"><span class="n">05</span><span class="t"><span class="zh">iOS Runtime 机制</span><span class="tags">Objective-C · Runtime</span></span><time datetime="2017-01-09">2017-01-09</time></a></li>
+      <li><a href="blog/2017/01/05/iOS%E4%B8%AD%E7%9A%84Runtime-Swift/"><span class="n">06</span><span class="t"><span class="zh">iOS 中的 Runtime（使用篇）</span><span class="tags">Swift · Runtime</span></span><time datetime="2017-01-05">2017-01-05</time></a></li>
+      <li><a href="blog/2017/01/04/ARC-in-Swift/"><span class="n">07</span><span class="t"><span class="zh">iOS 中的内存管理（ARC）</span><span class="tags">Swift · ARC</span></span><time datetime="2017-01-04">2017-01-04</time></a></li>
+    </ol>
+    <a class="archive" href="blog/">归档 →</a>
+  </section>
+
+  <section class="panel end" aria-label="版权">
+    <span class="colophon">© 2026 seamusapple · GitHub Pages · <a href="https://github.com/seamusapple/seamusapple.github.io" target="_blank" rel="noopener">源码</a></span>
+  </section>
+
+</main>
 <script src="assets/site.js"></script>
 </body>
 </html>
