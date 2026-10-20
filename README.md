@@ -8,7 +8,10 @@ Ramsey 的个人页面，托管在 GitHub Pages。首页是一本横向翻阅的
 index.html            首页（<main class="book"> 里一排 .panel：封面 / 作品 / 文章 / 版权）
 assets/site.css       首页样式：骨白 #EFE9E1 · 腮红 #E8C4B8 · 牛血 #5A1A1D · 黑 #0D0D0D；Bodoni Moda 拉丁、宋体中文、10px 字距拉开的标签
 assets/site.js        滚轮纵向 → 横向翻页（带缓动）、方向键翻页、锚点横移、页眉的 01 / 07 计数；`?flat=1` 把整条展开用于截图
-blog/                 2017 年的旧博客（Hexo 静态产物，原样挂在 /blog/）
+posts/<slug>/         站内样式的文章页（由 tools/build-posts.py 从 blog/ 生成；图片在各自 img/）
+assets/post.css       文章页样式（同一套骨白体系，代码块 GitHub Dark 配色）
+tools/build-posts.py  旧文迁移脚本：抽 Hexo 产物正文、保留其自带的高亮标记、套模板；改模板后重跑
+blog/                 2017 年的旧博客（Hexo 静态产物，原样挂在 /blog/ 当归档）
 apps/<slug>/          一个应用一个目录，入口 index.html，资源放在目录内（相对路径）
 .nojekyll             关闭 Jekyll 处理，目录和文件名原样发布
 ```
